@@ -1,5 +1,3 @@
-import one_pole
-import z_param
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -7,7 +5,7 @@ import numpy as np
 class FormFactor:
 
     def __init__(self, IS, FS, **kwargs):
-        self.name = f"{IS}->{FS} form factors"
+        self.name = f"{IS}->{FS}"
         self.obj_name = f"f{IS}{FS}"  # 形状因子对象的名称，使用'f'、初始状态和最终状态构建
         self.kwargs = kwargs
         self.IS = IS  # 初始状态名称, e.g. "B"
@@ -46,7 +44,7 @@ class Impl:
         self.param_form = kwargs.get('param_form')  # 参数形式，e.g. 'z-param', 'BGL' or 'one-pole'
         self.methods = kwargs.get('methods')  # 方法说明，e.g. 'LQCD', 'LCSR' or 'HQEFT'
         self.ref = kwargs.get('ref')  # 参考资料
-        self.ff_obj = None  # 形状因子对象
+        self.ff_obj = kwargs.get("ff_obj")  # 形状因子对象
         self._internal_params = {}  # 内部参数
 
     def get_ref(self):
@@ -55,14 +53,19 @@ class Impl:
     def set_description(self, des):
         self.description = des
 
+    def set_func(self, func):
+        """func(qsq) 应该是一个只关于qsq的函数"""
+        self._func = func
+
     def get_central_values(self, qsq):
-        IS = self.ff_obj.IS
-        FS = self.ff_obj.FS
-        if self.param_form == 'one-pole':
-            ff = one_pole.ff(IS, FS, qsq)  # 调用外部函数计算中心值（使用one-pole参数形式）
-        elif self.param_form == 'z-param':
-            ff = z_param.ff(IS, FS, qsq)  # 调用外部函数计算中心值（使用z-param参数形式）
-        return ff
+        # IS = self.ff_obj.IS
+        # FS = self.ff_obj.FS
+        # if self.param_form == 'one-pole':
+        #     ff = one_pole.ff(IS, FS, qsq)  # 调用外部函数计算中心值（使用one-pole参数形式）
+        # elif self.param_form == 'z-param':
+        #     ff = z_param.ff(IS, FS, qsq)  # 调用外部函数计算中心值（使用z-param参数形式）
+        # return ff
+        return self._func(qsq)
 
     def draw(self, x, y):  # 绘制形状因子图像，x，y为横纵坐标最大值。
         length = len(self.ff_names)
@@ -91,8 +94,8 @@ class Impl:
 
         plt.xlim(0, x)
         plt.ylim(0, y)
-        plt.xlabel('q^2[GeV]')
-        plt.ylabel('f(q^2)')
+        plt.xlabel(r'$q^2$ [GeV]')
+        plt.ylabel(r'$f(q^2)$')
         plt.legend()
         plt.grid(True)
         plt.show()

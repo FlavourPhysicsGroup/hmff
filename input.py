@@ -1,4 +1,4 @@
-import formfactor as ff
+import classes as ff
 import utils
 
 fBpi = ff.FormFactor("B", "pi")
