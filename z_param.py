@@ -6,7 +6,8 @@ from pathlib import Path
 ap = [0.0, 0.0, 0.0]
 mB = {'B': 5.27966, 'D': 1.87265, 'Bs': 5.36692}
 mD = {'pi': 0.134977, 'D': 1.86966, 'K': 0.495644}
-mBstar = {'B->pi': 5.32471, 'B->D': 6.329, 'D->K': 2.1122, 'Bs->K': 5.3246, 'B->K': 5.4}
+mBstar = {'B->pi': 5.3252, 'B->D': 6.329, 'D->K': 2.1122, 'Bs->K': 5.3252, 'B->K': 5.4}
+mB0star = {'Bs->K': 5.63}
 # 从文件中加载参数
 with codecs.open(Path(__file__).parent / 'data/z_param.yaml', 'r', encoding='utf-8') as file:
     ff_pars = yaml.load(file, yaml.SafeLoader)
@@ -18,6 +19,12 @@ def z(q2, IS, FS):
     t0 = (mB.get(IS) + mD.get(FS)) * (math.sqrt(mB.get(IS)) - math.sqrt(mD.get(FS)))**2
     return (math.sqrt(tp - q2) - math.sqrt(tp - t0)) / (math.sqrt(tp - q2) + math.sqrt(tp - t0))
 
+# 不同拟合方法
+def z1(q2, IS, FS):
+    tp = (mB.get(IS) + mD.get(FS))**2
+    tm = (mB.get(IS) - mD.get(FS))**2
+    t0 = tp - math.sqrt(tp * (tp - tm))
+    return (math.sqrt(tp - q2) - math.sqrt(tp - t0)) / (math.sqrt(tp - q2) + math.sqrt(tp - t0))
 
 # 计算BCL表示的f+或fT
 def fpBCL(IS, FS, q2, pars):
@@ -39,32 +46,15 @@ def f0BCL(IS, FS, q2, pars):
         result += term
     return result
 
-
 # 不同拟合方法
-def z1(q2, IS, FS):
-    tp = (mB.get(IS) + mD.get(FS))**2
-    tm = (mB.get(IS) - mD.get(FS))**2
-    t0 = tp - math.sqrt(tp * (tp - tm))
-    return (math.sqrt(tp - q2) - math.sqrt(tp - t0)) / (math.sqrt(tp - q2) + math.sqrt(tp - t0))
-
-
-def fpBCL1(IS, FS, q2, pars):
-    ap = pars
-    result = 0
-    key = IS + '->' + FS
-    for n in range(0, 4):
-        term = (z1(q2, IS, FS)**n - (-1)**(n - 4) * n / 4 * z1(q2, IS, FS)**4) * ap[n]
-        result += term
-    return 1 / (1 - q2 / mBstar.get(key)**2) * result
-
-
 def f0BCL1(IS, FS, q2, pars):
     a0 = pars
+    key = IS + '->' + FS
     result = 0
-    for n in range(0, 4):
+    for n in range(0, 3):
         term = a0[n] * z1(q2, IS, FS)**n
         result += term
-    return result
+    return 1 / (1 - q2 / mB0star.get(key)**2) * result
 
 
 def fp(IS, FS, qs, pars):
@@ -127,7 +117,7 @@ def ff(IS, FS, q2):
         return _ff
     elif 'Bs->K' in key:
         _ff = {
-            'f+': fpBCL1(IS, FS, q2, pars=ff_pars[key + ' form factor']['ap']),
+            'f+': fpBCL(IS, FS, q2, pars=ff_pars[key + ' form factor']['ap']),
             'f0': f0BCL1(IS, FS, q2, pars=ff_pars[key + ' form factor']['a0']),
         }
         return _ff
