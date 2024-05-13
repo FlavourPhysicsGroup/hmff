@@ -48,7 +48,7 @@ def ff(process, q2):
         return {}
 
 
-# 对三种过程，分别创建 Impl 对象，并分别记录在对应过程的 FormFactor 对象内。
+# 对六种过程，分别创建 Impl 对象，并分别记录在对应过程的 FormFactor 对象内。
 for process in ['B->rho', 'Bs->K*', 'B->K*', 'B->omega', 'Bs->phi']:
     impl = Impl(
         'one-pole by 0412079',  # Impl 本身不依赖过程，所以名字中不必体现过程
