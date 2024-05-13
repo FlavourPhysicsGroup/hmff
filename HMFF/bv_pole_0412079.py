@@ -3,6 +3,7 @@
 """B介子衰变到矢量介子定义, 参考hep-ph/0412079"""
 from .classes import Impl
 from .initialization import formfactors
+from functools import partial
 from pathlib import Path
 import yaml
 
@@ -58,5 +59,5 @@ for process in ['B->rho', 'Bs->K*', 'B->K*', 'B->omega', 'Bs->phi']:
         ref='arxiv:hep-ph/0412079')
     impl.set_description = (f"用{impl.param_form}参数化和{impl.methods}方法，"
                             f"实现了{impl.ff_names}，参考了{impl.ref}")
-    impl.set_func(lambda qsq: ff(process, qsq))
+    impl.set_func(partial(ff, process))
     formfactors[process].add_impl(impl)     # 将 Impl 注册进 FormFactor 对象
