@@ -8,7 +8,7 @@ from functools import partial
 from pathlib import Path
 import yaml
 
-with open(Path(__file__).parent / 'data/ball_zwicky.yaml', 'r') as file:
+with open(Path(__file__).parent / 'data/ball_zwicky.yaml', 'r', encoding='utf-8') as file:
     ff_pars = yaml.load(file, yaml.SafeLoader)
 
 
