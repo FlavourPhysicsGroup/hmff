@@ -99,6 +99,3 @@ class Impl:
         plt.legend()
         plt.grid(True)
         plt.show()
-
-
-# 实际操作应在input.py进行
