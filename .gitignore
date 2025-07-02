@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,circuitpython,jupyternotebooks,pycharm,python,pythonvanilla
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,linux,circuitpython,jupyternotebooks,pycharm,python,pythonvanilla
 
+# test files
+check.ipynb
+
 ### CircuitPython ###
 .Trashes
 .metadata_never_index
@@ -369,3 +372,4 @@ pyrightconfig.json
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
+check.ipynb
