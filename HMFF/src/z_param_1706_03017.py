@@ -1,10 +1,9 @@
 """参考1706.03017 [hep-lat]"""
 import math
 import yaml
-import codecs
 from pathlib import Path
-from .classes import Impl
-from .initialization import formfactors
+from ..classes import Impl
+from ..initialization import formfactors
 
 # 定义初始值
 m1 = {'D': 1.87265}
@@ -12,7 +11,7 @@ m2 = {'pi': 0.134977, 'K': 0.495644}
 mDstar = 2.1122
 
 # 从文件中加载参数
-with codecs.open(Path(__file__).parent / 'data/Lubicz_Riggio.yaml', 'r', encoding='utf-8') as file:
+with open(Path(__file__).parent / 'data/Lubicz_Riggio.yaml', 'r', encoding='utf-8') as file:
     ff_pars = yaml.load(file, yaml.SafeLoader)
 
 

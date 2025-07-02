@@ -1,5 +1,5 @@
 D->pi form factor:
-  ref: arXiv：1706.03017 [hep-lat] #Table 6
+  ref: arXiv:1706.03017 [hep-lat] #Table 6
   f(0) : 0.6117
   cp : -1.985
   PV : 0.1314
@@ -7,7 +7,7 @@ D->pi form factor:
   PS : 0.0342
 
 D->K form factor:
-  ref: arXiv：1706.03017 [hep-lat] #Table 8
+  ref: arXiv:1706.03017 [hep-lat] #Table 8
   f(0) : 0.7647
   cp : -0.066
   c0 : -2.084

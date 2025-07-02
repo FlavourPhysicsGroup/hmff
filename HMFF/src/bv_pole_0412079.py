@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 """B介子衰变到矢量介子定义, 参考hep-ph/0412079"""
-from .classes import Impl
-from .initialization import formfactors
+from ..classes import Impl
+from ..initialization import formfactors
 from functools import partial
 from pathlib import Path
 import yaml

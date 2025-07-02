@@ -2,8 +2,8 @@
 
 """B介子衰变到赝标介子过程的形状因子, 参考hep-ph/0406232"""
 
-from .classes import Impl
-from .initialization import formfactors
+from ..classes import Impl
+from ..initialization import formfactors
 from functools import partial
 from pathlib import Path
 import yaml

@@ -1,10 +1,9 @@
 """FLAG_Review_2021"""
 import math
 import yaml
-import codecs
 from pathlib import Path
-from .classes import Impl
-from .initialization import formfactors
+from ..classes import Impl
+from ..initialization import formfactors
 
 # 定义初始值
 m1 = {'B': 5.27966, 'Bs': 5.36692}
@@ -13,7 +12,7 @@ mBstar = 5.3252
 mBstar_0p = 5.63
 
 # 从文件中加载参数
-with codecs.open(Path(__file__).parent / 'data/FLAG_Review_2021.yaml', 'r',
+with open(Path(__file__).parent / 'data/FLAG_Review_2021.yaml', 'r',
                  encoding='utf-8') as file:
     ff_pars = yaml.load(file, yaml.SafeLoader)
 
