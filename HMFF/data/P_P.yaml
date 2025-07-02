@@ -1,0 +1,25 @@
+# form factors for pseudoscalar meson -> pseudoscalar meson
+
+# example:
+B->pi:
+  ref: arXiv:hep-ph/0406232
+  author: P. Ball and R. Zwicky
+  citation key: Ball:2004ye # obtained from InspireHep
+  f+: 
+    parameterization: double pole 1
+    parameter: {a1: 0.744, a2: -0.486, m1: 6.382, m2: 5.32}
+  f0:
+    parameterization: one pole
+    parameter: {a: 0.258, m: 5.32}
+  fT:
+    parameterization: double pole 1
+    parameter: {a1: 1.387, a2: -1.134, m1: 6.382, m2: 5.32}
+
+
+
+
+B->pi form factor:
+  ref: arxiv:hep-ph/0406232 #Table A、D
+  f+: {r1: 0.744, r2: -0.486, mfit^2: 40.73, m1: 5.32}
+  f0: {r2: 0.258, mfit^2: 33.81}
+  fT: {r1: 1.387, r2: -1.134, mfit^2: 32.22, m1: 5.32}
