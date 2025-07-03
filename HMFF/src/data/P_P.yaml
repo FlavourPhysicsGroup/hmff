@@ -10,15 +10,19 @@ B->pi:                            # M1->M2
     comment: This is a comment    # optional, can be used to describe the method or any other information
     f+: 
       parameterization: double pole 1
-      parameter: {a1: 0.744, a2: -0.486, m1: 5.32, m2: 6.382} # table 3
+      parameter: {a1: 0.744, a2: -0.486, m1: 5.32, m2: 6.382}
+      # parameter: {a1: 0.744, a2: -0.486, m1_sq: 40.73, m2: 5.32}
+      # parameter: {a1: 0.744, a2: -0.486, m1: 40.73, m2_sq: 5.32}
       # covariance matrix: <covariance_matrix>, optional, can be used to provide uncertainties
-      # comment, optional, can be used to describe the parameterization or any other information
+      comment: from table 3, not checked        # optional, can be used to describe the parameterization or any other information
     f0:
       parameterization: one pole
-      parameter: {a: 0.258, m: 5.32} # table 3
+      parameter: {a: 0.258, m: 5.32}
+      comment: from table 3, not checked
     fT:
       parameterization: double pole 1
-      parameter: {a1: 1.387, a2: -1.134, m1: 5.32, m2: 5.676} # table 3
+      parameter: {a1: 1.387, a2: -1.134, m1: 5.32, m2: 5.676}
+      comment: from table 3, not checked
 #  LQCD-z:
 #    ref: 
 #    author: 
