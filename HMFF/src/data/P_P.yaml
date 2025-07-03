@@ -12,6 +12,7 @@ B->pi:                            # M1->M2
       parameterization: double pole 1
       parameter: {a1: 0.744, a2: -0.486, m1: 5.32, m2: 6.382} # table 3
       # covariance matrix: <covariance_matrix>, optional, can be used to provide uncertainties
+      # comment, optional, can be used to describe the parameterization or any other information
     f0:
       parameterization: one pole
       parameter: {a: 0.258, m: 5.32} # table 3
