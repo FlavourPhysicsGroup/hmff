@@ -37,3 +37,42 @@ B->pi:                            # M1->M2
 #      parameter:
 #    fT:
 #      parameterization: 
+
+
+B->K:                           
+  LCSR-pole:                      
+    ref: arXiv:hep-ph/0406232    
+    author: P. Ball and R. Zwicky 
+    citation key: Ball:2004ye     
+    method: LCSR                
+    comment: This is a comment   
+    f+: 
+      parameterization: double pole 2
+      parameter: {a1: 0.162, a2: 0.173, m: 5.41} 
+    
+    f0:
+      parameterization: one pole
+      parameter: {a: 0.33, m: 37.46} 
+    fT:
+      parameterization: double pole 2
+      parameter: {a1: 0.161, a2: 0.198, m: 5.41}
+
+
+
+B->eta:                           
+  LCSR-pole:                      
+    ref: arXiv:hep-ph/0406232     
+    author: P. Ball and R. Zwicky 
+    citation key: Ball:2004ye     
+    method: LCSR                 
+    comment: This is a comment    
+    f+: 
+      parameterization: double pole 2
+      parameter: {a1: 0.122, a2: 0.155, m: 5.32} 
+    
+    f0:
+      parameterization: one pole
+      parameter: {a: 0.273, m: 5.570}
+    fT:
+      parameterization: double pole 2
+      parameter: {a1: 0.111, a2: 0.175, m: 5.32} 
