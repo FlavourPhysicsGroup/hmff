@@ -2,8 +2,12 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,circuitpython,jupyternotebooks,pycharm,python,pythonvanilla
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,linux,circuitpython,jupyternotebooks,pycharm,python,pythonvanilla
 
-# test files
+### my test files
 check.ipynb
+
+### system
+.DS_Store
+**/.DS_Store
 
 ### CircuitPython ###
 .Trashes
