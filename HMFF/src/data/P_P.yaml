@@ -58,6 +58,36 @@ B->pi:
       parameterization: double pole 1
       parameter: {a1: 1.387, a2: -1.134, m1: 5.32, m2_sq: 32.22}
       comment: from table 3, not checked
+  
+  LQCD-z 2021:
+    ref: arXiv:2111.09849
+    author: Y.Aoki and others
+    citation key: FlavourLatticeAveragingGroupFLAG:2021npn
+    method: LQCD 
+    comment: B->pi form factors
+    f+:
+      parameterization: BCL 1
+      parameter: {ap: [0.404,-0.68,-0.86], m1: 5.27966, m2: 0.134977, m_Bstar: 5.3252} #Table 46
+    f0:
+      parameterization: BCL 2
+      parameter: {a0: [0.409,-1.61,0], m1: 5.27966, m2: 0.134977} #Table 46 #我发现flAG_Review_2021.yaml中与论文里a0的不一样，我按照论文里面的填，但是少一个系数我不知道怎么填，就令他为0
+    fT:
+      parameterization: BCL 1
+      parameter: {aT: [0.393,-0.65,-0.65], m1: 5.27966, m2: 0.134977, m_Bstar: 5.3252} #Table 50
+
+
+  LQCD-z 2015:
+    ref: arXiv:1501.05373
+    author: J.M.Flynn, T.Izubuchi, T.Kawanai, C.Lehner, A.Soni, R. S.Van de Water and O.Witzel
+    citation key: Flynn:2015mha
+    method: LQCD 
+    comment: B->pi form factors
+    f+:
+      parameterization: BCL 1
+      parameter: {ap: [0.412,-0.511,-0.524], m1: 5.27966, m2: 0.134977, m_Bstar: 5.3252} #Table XI
+    f0:
+      parameterization: BCL 2
+      parameter: {a0: [0.520,-1.657,2.146], m1: 5.27966, m2: 0.134977} #Table XI
 
 B->K:                           
   LCSR-pole 2004:                      
@@ -65,17 +95,35 @@ B->K:
     author: P. Ball and R. Zwicky 
     citation key: Ball:2004ye     
     method: LCSR                
-    comment: This is a comment   
+    comment: B->K form factors 
     f+: 
       parameterization: double pole 2
-      parameter: {a1: 0.162, a2: 0.173, m: 5.41} 
+      parameter: {a1: 0.162, a2: 0.173, m: 5.41} # table 3
     
     f0:
       parameterization: one pole
-      parameter: {a: 0.33, m: 37.46} 
+      parameter: {a: 0.33, m: 6.120} # table 3
     fT:
       parameterization: double pole 2
-      parameter: {a1: 0.161, a2: 0.198, m: 5.41}
+      parameter: {a1: 0.161, a2: 0.198, m: 5.41} # table 3
+
+
+  LQCD-z 2021:
+    ref: arXiv:2111.09849
+    author: Y.Aoki and others
+    citation key: FlavourLatticeAveragingGroupFLAG:2021npn
+    method: LQCD 
+    comment: B->k form factors
+    f+:
+      parameterization: BCL 1
+      parameter: {ap: [0.471,-0.74,0.32], m1: 5.27966, m2: 0.495644, m_Bstar: 5.3252} #Table 51
+    f0:
+      parameterization: BCL 2
+      parameter: {a0: [0.301,0.40,0.676], m1: 5.27966, m2: 0.495644} #Table 51
+    fT:
+      parameterization: BCL 1
+      parameter: {aT: [0.455,-1,-0.9], m1: 5.27966, m2: 0.495644, m_Bstar: 5.3252} #Table 51
+
 
 
 
@@ -85,14 +133,87 @@ B->eta:
     author: P. Ball and R. Zwicky 
     citation key: Ball:2004ye     
     method: LCSR                 
-    comment: This is a comment    
+    comment: B->eta form factors    
     f+: 
       parameterization: double pole 2
-      parameter: {a1: 0.122, a2: 0.155, m: 5.32} 
+      parameter: {a1: 0.122, a2: 0.155, m: 5.32} # table 3
     
     f0:
       parameterization: one pole
-      parameter: {a: 0.273, m: 5.570}
+      parameter: {a: 0.273, m: 5.570} # table 3
     fT:
       parameterization: double pole 2
-      parameter: {a1: 0.111, a2: 0.175, m: 5.32} 
+      parameter: {a1: 0.111, a2: 0.175, m: 5.32} # table 3
+
+
+
+Bs->K:
+  LQCD-z 2015:
+    ref: arXiv:1501.05373
+    author: J.M.Flynn, T.Izubuchi, T.Kawanai, C.Lehner, A.Soni, R. S.Van de Water and O.Witzel
+    citation key: Flynn:2015mha
+    method: LQCD 
+    comment: Bs->K form factors
+    f+:
+      parameterization: BCL 1
+      parameter: {ap: [0.338,-1.161,-0.458], m1: 5.36692, m2: 0.495644, m_Bstar: 5.63} #Table XII
+    f0:
+      parameterization: BCL 3
+      parameter: {a0: [0.210,-0.169,-1.235], m1: 5.36692, m2: 0.495644, m_Bstar: 5.63} #Table XII
+
+
+  LQCD-z 2021:
+    ref: arXiv:2111.09849
+    author: Y.Aoki and others
+    citation key: FlavourLatticeAveragingGroupFLAG:2021npn
+    method: LQCD 
+    comment: Bs->K form factors
+    f+:
+      parameterization: BCL 1
+      parameter: {ap: [0.374,-0.672,0.07], m1: 5.36692, m2: 0.495644, m_Bstar: 5.3252} #Table 48 在FLAG Review 2021.yaml中的ap和ap与论文中的不一致
+    f0:
+      parameterization: BCL 2
+      parameter: {a0: [0.2203,0.089,0.24], m1: 5.36692, m2: 0.495644} #Table 48
+
+B->D:
+  LQCD-z 2021:
+    ref: arXiv:2111.09849
+    author: Y.Aoki and others
+    citation key: FlavourLatticeAveragingGroupFLAG:2021npn
+    method: LQCD 
+    comment: B->D form factors
+    f+:
+      parameterization: BCL 1
+      parameter: {ap: [0.896,-0.794,51.4], m1: 5.27966, m2: 1.86966, m_Bstar: 5.3252} #Table 52
+    f0:
+      parameterization: BCL 2
+      parameter: {a0: [0.7821,-3.28,17.5978], m1: 5.27966, m2: 1.86966} #Table 52
+
+
+D->pi:
+  LQCD-z 2017:
+    ref: arXiv:1706.03017
+    author: V.Lubicz, L.Riggio, G.Salerno, S.Simula and C.Tarantino
+    citation key: Lubicz:2017syv
+    method: LQCD 
+    comment: D->pi form factors
+    f+:
+      parameterization: z-expansions 1
+      parameter: {f(0): 0.6117, c: -1.985, P: 0.1314, m1: 1.87265, m2: 0.134977} #Table 6
+    f0:
+      parameterization: z-expansions 1
+      parameter: {f(0): 0.6117, c: -1.188, P: 0.0342, m1: 1.87265, m2: 0.134977} #Table 6
+
+D->K:
+  LQCD-z 2017:
+    ref: arXiv:1706.03017
+    author: V.Lubicz, L.Riggio, G.Salerno, S.Simula and C.Tarantino
+    citation key: Lubicz:2017syv
+    method: LQCD 
+    comment: D->pi form factors
+    f+:
+      parameterization: z-expansions 2
+      parameter: {f(0): 0.7647, c: -0.066, m1: 1.87265, m2: 0.495644, m_Dstar: 2.1122} #Table 8
+    f0:
+      parameterization: z-expansions 3
+      parameter: {f(0): 0.7647, c: -2.084, m1: 1.87265, m2: 0.495644} #Table 8
