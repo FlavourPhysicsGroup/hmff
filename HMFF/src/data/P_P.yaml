@@ -184,11 +184,10 @@ B->D:
     comment: B->D form factors
     f+:
       parameterization: BCL 1
-      parameter: {ap: [0.896,-0.794,51.4], m1: 5.27966, m2: 1.86966, m_Bstar: 5.3252} #Table 52
+      parameter: {ap: [0.896,-0.794,51.4], m1: 5.27966, m2: 1.86966, m_Bstar: 5.3252} #Table 45
     f0:
       parameterization: BCL 2
-      parameter: {a0: [0.7821,-3.28,17.5978], m1: 5.27966, m2: 1.86966} #Table 52
-
+      parameter: {a0: [0.7821,-3.28,17.5978], m1: 5.27966, m2: 1.86966} #Table 45
 
 D->pi:
   LQCD-z 2017:
