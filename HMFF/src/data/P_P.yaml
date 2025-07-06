@@ -61,7 +61,7 @@ B->pi:
   
   LQCD-z 2024:
     ref: arXiv:2411.04268
-    author: Flag
+    author: FLAG
     citation key: FlavourLatticeAveragingGroupFLAG:2024oxs
     method: LQCD 
     comment: B->pi form factors
@@ -110,7 +110,7 @@ B->K:
 
   LQCD-z 2024:
     ref: arXiv:2411.04268
-    author: Flag
+    author: FLAG
     citation key: FlavourLatticeAveragingGroupFLAG:2024oxs
     method: LQCD 
     comment: B->K form factors
