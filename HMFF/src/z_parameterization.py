@@ -24,6 +24,7 @@ def get_key_case(pars):
         raise ValueError("Invalid parameter keys: expected either {'mm_1', 'mm_2', 'mp_1', 'mp_2'} or {'m_1', 'm_2'} exclusively.")
 
 
+### get mm_1, mm_2, mp_1, mp_2 from pars
 # mass_name: mm_1, mm_2, mp_1, mp_2
 def get_mass(mass_name, pars):
     key_case = get_key_case(pars)
@@ -68,7 +69,7 @@ def get_z(q2, pars):
 def f_BCL_1(q2, pars):
     z = get_z(q2, pars) # not checked
     m_star = pars.get('m_star')
-    a_list = [value for key, value in pars.items() if key.startswith('a_')] # not checked
+    a_list = pars.get('a')
     N = len(a_list)
     return sum(
                 1/(1-q2/m_star**2) * a * (z**n - (-1)**(n-N)*(n/N)*z**N)
@@ -80,7 +81,7 @@ def f_BCL_1(q2, pars):
 # pars: mm1_, mm_2, mp_1, mp_2 (m_1, m_2), a_0, a_1, a_2, ..., a_N-1
 def f_BCL_2(q2, pars):
     z = get_z(q2, pars) # not checked
-    a_list = [value for key, value in pars.items() if key.startswith('a_')] # not checked
+    a_list = pars.get('a')
     N = len(a_list)
     return sum(
                 a * z**n 
@@ -93,7 +94,7 @@ def f_BCL_2(q2, pars):
 def f_BCL_3(q2, pars):
     z = get_z(q2, pars) # not checked
     m_star = pars.get('m_star')
-    a_list = [value for key, value in pars.items() if key.startswith('a_')] # not checked
+    a_list = pars.get('a')
     N = len(a_list)
     return sum(
                 1/(1-q2/m_star**2) * a * z**n 
