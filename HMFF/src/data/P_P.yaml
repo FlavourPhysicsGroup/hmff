@@ -145,6 +145,7 @@ B->eta:
       parameter: {a1: 0.111, a2: 0.175, m: 5.32} # table 3
 
 
+
 Bs->K:
   LQCD-z 2015:
     ref: arXiv:1501.05373
@@ -159,6 +160,7 @@ Bs->K:
       parameterization: BCL 3
       parameter: {a0: [0.210,-0.169,-1.235], m1: 5.36692, m2: 0.495644, m_Bstar: 5.63} #Table XII
 
+
   LQCD-z 2021:
     ref: arXiv:2111.09849
     author: Y.Aoki and others
@@ -171,7 +173,6 @@ Bs->K:
     f0:
       parameterization: BCL 2
       parameter: {a0: [0.2203,0.089,0.24], m1: 5.36692, m2: 0.495644} #Table 48
-
 
 B->D:
   LQCD-z 2021:
