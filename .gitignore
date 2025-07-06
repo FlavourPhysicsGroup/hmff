@@ -1,13 +1,6 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,circuitpython,jupyternotebooks,pycharm,python,pythonvanilla
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,linux,circuitpython,jupyternotebooks,pycharm,python,pythonvanilla
-
-### my test files
-check.ipynb
-
-### system
-.DS_Store
-**/.DS_Store
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,pythonvanilla,python,pycharm,linux,jupyternotebooks,circuitpython,macos
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,pythonvanilla,python,pycharm,linux,jupyternotebooks,circuitpython,macos
 
 ### CircuitPython ###
 .Trashes
@@ -43,6 +36,38 @@ ipython_config.py
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### macOS Patch ###
+# iCloud generated files
+*.icloud
 
 ### PyCharm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -372,8 +397,10 @@ pyrightconfig.json
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,circuitpython,jupyternotebooks,pycharm,python,pythonvanilla
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,pythonvanilla,python,pycharm,linux,jupyternotebooks,circuitpython,macos
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
+### my test files
 check.ipynb
+doc/
