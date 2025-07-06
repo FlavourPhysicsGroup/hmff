@@ -59,22 +59,23 @@ B->pi:
       parameter: {a1: 1.387, a2: -1.134, m1: 5.32, m2_sq: 32.22}
       comment: from table 3, not checked
   
-  LQCD-z 2024:
+  LQCD-FLAG-2024:
     ref: arXiv:2411.04268
     author: FLAG
     citation key: FlavourLatticeAveragingGroupFLAG:2024oxs
-    method: LQCD 
+    method: LQCD, Nf=2+1
     comment: B->pi form factors
     f+:
       parameterization: BCL 1
-      parameter: {ap: [0.423,-0.507,-0.75], m1: 5.27966, m2: 0.134977, m_Bstar: 5.3252} #Table 38
+      parameter: {a: [0.423, -0.507, -0.75], m_1: 5.27934, m_2: 0.1349768, m_star: 5.32471}
+      error: {a_err: [0.021,  0.093,  0.34]}
+      comment: a from Table 38, m_1, m_2, m_star from text below eq.541
     f0:
       parameterization: BCL 2
       parameter: {a0: [0.561,0.65955], m1: 5.27966, m2: 0.134977} #Table 38
     fT:
       parameterization: BCL 1
       parameter: {aT: [0.393,-0.65,-0.6], m1: 5.27966, m2: 0.134977, m_Bstar: 5.3252} #Table 42
-
 
   LQCD-z 2015:
     ref: arXiv:1501.05373
