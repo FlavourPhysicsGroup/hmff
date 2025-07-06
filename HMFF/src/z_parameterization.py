@@ -6,41 +6,46 @@ from math import sqrt
 # see the equation in the note
 
 ### determine the cases of key
-# key_case_1: {mm_1, mm_2, mp_1, mp_2}
-# key_case_2: { m_1, m_2}
-#      other: e.g., {mm_1, mm_2, mp_1, mp_2, m_1, m_2}
+# keys_case_1: {mm_1, mm_2, mp_1, mp_2}
+# keys_case_2: { m_1, m_2}
+#      other: e.g., {mm_1, mm_2, mp_1, mp_2, m_1, m_2} or {}
 def get_key_case(pars):
     keys_case_1 = {'mm_1', 'mm_2', 'mp_1', 'mp_2'}
     keys_case_2 = {'m_1', 'm_2'}
-    if all(k in pars for k in keys_case_1) and not any(k in pars for k in keys_case_2):
-        return 1  # key_case_1: {mm_1, mm_2, mp_1, mp_2}
-    elif all(k in pars for k in keys_case_2) and not any(k in pars for k in keys_case_1):
-        return 2  # key_case_2: {m_1, m_2}
-    else:
+    has_case_1_keys = all(k in pars for k in keys_case_1)
+    has_case_2_keys = all(k in pars for k in keys_case_2)
+    if has_case_1_keys and not has_case_2_keys:       # keys_case_1: {mm_1, mm_2, mp_1, mp_2}
+        return 1
+    elif has_case_2_keys and not has_case_1_keys:     # keys_case_2: {m_1, m_2}
+        return 2
+    elif not has_case_1_keys and not has_case_2_keys: # e.g., {}
+        raise ValueError("Invalid parameter keys: Neither {'mm_1', 'mm_2', 'mp_1', 'mp_2'} or {'m_1', 'm_2'} are found in YAML.")
+    else:                                             # e.g., {mm_1, m_1}
         raise ValueError("Invalid parameter keys: expected either {'mm_1', 'mm_2', 'mp_1', 'mp_2'} or {'m_1', 'm_2'} exclusively.")
+
+
+# mass_name: mm_1, mm_2, mp_1, mp_2
+def get_mass(mass_name, pars):
+    key_case = get_key_case(pars)
+    if key_case == 1:
+        return pars.get(mass_name)
+    elif key_case == 2:
+        # mass_name is like 'mm_1', 'mm_2', 'mp_1', 'mp_2'
+        # Remove the second character ('m' or 'p'), e.g., 'mm_1' -> 'm_1', 'mp_2' -> 'm_2'
+        return pars.get(mass_name[0] + mass_name[2:])
 
 
 ### tp parameter
 def get_tp(pars):
-    key_case = get_key_case(pars)
-    if key_case == 1:
-        mp_1 = pars.get('mp_1')
-        mp_2 = pars.get('mp_2')
-    elif key_case == 2:
-        mp_1 = pars.get('m_1')
-        mp_2 = pars.get('m_2')
+    mp_1 = get_mass('mp_1', pars)
+    mp_2 = get_mass('mp_2', pars)
     return (mp_1 + mp_2)**2
 
 
 ### tm parameter
 def get_tm(pars):
-    key_case = get_key_case(pars)
-    if key_case == 1:
-        mm_1 = pars.get('mm_1')
-        mm_2 = pars.get('mm_2')
-    elif key_case == 2:
-        mm_1 = pars.get('m_1')
-        mm_2 = pars.get('m_2')
+    mm_1 = get_mass('mm_1', pars)
+    mm_2 = get_mass('mm_2', pars)
     return (mm_1 - mm_2)**2
 
 
