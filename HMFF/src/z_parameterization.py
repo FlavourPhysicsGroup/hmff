@@ -116,3 +116,12 @@ def get_a0_N_minus_1_from_ap(pars_p, pars_0):
     fp_0 = f_BCL_1(0.0, pars_p)  # f_p(0)
     a0_list = pars_0.get('a')    # a0_1, a0_2, ..., a0_N-1
     return (fp_0-sum(a * z0**n for n, a in enumerate(a0_list[:-1])))*z0**(1-N)
+
+def f_z_expansions_1(q2, pars):
+    raise NotImplementedError
+
+def f_z_expansions_2(q2, pars):
+    raise NotImplementedError
+
+def f_z_expansions_3(q2, pars):
+    raise NotImplementedError

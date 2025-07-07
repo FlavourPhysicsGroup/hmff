@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import src.pole_dominance as pole
+import src.z_parameterization as zp
 
 
 class FormFactor:
@@ -26,7 +28,7 @@ class FormFactor:
 
     def add_impl(self, impl_obj):
         if impl_obj.name in self.impl_names:
-            raise KeyError(f"Impl '{impl_obj.name}' already exists in formfactor '{self.name}'")
+            raise KeyError(f"Impl '{impl_obj.name}' already exists in FormFactor '{self.name}'")
         self._impls[impl_obj.name] = impl_obj  # 将参数形式存储到字典中，使用实现对象作为键
         self.impl_names.append(impl_obj.name)  # 添加实现名称到列表中
 
@@ -35,7 +37,7 @@ class FormFactor:
         if impl_name not in self._impls:
             config = self.impl_configs.get(impl_name)
             if not config:
-                raise KeyError(f"Impl '{impl_name}' not found in formfactor '{self.name}'")
+                raise KeyError(f"Impl '{impl_name}' not found in FormFactor '{self.name}'")
 
             self._impls[impl_name] = Impl(impl_name, config)
         return self._impls[impl_name]
@@ -74,6 +76,41 @@ class Impl:
     def method(self):
         res = self.config.get('method') or self.name.split('-')[0]
         return res
+    
+    @property
+    def form_factors(self):
+        return list(self.config.get('form factors').keys())
+    
+    def get_form_factors(self, ff_name, qsq):
+        if ff_name not in self.form_factors:
+            raise KeyError(f"'{ff_name}' not found in Impl '{self.name}'")
+
+        ff_config = self.config.get('form factors').get(ff_name)
+        ff_data = ff_config.get('parameter')
+
+        match ff_config.get('parameterization'):
+            case 'one pole':
+                return pole.f_one_pole(qsq, ff_data)
+            case 'double pole 1':
+                return pole.f_double_pole_1(qsq, ff_data)
+            case 'double pole 2':
+                return pole.f_double_pole_2(qsq, ff_data)
+            case 'BCL 1':
+                return zp.f_BCL_1(qsq, ff_data)
+            case 'BCL 2':
+                return zp.f_BCL_2(qsq, ff_data)
+            case 'BCL 3':
+                return zp.f_BCL_3(qsq, ff_data)
+            case 'z-expansions 1':
+                return zp.f_z_expansions_1(qsq, ff_data)
+            case 'z-expansions 2':
+                return zp.f_z_expansions_2(qsq, ff_data)
+            case 'z-expansions 3':
+                return zp.f_z_expansions_3(qsq, ff_data)
+            case _:
+                raise ValueError(f'{self.name} has no such parameterization: {self.parameterization}')
+
+
 
     # def set_func(self, func):
     #     """func(qsq) 应该是一个只关于qsq的函数"""
