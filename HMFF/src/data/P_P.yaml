@@ -41,11 +41,11 @@
 #      parameterization: 
 
 B->pi:                            
-  LCSR-pole 2004:                      
+  LCSR-2004:                      
     ref: arXiv:hep-ph/0406232
     author: P. Ball and R. Zwicky
     citation key: Ball:2004ye 
-    method: LCSR     
+    method: LCSR
     f+: 
       parameterization: double pole 1
       parameter: {a1: 0.744, a2: -0.486, m1: 5.32, m2_sq: 40.73}
@@ -68,14 +68,25 @@ B->pi:
     f+:
       parameterization: BCL 1
       parameter: {a: [0.423, -0.507, -0.75], m_1: 5.27934, m_2: 0.1349768, m_star: 5.32471}
-      error: {a_err: [0.021,  0.093,  0.34]}
+      error: {a: [0.021,  0.093,  0.34]}
       comment: a from Table 38, m_1, m_2, m_star from text below eq.541
     f0:
       parameterization: BCL 2
-      parameter: {a0: [0.561,0.65955], m1: 5.27966, m2: 0.134977} #Table 38
+      parameter: {a0: [0.561, 0.65955, 'by_ap'], m1: 5.27966, m2: 0.134977} #Table 38
     fT:
       parameterization: BCL 1
-      parameter: {aT: [0.393,-0.65,-0.6], m1: 5.27966, m2: 0.134977, m_Bstar: 5.3252} #Table 42
+      parameter: {aT: [0.393, -0.65, -0.6], m1: 5.27966, m2: 0.134977, m_Bstar: 5.3252} #Table 42
+    covariance_matrix: [
+      [1, x, x, x, x, 0, 0, 0, 0],
+      [x, 1, x, x, x, 0, 0, 0, 0],
+      [x, x, 1, x, x, 0, 0, 0, 0],
+      [x, x, x, 1, x, 0, 0, 0, 0],
+      [x, x, x, x, 1, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 1, x, x, x],
+      [0, 0, 0, 0, 0, x, 1, x, x],
+      [0, 0, 0, 0, 0, x, x, 1, x],
+      [0, 0, 0, 0, 0, x, x, x, 1]
+    ]
 
   LQCD-z 2015:
     ref: arXiv:1501.05373
@@ -93,7 +104,7 @@ B->pi:
 
 
 B->K:                           
-  LCSR-pole 2004:                      
+  LCSR-2004:                      
     ref: arXiv:hep-ph/0406232    
     author: P. Ball and R. Zwicky 
     citation key: Ball:2004ye     
