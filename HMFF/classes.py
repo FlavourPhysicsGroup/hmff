@@ -101,6 +101,8 @@ class Impl:
                 return zp.f_BCL_2(qsq, ff_data)
             case 'BCL 3':
                 return zp.f_BCL_3(qsq, ff_data)
+            case 'BCL 4':
+                return zp.f_BCL_4(qsq, ff_data)
             case 'z-expansions 1':
                 return zp.f_z_expansions_1(qsq, ff_data)
             case 'z-expansions 2':

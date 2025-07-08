@@ -84,14 +84,26 @@ def f_BCL_2(q2, pars):
     a_list = pars.get('a')
     N = len(a_list)
     return sum(
-                a * z**n 
+                a * (z**n - (-1)**(n-N)*(n/N)*z**N)
                 for n, a in enumerate(a_list)
                 )
 
 
 # parameterization: BCL_3
-# pars: mm1_, mm_2, mp_1, mp_2 (m_1, m_2), m_star, a_0, a_1, a_2, ..., a_N-1
+# pars: mm1_, mm_2, mp_1, mp_2 (m_1, m_2), a_0, a_1, a_2, ..., a_N-1
 def f_BCL_3(q2, pars):
+    z = get_z(q2, pars) # not checked
+    a_list = pars.get('a')
+    N = len(a_list)
+    return sum(
+                a * z**n 
+                for n, a in enumerate(a_list)
+                )
+
+
+# parameterization: BCL_4
+# pars: mm1_, mm_2, mp_1, mp_2 (m_1, m_2), m_star, a_0, a_1, a_2, ..., a_N-1
+def f_BCL_4(q2, pars):
     z = get_z(q2, pars) # not checked
     m_star = pars.get('m_star')
     a_list = pars.get('a')
