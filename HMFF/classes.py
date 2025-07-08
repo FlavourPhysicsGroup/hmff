@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import src.pole_dominance as pole
-import src.z_parameterization as zp
+from .src import pole_dominance as pole
+from .src import z_parameterization as zp
 
 
 class FormFactor:
