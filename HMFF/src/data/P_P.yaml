@@ -134,7 +134,7 @@ B->K:
       f+: 
         parameterization: double pole 2
         parameter: {a1: 0.162, a2: 0.173, m: 5.41}
-        omment: from table 3, not checked
+        comment: from table 3, not checked
       f0:
         parameterization: one pole
         parameter: {a: 0.33, m: 6.120}
