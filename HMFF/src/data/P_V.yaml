@@ -1,6 +1,13 @@
 # form factors for pseudoscalar meson -> vector meson
 
-B->rho:                           
+
+B->rho:
+  LQCD-2008:
+    ref: arxiv:0812.2795
+    author: J.M. Flynn, Y. Nakagawa, J. Nieves, H. Toki
+    method: LQCD
+    citation key: Flynn:2008zr
+
   LCSR-pole:                      
     ref: arxiv:hep-ph/0412079    
     author: P. Ball and R. Zwicky 
@@ -32,39 +39,14 @@ B->rho:
         parameter: {a1: 0.022, a2: 0.246, m: 6.393}
 
 
-Bs->K*:                           
-  LCSR-pole:                      
-    ref: arxiv:hep-ph/0412079    
-    author: P. Ball and R. Zwicky 
-    citation key: Ball:2004rg    
-    method: LCSR                
-    comment: Bs->K* form factors  
-    #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
-    form factors:
-      V: 
-        parameterization: double pole 1
-        parameter: {a1: 2.351, a2: -2.039, m1: 5.32, m2: 5.753} 
-      A0:
-        parameterization: double pole 1
-        parameter: {a1: 2.813, a2: -2.509, m1: 5.28, m2: 5.619} 
-      A1:
-        parameterization: one pole 
-        parameter: {a: 0.231, m: 5.739}
-      A2:
-        parameterization: double pole 2
-        parameter: {a1: -0.011, a2:  0.192, m: 6.335}
-      T1:
-        parameterization: double pole 1
-        parameter: {a1:  2.047, a2: -1.787, m1: 5.32, m2: 5.729}
-      T2:
-        parameterization: one pole 
-        parameter: {a:   0.260, m: 5.745}
-      T3:
-        parameterization: double pole 2
-        parameter: {a1:  0.043, a2:  0.217, m: 6.275}
+B->K*:
+  LQCD-2015:
+    ref: arxiv:1501.00367
+    author: R. R. Horgan, Z. Liu, S. Meinel, M. Wingate
+    citation key: Horgan:2015vla
+    method: LQCD
+     # 请直接用 arXiv网页上的Ancillary files：
 
-
-B->K*:                           
   LCSR-pole:                      
     ref: arxiv:hep-ph/0412079    
     author: P. Ball and R. Zwicky 
@@ -94,7 +76,6 @@ B->K*:
       T3:
         parameterization: double pole 2
         parameter: {a1: -0.036, a2: 0.368, m: 6.935}
-
 
 
 B->omega:                           
@@ -129,7 +110,51 @@ B->omega:
         parameter: {a1: 0.023, a2: 0.220, m: 6.392}
 
 
-Bs->phi:                           
+Bs->K*:
+  LQCD-2015:
+    ref: arxiv:1501.00367
+    author: R. R. Horgan, Z. Liu, S. Meinel, M. Wingate
+    citation key: Horgan:2015vla
+    method: LQCD
+     # 请直接用 arXiv网页上的Ancillary files：                           
+  LCSR-pole:                      
+    ref: arxiv:hep-ph/0412079    
+    author: P. Ball and R. Zwicky 
+    citation key: Ball:2004rg    
+    method: LCSR                
+    comment: Bs->K* form factors  
+    #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
+    form factors:
+      V: 
+        parameterization: double pole 1
+        parameter: {a1: 2.351, a2: -2.039, m1: 5.32, m2: 5.753} 
+      A0:
+        parameterization: double pole 1
+        parameter: {a1: 2.813, a2: -2.509, m1: 5.28, m2: 5.619} 
+      A1:
+        parameterization: one pole 
+        parameter: {a: 0.231, m: 5.739}
+      A2:
+        parameterization: double pole 2
+        parameter: {a1: -0.011, a2:  0.192, m: 6.335}
+      T1:
+        parameterization: double pole 1
+        parameter: {a1:  2.047, a2: -1.787, m1: 5.32, m2: 5.729}
+      T2:
+        parameterization: one pole 
+        parameter: {a:   0.260, m: 5.745}
+      T3:
+        parameterization: double pole 2
+        parameter: {a1:  0.043, a2:  0.217, m: 6.275}
+
+
+Bs->phi:
+  LQCD-2015:
+    ref: arxiv:1501.00367
+    author: R. R. Horgan, Z. Liu, S. Meinel, M. Wingate
+    citation key: Horgan:2015vla
+    method: LQCD
+     # 请直接用 arXiv网页上的Ancillary files：                         
   LCSR-pole:                      
     ref: arxiv:hep-ph/0412079    
     author: P. Ball and R. Zwicky 
@@ -159,6 +184,3 @@ Bs->phi:
       T3:
         parameterization: double pole 2
         parameter: {a1:  0.027, a2:  0.321, m: 6.749}
-
-
-
