@@ -1,22 +1,56 @@
 # form factors for baryon -> baryon
 
 
-Lambda_b->Lambda:                            
-  LQCD-2016:                      
+Lambda_b->Lambda:
+  LQCD-2016-nominal:
     ref: arXiv:1602.01399
     author: W. Detmold, S. Meinel
     citation key: Detmold:2016pkz 
     method: LQCD, Nf=2+1
+    comment: nominal form factors defined in eq.38                      
+    # 请直接用 arXiv网页上的Ancillary files
+  LQCD-2016-HO:                      
+    ref: arXiv:1602.01399
+    author: W. Detmold, S. Meinel
+    citation key: Detmold:2016pkz 
+    method: LQCD, Nf=2+1
+    comment: higher-order (HO) form factors defined in eq.49
     # 请直接用 arXiv网页上的Ancillary files：LambdabLambda_HO_results.dat 和 LambdabLambda_HO_covariance.dat里的数据。
+  LQCD-2016:
+    ref: arXiv:1602.01399
+    author: W. Detmold, S. Meinel
+    citation key: Detmold:2016pkz 
+    method: LQCD, Nf=2+1
+    comment: use the method in p.10 to evaluate the central values and uncertainties
+    # 这个稍微复杂一些，需要同时调用LQCD-2016-nominal和LQCD-2016-HO的结果。暂时不用添加。
+    # 后续可以增加新的条目
+    # depends on:
+    #  - LQCD-2016-nominal
+    #  - LQCD-2016-HO
+    # central value: some function
+    # uncertainty: some function
   
 
 Lambda_b->Lambda_1520:
-  LQCD-2021:
+  LQCD-2021-nominal:
     ref: arXiv:2107.13140
     author: S. Meinel, G. Rendon
     citation key: Meinel:2021mdj
     method: LQCD
     # 请直接用 arXiv网页上的Ancillary files
+  LQCD-2021-HO:
+    ref: arXiv:2107.13140
+    author: S. Meinel, G. Rendon
+    citation key: Meinel:2021mdj
+    method: LQCD
+    # 请直接用 arXiv网页上的Ancillary files
+  LQCD-2021:
+    ref: arXiv:2107.13140
+    author: S. Meinel, G. Rendon
+    citation key: Meinel:2021mdj
+    method: LQCD
+    # 类似于Lambda_b->Lambda的情况，使用LQCD-2021-nominal和LQCD-2021-HO的结果来计算中心值和不确定度。
+
     
   LCSR-2024:
     ref: arXiv:2412.06515
