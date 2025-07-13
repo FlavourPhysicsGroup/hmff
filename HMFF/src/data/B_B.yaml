@@ -7,7 +7,7 @@ Lambda_b->Lambda:
     author: W. Detmold, S. Meinel
     citation key: Detmold:2016pkz 
     method: LQCD, Nf=2+1
-    comment: nominal form factors defined in eq.38
+    comment: nominal form factors defined in eq.38. Since this paper does not provide the masses of Lambda and Lambda_b, we use the PDG values.
     form factors:
       f+:
         parameterization: 
@@ -45,11 +45,11 @@ Lambda_b->Lambda:
         parameter: {a: [0.38763266069053, -0.96229696628603], m_1: 5.279, m_2: 0.494, m_star: 5.416}
         error: {a: [0.0313, 0.2766, 1.0757]}
         comment: a from Table V, m_1, m_2, m_star from Table III
-      htilde+:
+      ht+:
         parameterization:
         parameter: {a: [0.34026877180649, -0.7696942981475], m_1: 5.279, m_2: 0.494, m_star: 5.750}
         comment: a from Table V, m_1, m_2, m_star from Table III
-      htildeperp:
+      htperp:
         parameterization: 
         parameter: {a: [0.34026877180649, -0.80082045409023], m_1: 5.279, m_2: 0.494, m_star: 5.750}
         comment: a from Table V, m_1, m_2, m_star from Table III
@@ -73,8 +73,7 @@ Lambda_b->Lambda:
           - [  0.00015840, -0.00125219,  0.00018247, -0.00137928,  0.00018501, -0.00165168,  0.00014081, -0.00127681, -0.00131343,  0.00015514, -0.00117742,  0.00016552, -0.00120446,  0.00013662, -0.00103614,  0.00017568, -0.00153468, -0.00155503 ]
           - [ -0.00114647,  0.01101674, -0.00133444,  0.01251174, -0.00122578,  0.01626870, -0.00109590,  0.01436700,  0.01561320, -0.00116893,  0.01103387, -0.00123099,  0.01137267, -0.00101406,  0.00947462, -0.00153468,  0.02597291,  0.02340095 ]
           - [ -0.00114633,  0.01118080, -0.00132938,  0.01291375, -0.00129195,  0.01632616, -0.00112603,  0.01449400,  0.01567792, -0.00114949,  0.01126751, -0.00122082,  0.01187641, -0.00100171,  0.00958284, -0.00155503,  0.02340095,  0.02361827 ]
-
-      comment: 
+      comment: # 这个的顺序要给出
 
 
     # 请直接用 arXiv网页上的Ancillary files
@@ -121,11 +120,11 @@ Lambda_b->Lambda:
         parameter: {a: [0.37449633654207, -0.94393620829042, 1.160584212019], m_1: 5.279, m_2: 0.494, m_star: 5.416}
         error: {a: [0.0313, 0.2766, 1.0757]}
         comment: a from Table V, m_1, m_2, m_star from Table III
-      htilde+:
+      ht+:
         parameterization:
         parameter: {a: [0.32557980205714,  -0.96031340669186, 2.9779809449577], m_1: 5.279, m_2: 0.494, m_star: 5.750}
         comment: a from Table V, m_1, m_2, m_star from Table III
-      htildeperp:
+      htperp:
         parameterization: 
         parameter: {a: [0.32557980205714,  -0.96338607873742, 2.4782325273996], m_1: 5.279, m_2: 0.494, m_star: 5.750}
         comment: a from Table V, m_1, m_2, m_star from Table III
@@ -174,7 +173,7 @@ Lambda_b->Lambda_1520:
     author: S. Meinel, G. Rendon
     citation key: Meinel:2021mdj
     method: LQCD
-      comment: Lambda_b->Lambda_1520 form factors
+    comment: Lambda_b->Lambda_1520 form factors
     form factors:
       f0:
         parameterization: 
@@ -184,7 +183,6 @@ Lambda_b->Lambda_1520:
         parameterization: 
         parameter: {a1: 0.77876906144177, m_pole: 5.416}
         comment: a from Table VIII, m_pole from Table VII
-      f+:
       fperp:
         parameterization: 
         parameter: {a1: 1.2484883955446, m_pole: 5.416}
