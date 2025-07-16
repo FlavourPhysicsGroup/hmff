@@ -10,49 +10,47 @@ Lambda_b->Lambda:
     comment: nominal form factors defined in eq.38
     form factors:
       f+:
-        parameterization: 
-        parameter: {a: [0.4220840771427, -1.1385668716529], m_1: 5.279, m_2: 0.494, m_star: 5.416} 
-        comment: a from Table IV, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.4220840771427, -1.1385668716529], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416} 
+        comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       f0:
-        parameterization: 
-        parameter: {a: [0.37254294921251, -0.93893800242326], m_1: 5.279, m_2: 0.494, m_star: 5.711}
-        comment: a from Table IV, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.37254294921251, -0.93893800242326], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.711}
+        comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       fperp:
-        parameterization: 
-        parameter: {a: [0.51820088929706, -1.3495114114751], m_1: 5.279, m_2: 0.494, m_star: 5.416} 
-        comment: a from Table IV, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.51820088929706, -1.3495114114751], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416} 
+        comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       g+:
-        parameterization: 
-        parameter: {a: [0.35627001295791, -1.0612467428431], m_1: 5.279, m_2: 0.494, m_star: 5.750} 
-        comment: a from Table IV, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.35627001295791, -1.0612467428431], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750} 
+        comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       g0:
-        parameterization:
-        parameter: {a: [0.40279563255158, -1.0290493858363], m_1: 5.279, m_2: 0.494, m_star: 5.367}
+        parameterization: BCL 4
+        parameter: {a: [0.40279563255158, -1.0290493858363], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.367}
 
-        comment: a from Table V, m_1, m_2, m_star from Table III
+        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       gperp:
-        parameterization:
-        parameter: {a: [0.35627001295791, -1.1357000804652], m_1: 5.279, m_2: 0.494, m_star: 5.750}
+        parameterization: BCL 4
+        parameter: {a: [0.35627001295791, -1.1357000804652], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
  
-        comment: a from Table V, m_1, m_2, m_star from Table III
+        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       h+:
-        parameterization:
-        parameter: {a: [0.49599719500981,  -1.1275136739815], m_1: 5.279, m_2: 0.494, m_star: 5.416}
-        error: {a: [0.0423, 0.3997, 1.6760]}
-        comment: a from Table V, m_1, m_2, m_star from Table III
+        parameterization: BCL 4 
+        parameter: {a: [0.49599719500981,  -1.1275136739815], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416}
+        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       hperp:
-        parameterization:
-        parameter: {a: [0.38763266069053, -0.96229696628603], m_1: 5.279, m_2: 0.494, m_star: 5.416}
-        error: {a: [0.0313, 0.2766, 1.0757]}
-        comment: a from Table V, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.38763266069053, -0.96229696628603], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416}
+        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       htilde+:
-        parameterization:
-        parameter: {a: [0.34026877180649, -0.7696942981475], m_1: 5.279, m_2: 0.494, m_star: 5.750}
-        comment: a from Table V, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.34026877180649, -0.7696942981475], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
+        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       htildeperp:
-        parameterization: 
-        parameter: {a: [0.34026877180649, -0.80082045409023], m_1: 5.279, m_2: 0.494, m_star: 5.750}
-        comment: a from Table V, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.34026877180649, -0.80082045409023], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
+        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       covariance_matrix: 
         value:
           - [  0.00035324, -0.00281445,  0.00036035, -0.00270341,  0.00022103, -0.00200686,  0.00016856, -0.00144745, -0.00147893,  0.00027018, -0.00198782,  0.00033995, -0.00234669,  0.00025715, -0.00191093,  0.00015840, -0.00114647, -0.00114633 ]
@@ -73,8 +71,7 @@ Lambda_b->Lambda:
           - [  0.00015840, -0.00125219,  0.00018247, -0.00137928,  0.00018501, -0.00165168,  0.00014081, -0.00127681, -0.00131343,  0.00015514, -0.00117742,  0.00016552, -0.00120446,  0.00013662, -0.00103614,  0.00017568, -0.00153468, -0.00155503 ]
           - [ -0.00114647,  0.01101674, -0.00133444,  0.01251174, -0.00122578,  0.01626870, -0.00109590,  0.01436700,  0.01561320, -0.00116893,  0.01103387, -0.00123099,  0.01137267, -0.00101406,  0.00947462, -0.00153468,  0.02597291,  0.02340095 ]
           - [ -0.00114633,  0.01118080, -0.00132938,  0.01291375, -0.00129195,  0.01632616, -0.00112603,  0.01449400,  0.01567792, -0.00114949,  0.01126751, -0.00122082,  0.01187641, -0.00100171,  0.00958284, -0.00155503,  0.02340095,  0.02361827 ]
-
-      comment: 
+        comment: from Ancillary files LambdabLambda_nominal_covariance.dat
 
 
     # 请直接用 arXiv网页上的Ancillary files
@@ -86,49 +83,47 @@ Lambda_b->Lambda:
     comment: higher-order (HO) form factors defined in eq.49
     form factors:
       f+:
-        parameterization: 
-        parameter: {a: [0.42289944554385, -1.3728104863374, 1.7972027464353], m_1: 5.279, m_2: 0.494, m_star: 5.416} 
-        comment: a from Table IV, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.42289944554385, -1.3728104863374, 1.7972027464353], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416} 
+        comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       f0:
-        parameterization: 
-        parameter: {a: [0.36042499343404, -0.92482193483026, 0.98613652433444], m_1: 5.279, m_2: 0.494, m_star: 5.711}
-        comment: a from Table IV, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.36042499343404, -0.92482193483026, 0.98613652433444], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.711}
+        comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       fperp:
-        parameterization: 
-        parameter: {a: [0.51481500095982, -1.4781062832535, 1.2496439876194], m_1: 5.279, m_2: 0.494, m_star: 5.416} 
-        comment: a from Table IV, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.51481500095982, -1.4781062832535, 1.2496439876194], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416} 
+        comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       g+:
-        parameterization: 
-        parameter: {a: [0.35215636497534, -1.1622160468556, 1.1489545265193], m_1: 5.279, m_2: 0.494, m_star: 5.750} 
-        comment: a from Table IV, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.35215636497534, -1.1622160468556, 1.1489545265193], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750} 
+        comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       g0:
-        parameterization:
-        parameter: {a: [0.40587786671876 , -1.1622160468556, 1.1489545265193], m_1: 5.279, m_2: 0.494, m_star: 5.367}
-
-        comment: a from Table V, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.40587786671876 , -1.1622160468556, 1.1489545265193], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.367}
+        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       gperp:
-        parameterization:
-        parameter: {a: [0.35215636497534, -1.3607353822819, 2.4621349078983], m_1: 5.279, m_2: 0.494, m_star: 5.750}
- 
-        comment: a from Table V, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.35215636497534, -1.3607353822819, 2.4621349078983], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
+        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       h+:
-        parameterization:
-        parameter: {a: [0.47531395286747, -0.8839853942628, -0.81901562111834], m_1: 5.279, m_2: 0.494, m_star: 5.416}
+        parameterization: BCL 4
+        parameter: {a: [0.47531395286747, -0.8839853942628, -0.81901562111834], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416}
         error: {a: [0.0423, 0.3997, 1.6760]}
-        comment: a from Table V, m_1, m_2, m_star from Table III
+        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       hperp:
-        parameterization:
-        parameter: {a: [0.37449633654207, -0.94393620829042, 1.160584212019], m_1: 5.279, m_2: 0.494, m_star: 5.416}
+        parameterization: BCL 4
+        parameter: {a: [0.37449633654207, -0.94393620829042, 1.160584212019], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416}
         error: {a: [0.0313, 0.2766, 1.0757]}
-        comment: a from Table V, m_1, m_2, m_star from Table III
+        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       htilde+:
-        parameterization:
-        parameter: {a: [0.32557980205714,  -0.96031340669186, 2.9779809449577], m_1: 5.279, m_2: 0.494, m_star: 5.750}
-        comment: a from Table V, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.32557980205714,  -0.96031340669186, 2.9779809449577], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
+        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       htildeperp:
-        parameterization: 
-        parameter: {a: [0.32557980205714,  -0.96338607873742, 2.4782325273996], m_1: 5.279, m_2: 0.494, m_star: 5.750}
-        comment: a from Table V, m_1, m_2, m_star from Table III
+        parameterization: BCL 4
+        parameter: {a: [0.32557980205714,  -0.96338607873742, 2.4782325273996], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
+        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       covariance_matrix: 
         value:
           - [  0.00074959, -0.00616427,  0.00728134,  0.00067022, -0.00424306,  0.00131187,  0.00042650, -0.00299748, -0.00034178,  0.00026489, -0.00193989, -0.00015661, -0.00211290,  0.00101397,  0.00040382, -0.00297176,  0.00163108,  0.00049999 ]
@@ -149,7 +144,7 @@ Lambda_b->Lambda:
           - [ -0.00297176,  0.03026976, -0.02685361, -0.00396434,  0.03891390, -0.01383581, -0.00208980,  0.02125417, -0.00454167, -0.00197412,  0.01782717,  0.00955164,  0.01966075, -0.01040403, -0.00585573,  0.08580882, -0.21093814, -0.00359524 ]
           - [  0.00163108, -0.02560840,  0.16005323,  0.00280244, -0.04069948,  0.18070485,  0.00015793,  0.00444041,  0.05934387, -0.00034672,  0.00694184,  0.26543220,  0.01813580,  0.08008791,  0.00826416, -0.21093814,  1.06647484,  0.00243400 ]
           - [  0.00049999, -0.00383509,  0.00215188,  0.00067416, -0.00484091,  0.00091903,  0.00033941, -0.00257668, -0.00028737,  0.00029191, -0.00202517, -0.00082784, -0.00223510,  0.00075446,  0.00047430, -0.00359524,  0.00243400,  0.00178740 ]
-        comment: 
+        comment: from Ancillary files LambdabLambda_HO_covariance.dat
 
 
     # 请直接用 arXiv网页上的Ancillary files：LambdabLambda_HO_results.dat 和 LambdabLambda_HO_covariance.dat里的数据。
@@ -184,7 +179,6 @@ Lambda_b->Lambda_1520:
         parameterization: 
         parameter: {a1: 0.77876906144177, m_pole: 5.416}
         comment: a from Table VIII, m_pole from Table VII
-      f+:
       fperp:
         parameterization: 
         parameter: {a1: 1.2484883955446, m_pole: 5.416}
@@ -260,7 +254,7 @@ Lambda_b->Lambda_1520:
           - [ -0.00077658, -0.11656341,  3.16978896, -0.01778262, -0.00005367,  0.00270214,  1.39476420, -0.00480655, -0.06899660,  1.41093114, -0.00064871,  0.01095178, -0.06682069,  1.37448209, -0.00267652,  0.00026735,  0.00580050,  0.00004335, -0.00083099, -0.01684997,  1.38997230, -0.11656341,  3.16978896, -0.01778262, -0.00005367 ]
           - [  0.00464411,  0.00672858, -0.01778262,  0.02250534,  0.00002829,  0.00018425, -0.00789126,  0.00450899,  0.00567161, -0.02015903, -0.00005993, -0.00028828,  0.00559249, -0.01170326,  0.00428272, -0.00004008,  0.00208765, -0.00000870, -0.00004907,  0.01736595, -0.01586524,  0.00672858, -0.01778262,  0.02250534,  0.00002829 ]
           - [  0.00001025,  0.00003474, -0.00005367,  0.00002829,  0.00000066, -0.00000106, -0.00001049,  0.00001471,  0.00002476, -0.00002079, -0.00000031,  0.00000301,  0.00002617, -0.00001802,  0.00001511,  0.00000106,  0.00000682, -0.00000017, -0.00000015,  0.00001936, -0.00002000,  0.00003474, -0.00005367,  0.00002829,  0.00000066 ]
-        comment: 
+        comment: from Ancillary files Lambdab_Lambdastar_covariance.dat
 
 
     # 请直接用 arXiv网页上的Ancillary files
@@ -348,7 +342,7 @@ Lambda_b->Lambda_1520:
           - [ -0.00000900, -0.00001906,  0.00003670, -0.00001223, -0.00000028,  0.00000001,  0.00002887, -0.00001031, -0.00001571,  0.00004058,  0.00000017, -0.00000284, -0.00001930,  0.00003979, -0.00002380, -0.00000195,  0.00000471,  0.00000058, -0.00000046, -0.00005799 ]
           - [ -0.00004705, -0.00003281, -0.00082205, -0.00004078, -0.00000005, -0.00001784, -0.00073407, -0.00004243, -0.00003353, -0.00063831, -0.00000364,  0.00003790, -0.00003226, -0.00068537, -0.00000796, -0.00000748, -0.00006898, -0.00000046,  0.00002776,  0.00003118 ]
           - [  0.00483296,  0.00682499, -0.01709183,  0.01809168,  0.00003301,  0.00006064, -0.00751418,  0.00444395,  0.00543797, -0.01630356, -0.00006386,  0.00131469,  0.00591038, -0.01212756,  0.00644808,  0.00013351,  0.00062521, -0.00005799,  0.02828587, -0.01462585 ]
-        comment:
+        comment: from Ancillary files Lambdab_Lambdastar_covariance_HO.dat
 
     # 请直接用 arXiv网页上的Ancillary files
   LQCD-2021:
