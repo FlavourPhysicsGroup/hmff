@@ -7,7 +7,7 @@ Lambda_b->Lambda:
     author: W. Detmold, S. Meinel
     citation key: Detmold:2016pkz 
     method: LQCD, Nf=2+1
-    comment: nominal form factors defined in eq.38
+    comment: nominal form factors defined in eq.38. Since this paper does not provide the masses of Lambda and Lambda_b, we use the PDG values.
     form factors:
       f+:
         parameterization: BCL 4
@@ -71,7 +71,8 @@ Lambda_b->Lambda:
           - [  0.00015840, -0.00125219,  0.00018247, -0.00137928,  0.00018501, -0.00165168,  0.00014081, -0.00127681, -0.00131343,  0.00015514, -0.00117742,  0.00016552, -0.00120446,  0.00013662, -0.00103614,  0.00017568, -0.00153468, -0.00155503 ]
           - [ -0.00114647,  0.01101674, -0.00133444,  0.01251174, -0.00122578,  0.01626870, -0.00109590,  0.01436700,  0.01561320, -0.00116893,  0.01103387, -0.00123099,  0.01137267, -0.00101406,  0.00947462, -0.00153468,  0.02597291,  0.02340095 ]
           - [ -0.00114633,  0.01118080, -0.00132938,  0.01291375, -0.00129195,  0.01632616, -0.00112603,  0.01449400,  0.01567792, -0.00114949,  0.01126751, -0.00122082,  0.01187641, -0.00100171,  0.00958284, -0.00155503,  0.02340095,  0.02361827 ]
-        comment: from Ancillary files LambdabLambda_nominal_covariance.dat
+        comment: a0_f+, a1_f+, a0_fperp,  a1_fperp, a0_f0, a1_f0, a0_g or a0_gperp, a1_g+, a1_gperp, a0_g0, a1_g0, a0_h+, a1_h+, a0_hperp, a1_hperp, a0_htildepp, a1_htilde+, a1_htildeperp, 
+                 from Ancillary files LambdabLambda_nominal_covariance.dat
 
 
     # 请直接用 arXiv网页上的Ancillary files
@@ -144,7 +145,8 @@ Lambda_b->Lambda:
           - [ -0.00297176,  0.03026976, -0.02685361, -0.00396434,  0.03891390, -0.01383581, -0.00208980,  0.02125417, -0.00454167, -0.00197412,  0.01782717,  0.00955164,  0.01966075, -0.01040403, -0.00585573,  0.08580882, -0.21093814, -0.00359524 ]
           - [  0.00163108, -0.02560840,  0.16005323,  0.00280244, -0.04069948,  0.18070485,  0.00015793,  0.00444041,  0.05934387, -0.00034672,  0.00694184,  0.26543220,  0.01813580,  0.08008791,  0.00826416, -0.21093814,  1.06647484,  0.00243400 ]
           - [  0.00049999, -0.00383509,  0.00215188,  0.00067416, -0.00484091,  0.00091903,  0.00033941, -0.00257668, -0.00028737,  0.00029191, -0.00202517, -0.00082784, -0.00223510,  0.00075446,  0.00047430, -0.00359524,  0.00243400,  0.00178740 ]
-        comment: from Ancillary files LambdabLambda_HO_covariance.dat
+        comment:  a0_f+, a1_f+, a2_f+, a0_fperp, a1_fperp, a2_fperp, a0_f0, a1_f0, a2_f0, a0_g+ or a0_gperp, a1_g+, a2_g+, a1_gperp, a2_gperp, a0_g0, a1_g0, a2_g0, a0_h+, a1_h+, a2_h+, a0_hperp, a1_hperp, a2_hperp, a0_htilde+ or a0_htildeperp, a1_htilde+, a2_htilde+, a1_htildeperp, a2_htildeperp  
+                  from Ancillary files LambdabLambda_HO_covariance.dat
 
 
     # 请直接用 arXiv网页上的Ancillary files：LambdabLambda_HO_results.dat 和 LambdabLambda_HO_covariance.dat里的数据。
@@ -169,7 +171,7 @@ Lambda_b->Lambda_1520:
     author: S. Meinel, G. Rendon
     citation key: Meinel:2021mdj
     method: LQCD
-      comment: Lambda_b->Lambda_1520 form factors
+    comment: Lambda_b->Lambda_1520 form factors
     form factors:
       f0:
         parameterization: 
