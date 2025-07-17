@@ -12,6 +12,7 @@ Lambda_b->Lambda:
       f+:
         parameterization: BCL 4
         parameter: {a: [0.4220840771427, -1.1385668716529], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416} 
+<<<<<<< HEAD
         comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       f0:
         parameterization: BCL 4
@@ -25,15 +26,35 @@ Lambda_b->Lambda:
         parameterization: BCL 4
         parameter: {a: [0.35627001295791, -1.0612467428431], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750} 
         comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+=======
+        comment: a from LambdabLambda_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      f0:
+        parameterization: BCL 4
+        parameter: {a: [0.37254294921251, -0.93893800242326], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.711}
+        comment: a from LambdabLambda_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      fperp:
+        parameterization: BCL 4
+        parameter: {a: [0.51820088929706, -1.3495114114751], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416} 
+        comment: a from LambdabLambda_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      g+:
+        parameterization: BCL 4
+        parameter: {a: [0.35627001295791, -1.0612467428431], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750} 
+        comment: a from LambdabLambda_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+>>>>>>> main
       g0:
         parameterization: BCL 4
         parameter: {a: [0.40279563255158, -1.0290493858363], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.367}
 
+<<<<<<< HEAD
         comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+=======
+        comment: a from LambdabLambda_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+>>>>>>> main
       gperp:
         parameterization: BCL 4
         parameter: {a: [0.35627001295791, -1.1357000804652], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
  
+<<<<<<< HEAD
         comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       h+:
         parameterization: BCL 4 
@@ -51,6 +72,25 @@ Lambda_b->Lambda:
         parameterization: BCL 4
         parameter: {a: [0.34026877180649, -0.80082045409023], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
         comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+=======
+        comment: a from LambdabLambda_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      h+:
+        parameterization: BCL 4 
+        parameter: {a: [0.49599719500981,  -1.1275136739815], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416}
+        comment: a from LambdabLambda_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      hperp:
+        parameterization: BCL 4
+        parameter: {a: [0.38763266069053, -0.96229696628603], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416}
+        comment: a from LambdabLambda_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      htilde+:
+        parameterization: BCL 4
+        parameter: {a: [0.34026877180649, -0.7696942981475], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
+        comment: a from LambdabLambda_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      htildeperp:
+        parameterization: BCL 4
+        parameter: {a: [0.34026877180649, -0.80082045409023], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
+        comment: a from LambdabLambda_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+>>>>>>> main
       covariance_matrix: 
         value:
           - [  0.00035324, -0.00281445,  0.00036035, -0.00270341,  0.00022103, -0.00200686,  0.00016856, -0.00144745, -0.00147893,  0.00027018, -0.00198782,  0.00033995, -0.00234669,  0.00025715, -0.00191093,  0.00015840, -0.00114647, -0.00114633 ]
@@ -71,7 +111,11 @@ Lambda_b->Lambda:
           - [  0.00015840, -0.00125219,  0.00018247, -0.00137928,  0.00018501, -0.00165168,  0.00014081, -0.00127681, -0.00131343,  0.00015514, -0.00117742,  0.00016552, -0.00120446,  0.00013662, -0.00103614,  0.00017568, -0.00153468, -0.00155503 ]
           - [ -0.00114647,  0.01101674, -0.00133444,  0.01251174, -0.00122578,  0.01626870, -0.00109590,  0.01436700,  0.01561320, -0.00116893,  0.01103387, -0.00123099,  0.01137267, -0.00101406,  0.00947462, -0.00153468,  0.02597291,  0.02340095 ]
           - [ -0.00114633,  0.01118080, -0.00132938,  0.01291375, -0.00129195,  0.01632616, -0.00112603,  0.01449400,  0.01567792, -0.00114949,  0.01126751, -0.00122082,  0.01187641, -0.00100171,  0.00958284, -0.00155503,  0.02340095,  0.02361827 ]
+<<<<<<< HEAD
         comment: a0_f+, a1_f+, a0_fperp,  a1_fperp, a0_f0, a1_f0, a0_g or a0_gperp, a1_g+, a1_gperp, a0_g0, a1_g0, a0_h+, a1_h+, a0_hperp, a1_hperp, a0_htildepp, a1_htilde+, a1_htildeperp, 
+=======
+        comment: a0_f+, a1_f+, a0_fperp,  a1_fperp, a0_f0, a1_f0, a0_g+ or a0_gperp, a1_g+, a1_gperp, a0_g0, a1_g0, a0_h+, a1_h+, a0_hperp, a1_hperp, a0_htilde+ or a0_htildeperp, a1_htilde+, a1_htildeperp, 
+>>>>>>> main
                  from Ancillary files LambdabLambda_nominal_covariance.dat
 
 
@@ -86,6 +130,7 @@ Lambda_b->Lambda:
       f+:
         parameterization: BCL 4
         parameter: {a: [0.42289944554385, -1.3728104863374, 1.7972027464353], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416} 
+<<<<<<< HEAD
         comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
       f0:
         parameterization: BCL 4
@@ -125,6 +170,45 @@ Lambda_b->Lambda:
         parameterization: BCL 4
         parameter: {a: [0.32557980205714,  -0.96338607873742, 2.4782325273996], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
         comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+=======
+        comment: a from LambdabLambda_HO_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      f0:
+        parameterization: BCL 4
+        parameter: {a: [0.36042499343404, -0.92482193483026, 0.98613652433444], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.711}
+        comment: a from LambdabLambda_HO_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      fperp:
+        parameterization: BCL 4
+        parameter: {a: [0.51481500095982, -1.4781062832535, 1.2496439876194], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416} 
+        comment: a from LambdabLambda_HO_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      g+:
+        parameterization: BCL 4
+        parameter: {a: [0.35215636497534, -1.1622160468556, 1.1489545265193], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750} 
+        comment: a from LambdabLambda_HO_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      g0:
+        parameterization: BCL 4
+        parameter: {a: [0.40587786671876 , -1.1622160468556, 1.1489545265193], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.367}
+        comment: a from LambdabLambda_HO_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      gperp:
+        parameterization: BCL 4
+        parameter: {a: [0.35215636497534, -1.3607353822819, 2.4621349078983], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
+        comment: a from LambdabLambda_HO_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      h+:
+        parameterization: BCL 4
+        parameter: {a: [0.47531395286747, -0.8839853942628, -0.81901562111834], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416}
+        comment: a from LambdabLambda_HO_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      hperp:
+        parameterization: BCL 4
+        parameter: {a: [0.37449633654207, -0.94393620829042, 1.160584212019], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.416}
+        comment: a from LambdabLambda_HO_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      htilde+:
+        parameterization: BCL 4
+        parameter: {a: [0.32557980205714,  -0.96031340669186, 2.9779809449577], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
+        comment: a from LambdabLambda_HO_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+      htildeperp:
+        parameterization: BCL 4
+        parameter: {a: [0.32557980205714,  -0.96338607873742, 2.4782325273996], m_1: 5.279, m_2: 0.494, m_3: 5.620, m_4: 1.116, m_star: 5.750}
+        comment: a from LambdabLambda_HO_results.dat (see also table IV), m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+>>>>>>> main
       covariance_matrix: 
           value:
             - [  0.00074959, -0.00616427,  0.00728134,  0.00067022, -0.00424306,  0.00131187,  0.00042650, -0.00299748, -0.00034178,  0.00026489, -0.00193989, -0.00015661, -0.00211290,  0.00101397,  0.00040382, -0.00297176,  0.00163108,  0.00049999,  0.00024106, -0.00156960, -0.00023514, -0.00158121, -0.00029874,  0.00038371, -0.00290153,  0.00043821,  0.00024106, -0.00156960 ]

@@ -1,6 +1,13 @@
 # form factors for pseudoscalar meson -> vector meson
 
-B->rho:                           
+
+B->rho:
+  LQCD-2008:
+    ref: arxiv:0812.2795
+    author: J.M. Flynn, Y. Nakagawa, J. Nieves, H. Toki
+    method: LQCD
+    citation key: Flynn:2008zr
+
   LCSR-pole:                      
     ref: arxiv:hep-ph/0412079    
     author: P. Ball and R. Zwicky 
@@ -8,61 +15,62 @@ B->rho:
     method: LCSR                
     comment: B->rho form factors 
     #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
-    V: 
-      parameterization: double pole 1
-      parameter: {a1: 1.045, a2: -0.721, m1: 5.32, m2: 6.192} 
-    A0:
-      parameterization: double pole 1
-      parameter: {a1: 1.527, a2: -1.220, m1: 5.28, m2: 5.775} 
-    A1:
-      parameterization: one pole 
-      parameter: {a: 0.240, m: 6.124}
-    A2:
-      parameterization: double pole 2
-      parameter: {a1: 0.009, a2: 0.212, m: 6.389}
-    T1:
-      parameterization: double pole 1
-      parameter: {a1: 0.897, a2: -0.629, m1: 5.32, m2: 6.167}
-    T2:
-      parameterization: one pole 
-      parameter: {a:  0.267, m: 6.212}
-    T3:
-      parameterization: double pole 2
-      parameter: {a1: 0.022, a2: 0.246, m: 6.393}
+    form factors:
+      V: 
+        parameterization: double pole 1
+        parameter: {a1: 1.045, a2: -0.721, m1: 5.32, m2: 6.192} 
+      A0:
+        parameterization: double pole 1
+        parameter: {a1: 1.527, a2: -1.220, m1: 5.28, m2: 5.775} 
+      A1:
+        parameterization: one pole 
+        parameter: {a: 0.240, m: 6.124}
+      A2:
+        parameterization: double pole 2
+        parameter: {a1: 0.009, a2: 0.212, m: 6.389}
+      T1:
+        parameterization: double pole 1
+        parameter: {a1: 0.897, a2: -0.629, m1: 5.32, m2: 6.167}
+      T2:
+        parameterization: one pole 
+        parameter: {a:  0.267, m: 6.212}
+      T3:
+        parameterization: double pole 2
+        parameter: {a1: 0.022, a2: 0.246, m: 6.393}
 
 
-Bs->K*:                           
-  LCSR-pole:                      
-    ref: arxiv:hep-ph/0412079    
-    author: P. Ball and R. Zwicky 
-    citation key: Ball:2004rg    
-    method: LCSR                
-    comment: Bs->K* form factors  
-    #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
-    V: 
-      parameterization: double pole 1
-      parameter: {a1: 2.351, a2: -2.039, m1: 5.32, m2: 5.753} 
-    A0:
-      parameterization: double pole 1
-      parameter: {a1: 2.813, a2: -2.509, m1: 5.28, m2: 5.619} 
-    A1:
-      parameterization: one pole 
-      parameter: {a: 0.231, m: 5.739}
-    A2:
-      parameterization: double pole 2
-      parameter: {a1: -0.011, a2:  0.192, m: 6.335}
-    T1:
-      parameterization: double pole 1
-      parameter: {a1:  2.047, a2: -1.787, m1: 5.32, m2: 5.729}
-    T2:
-      parameterization: one pole 
-      parameter: {a:   0.260, m: 5.745}
-    T3:
-      parameterization: double pole 2
-      parameter: {a1:  0.043, a2:  0.217, m: 6.275}
+B->K*:
+  LQCD-2015:
+    ref: arxiv:1501.00367
+    author: R. R. Horgan, Z. Liu, S. Meinel, M. Wingate
+    citation key: Horgan:2015vla
+    method: LQCD
+    comment: B->K* form factors
+    form factors:
+      V: 
+        parameterization: 
+        parameter: {a: [0.497528420813, -2.0150648425], dm: 135}
+      A0:
+        parameterization: 
+        parameter: {a: [0.502302643141, -1.60847600112], dm: 87} 
+      A1:
+        parameterization: 
+        parameter: {a: [0.284803612469, 0.191411584999], dm: 550}
+      A12:
+        parameterization: 
+        parameter: {a: [0.219527522577, 0.332374417965], dm: 550}
+      T1:
+        parameterization: 
+        parameter: {a: [0.419712711234, -1.36328797303], dm: 135}
+      T2:
+        parameterization: 
+        parameter: {a: [0.279965680646,  0.11706607999], dm: 550}
+      T23:
+        parameterization: 
+        parameter: {a: [0.523462757534, -0.27135970224], dm: 550}
+      comment: dm is the difference from Table 4
+     # 请直接用 arXiv网页上的Ancillary files：
 
-
-B->K*:                           
   LCSR-pole:                      
     ref: arxiv:hep-ph/0412079    
     author: P. Ball and R. Zwicky 
@@ -70,28 +78,28 @@ B->K*:
     method: LCSR                
     comment: B->K* form factors  
     #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
-    V: 
-      parameterization: double pole 1
-      parameter: {a1: 0.923, a2: -0.511, m1: 5.32, m2: 7.028} 
-    A0:
-      parameterization: double pole 1
-      parameter: {a1:  1.364, a2: -0.990, m1: 5.28, m2: 6.064} 
-    A1:
-      parameterization: one pole 
-      parameter: {a: 0.290, m: 6.354}
-    A2:
-      parameterization: double pole 2
-      parameter: {a1: -0.084, a2: 0.342, m: 7.211}
-    T1:
-      parameterization: double pole 1
-      parameter: {a1:  0.823, a2: -0.491, m1: 5.32, m2: 6.805}
-    T2:
-      parameterization: one pole 
-      parameter: {a: 0.3330, m: 6.435}
-    T3:
-      parameterization: double pole 2
-      parameter: {a1: -0.036, a2: 0.368, m: 6.935}
-
+    form factors:
+      V: 
+        parameterization: double pole 1
+        parameter: {a1: 0.923, a2: -0.511, m1: 5.32, m2: 7.028} 
+      A0:
+        parameterization: double pole 1
+        parameter: {a1: 1.364, a2: -0.990, m1: 5.28, m2: 6.064} 
+      A1:
+        parameterization: one pole 
+        parameter: {a: 0.290, m: 6.354}
+      A2:
+        parameterization: double pole 2
+        parameter: {a1: -0.084, a2: 0.342, m: 7.211}
+      T1:
+        parameterization: double pole 1
+        parameter: {a1: 0.823, a2: -0.491, m1: 5.32, m2: 6.805}
+      T2:
+        parameterization: one pole 
+        parameter: {a: 0.3330, m: 6.435}
+      T3:
+        parameterization: double pole 2
+        parameter: {a1: -0.036, a2: 0.368, m: 6.935}
 
 
 B->omega:                           
@@ -102,30 +110,124 @@ B->omega:
     method: LCSR                
     comment: B->omega form factors 
     #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
-    V: 
-      parameterization: double pole 1
-      parameter: {a1:  1.006, a2: -0.713, m1: 5.32, m2: 6.119} 
-    A0:
-      parameterization: double pole 1
-      parameter: {a1:  1.321, a2: -1.040, m1: 5.28, m2: 5.871} 
-    A1:
-      parameterization: one pole 
-      parameter: {a: -0.217, m: 6.083}
-    A2:
-      parameterization: double pole 2
-      parameter: {a1: 0.006, a2:  0.192, m: 6.421}
-    T1:
-      parameterization: double pole 1
-      parameter: {a1:  0.865, a2: -0.622, m1: 5.32, m2: 6.098}
-    T2:
-      parameterization: one pole 
-      parameter: {a: 0.242, m: 6.160}
-    T3:
-      parameterization: double pole 2
-      parameter: {a1: 0.023, a2: 0.220, m: 6.392}
+    form factors:
+      V: 
+        parameterization: double pole 1
+        parameter: {a1:  1.006, a2: -0.713, m1: 5.32, m2: 6.119} 
+      A0:
+        parameterization: double pole 1
+        parameter: {a1:  1.321, a2: -1.040, m1: 5.28, m2: 5.871} 
+      A1:
+        parameterization: one pole 
+        parameter: {a: -0.217, m: 6.083}
+      A2:
+        parameterization: double pole 2
+        parameter: {a1: 0.006, a2:  0.192, m: 6.421}
+      T1:
+        parameterization: double pole 1
+        parameter: {a1:  0.865, a2: -0.622, m1: 5.32, m2: 6.098}
+      T2:
+        parameterization: one pole 
+        parameter: {a: 0.242, m: 6.160}
+      T3:
+        parameterization: double pole 2
+        parameter: {a1: 0.023, a2: 0.220, m: 6.392}
 
 
-Bs->phi:                           
+Bs->K*:
+  LQCD-2015:
+    ref: arxiv:1501.00367
+    author: R. R. Horgan, Z. Liu, S. Meinel, M. Wingate
+    citation key: Horgan:2015vla
+    method: LQCD
+    comment: Bs->K* form factors
+    form factors:
+      V: 
+        parameterization: 
+        parameter: {a: [0.336718601395, -2.87899265548], dm: -42}
+      A0:
+        parameterization: 
+        parameter: {a: [0.503435988036, -1.85480254285], dm: -87} 
+      A1:
+        parameterization: 
+        parameter: {a: [0.233902117275, 0.0907091076466], dm: 350}
+      A12:
+        parameterization: 
+        parameter: {a: [0.203028994353, 0.444198177016], dm: 350}
+      T1:
+        parameterization: 
+        parameter: {a: [0.348777265524, -0.98072444558], dm: -42}
+      T2:
+        parameterization: 
+        parameter: {a: [0.242425375294, 0.20511509269], dm: 350}
+      T23:
+        parameterization: 
+        parameter: {a: [0.47010832266, 0.137534494597], dm: 350}
+      comment: dm is the difference from Table 4
+     # 请直接用 arXiv网页上的Ancillary files：                           
+  LCSR-pole:                      
+    ref: arxiv:hep-ph/0412079    
+    author: P. Ball and R. Zwicky 
+    citation key: Ball:2004rg    
+    method: LCSR                
+    comment: Bs->K* form factors  
+    #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
+    form factors:
+      V: 
+        parameterization: double pole 1
+        parameter: {a1: 2.351, a2: -2.039, m1: 5.32, m2: 5.753} 
+      A0:
+        parameterization: double pole 1
+        parameter: {a1: 2.813, a2: -2.509, m1: 5.28, m2: 5.619} 
+      A1:
+        parameterization: one pole 
+        parameter: {a: 0.231, m: 5.739}
+      A2:
+        parameterization: double pole 2
+        parameter: {a1: -0.011, a2:  0.192, m: 6.335}
+      T1:
+        parameterization: double pole 1
+        parameter: {a1:  2.047, a2: -1.787, m1: 5.32, m2: 5.729}
+      T2:
+        parameterization: one pole 
+        parameter: {a:   0.260, m: 5.745}
+      T3:
+        parameterization: double pole 2
+        parameter: {a1:  0.043, a2:  0.217, m: 6.275}
+
+
+Bs->phi:
+  LQCD-2015:
+    ref: arxiv:1501.00367
+    author: R. R. Horgan, Z. Liu, S. Meinel, M. Wingate
+    citation key: Horgan:2015vla
+    method: LQCD
+    comment: Bs->phi form factors
+    form factors:
+      V: 
+        parameterization: 
+        parameter: {a: [0.452535336822, -2.39909309211], dm: 45}
+      A0:
+        parameterization: 
+        parameter: {a: [0.529352133811, -1.59248596874], dm: 0} 
+      A1:
+        parameterization: 
+        parameter: {a: [0.282831524425, 0.123793996986], dm: 440}
+      A12:
+        parameterization: 
+        parameter: {a: [0.20660689485, 0.476257121291], dm: 440}
+      T1:
+        parameterization: 
+        parameter: {a: [0.401597756404, -1.13396307551], dm: 45}
+      T2:
+        parameterization: 
+        parameter: {a: [0.282969214555, 0.248733391065], dm: 440}
+      T23:
+        parameterization: 
+        parameter: {a: [0.521926043325, 0.384393588684], dm: 440}
+      comment: dm is the difference from Table 4
+
+     # 请直接用 arXiv网页上的Ancillary files：                         
   LCSR-pole:                      
     ref: arxiv:hep-ph/0412079    
     author: P. Ball and R. Zwicky 
@@ -133,27 +235,25 @@ Bs->phi:
     method: LCSR                
     comment: Bs->phi form factors
     #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
-    V: 
-      parameterization: double pole 1
-      parameter: {a1:  1.484, a2: -1.049, m1: 5.32, m2: 6.286} 
-    A0:
-      parameterization: double pole 1
-      parameter: {a1:  3.310, a2: -2.835, m1: 5.28, m2: 5.618} 
-    A1:
-      parameterization: one pole 
-      parameter: {a: 0.308, m: 6.044}
-    A2:
-      parameterization: double pole 2
-      parameter: {a1: -0.054, a2: 0.288, m: 6.995}
-    T1:
-      parameterization: double pole 1
-      parameter: {a1:  1.303, a2: -0.954, m1: 5.32, m2: 6.187}
-    T2:
-      parameterization: one pole 
-      parameter: {a:  0.349, m: 6.1}
-    T3:
-      parameterization: double pole 2
-      parameter: {a1:  0.027, a2:  0.321, m: 6.749}
-
-
-
+    form factors:
+      V: 
+        parameterization: double pole 1
+        parameter: {a1:  1.484, a2: -1.049, m1: 5.32, m2: 6.286} 
+      A0:
+        parameterization: double pole 1
+        parameter: {a1:  3.310, a2: -2.835, m1: 5.28, m2: 5.618} 
+      A1:
+        parameterization: one pole 
+        parameter: {a: 0.308, m: 6.044}
+      A2:
+        parameterization: double pole 2
+        parameter: {a1: -0.054, a2: 0.288, m: 6.995}
+      T1:
+        parameterization: double pole 1
+        parameter: {a1:  1.303, a2: -0.954, m1: 5.32, m2: 6.187}
+      T2:
+        parameterization: one pole 
+        parameter: {a:  0.349, m: 6.1}
+      T3:
+        parameterization: double pole 2
+        parameter: {a1:  0.027, a2:  0.321, m: 6.749}
