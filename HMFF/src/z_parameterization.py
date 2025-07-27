@@ -6,16 +6,16 @@ from math import sqrt
 # see the equation in the note
 
 ### determine the cases of key
-# keys_case_1: {mm_1, mm_2, mp_1, mp_2}
+# keys_case_1: {mp_1, mp_2, mm_1, mm_2}
 # keys_case_2: { m_1,  m_2}
-# keys_case_3: {m0_1, m0_2}
+# keys_case_3: {mp_1, mp_2, m0_1, m0_2}
 #      other: e.g., {mm_1, mm_2, mp_1, mp_2, m_1, m_2} or {}
 def get_key_case(pars):
     # 定义键集合和对应的case编号
     mass_cases = {
-        frozenset({'mm_1', 'mm_2', 'mp_1', 'mp_2'}): 1,
+        frozenset({'mp_1', 'mp_2', 'mm_1', 'mm_2'}): 1,
         frozenset({ 'm_1',  'm_2'}): 2,
-        frozenset({'m0_1', 'm0_2'}): 3
+        frozenset({'mp_1', 'mp_2', 'm0_1', 'm0_2'}): 3
     }
     
     # pars包含的所有的key
@@ -71,24 +71,27 @@ def get_tm(pars):
     return (mm_1 - mm_2)**2
 
 
+### t0 parameter by using definition 1
+def get_t0_1(pars):
+    tp = get_tp(pars)
+    tm = get_tm(pars)
+    return tp-sqrt(tp*(tp-tm))
+
+### t0 parameter by using definition 2
+def get_t0_2(pars):
+    m0_1 = pars.get('m0_1')
+    m0_2 = pars.get('m0_2')
+    return (m0_1 - m0_2)**2
+
 ### t0 parameter
 def get_t0(pars):
     key_case = get_key_case(pars)
-    # if use m0_1, m0_2
+    # if use mp_1, mp_2, m0_1, m0_2
     if key_case == 3:
-        m0_1 = pars.get('m0_1')
-        m0_2 = pars.get('m0_2')
-        return (m0_1 - m0_2)**2
-    # if use {mm_1, mm_2, mp_1, mp_2} or {m_1, m_2}
+        return get_t0_2(pars)
+    # if use {mp_1, mp_2, mm_1, mm_2} or {m_1, m_2}
     else :
-        # For case 1 and 2, t0 is defined as tp - sqrt(tp*(tp-tm))
-        # where tm is the mass difference squared
-        # tp is the sum of the squared masses of the final state particles
-        # e.g., for B -> K* gamma, tp = (m_B + m_K*)^2, tm = (m_B - m_K*)^2
-        # This is consistent with the definition in the note.
-        tp = get_tp(pars)
-        tm = get_tm(pars)
-        return tp-sqrt(tp*(tp-tm))
+        return get_t0_1(pars)
 
 
 ### z parameter
