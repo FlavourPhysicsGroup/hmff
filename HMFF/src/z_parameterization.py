@@ -7,21 +7,42 @@ from math import sqrt
 
 ### determine the cases of key
 # keys_case_1: {mm_1, mm_2, mp_1, mp_2}
-# keys_case_2: { m_1, m_2}
+# keys_case_2: { m_1,  m_2}
+# keys_case_3: {m0_1, m0_2}
 #      other: e.g., {mm_1, mm_2, mp_1, mp_2, m_1, m_2} or {}
 def get_key_case(pars):
-    keys_case_1 = {'mm_1', 'mm_2', 'mp_1', 'mp_2'}
-    keys_case_2 = {'m_1', 'm_2'}
-    has_case_1_keys = all(k in pars for k in keys_case_1)
-    has_case_2_keys = all(k in pars for k in keys_case_2)
-    if has_case_1_keys and not has_case_2_keys:       # keys_case_1: {mm_1, mm_2, mp_1, mp_2}
-        return 1
-    elif has_case_2_keys and not has_case_1_keys:     # keys_case_2: {m_1, m_2}
-        return 2
-    elif not has_case_1_keys and not has_case_2_keys: # e.g., {}
-        raise ValueError("Invalid parameter keys: Neither {'mm_1', 'mm_2', 'mp_1', 'mp_2'} or {'m_1', 'm_2'} are found in YAML.")
-    else:                                             # e.g., {mm_1, m_1}
-        raise ValueError("Invalid parameter keys: expected either {'mm_1', 'mm_2', 'mp_1', 'mp_2'} or {'m_1', 'm_2'} exclusively.")
+    # 定义键集合和对应的case编号
+    mass_cases = {
+        frozenset({'mm_1', 'mm_2', 'mp_1', 'mp_2'}): 1,
+        frozenset({ 'm_1',  'm_2'}): 2,
+        frozenset({'m0_1', 'm0_2'}): 3
+    }
+    
+    # pars包含的所有的key
+    pars_keys = frozenset(pars.keys())
+
+    # return the case number of the mass keys if pars contain any mass key belonging to that case
+    # e.g., pars = {'mm_1': 1, 'm_1': 5} -> return [1,2]
+    matching_any_mass = []
+    for key_set, case_num in mass_cases.items():
+        if key_set.intersection(pars_keys):
+            matching_any_mass.append(case_num)
+
+    ### step 1: consistency check
+    # e.g., pars = {'a': 1} -> raise ValueError
+    if len(matching_any_mass) == 0:
+        raise ValueError("Invalid parameter keys: Neither {mm_1, mm_2, mp_1, mp_2}, {m_1, m_2} or {m0_1, m0_2} are found in YAML.")
+    # e.g., pars = {'mm_1': 1, 'm_1': 5, 'm_2': 6} -> raise ValueError
+    elif len(matching_any_mass) > 1:
+        raise ValueError("Invalid parameter keys: expected either {mm_1, mm_2, mp_1, mp_2}, {m_1, m_2} or {m0_1, m0_2} exclusively.")
+
+    ### step 2: return the case number
+    for key_set, case_num in mass_cases.items():
+        if case_num in matching_any_mass and key_set.issubset(pars_keys):
+            return case_num
+
+    ### step 3: raise error if not complete mass keys
+    raise ValueError("Invalid parameter keys: expected either {mm_1, mm_2, mp_1, mp_2}, {m_1, m_2} or {m0_1, m0_2}.")
 
 
 ### get mm_1, mm_2, mp_1, mp_2 from pars
@@ -52,9 +73,22 @@ def get_tm(pars):
 
 ### t0 parameter
 def get_t0(pars):
-    tp = get_tp(pars)
-    tm = get_tm(pars)
-    return tp-sqrt(tp*(tp-tm))
+    key_case = get_key_case(pars)
+    # if use m0_1, m0_2
+    if key_case == 3:
+        m0_1 = pars.get('m0_1')
+        m0_2 = pars.get('m0_2')
+        return (m0_1 - m0_2)**2
+    # if use {mm_1, mm_2, mp_1, mp_2} or {m_1, m_2}
+    else :
+        # For case 1 and 2, t0 is defined as tp - sqrt(tp*(tp-tm))
+        # where tm is the mass difference squared
+        # tp is the sum of the squared masses of the final state particles
+        # e.g., for B -> K* gamma, tp = (m_B + m_K*)^2, tm = (m_B - m_K*)^2
+        # This is consistent with the definition in the note.
+        tp = get_tp(pars)
+        tm = get_tm(pars)
+        return tp-sqrt(tp*(tp-tm))
 
 
 ### z parameter
