@@ -9,7 +9,9 @@ from math import sqrt
 # keys_case_1: {mp_1, mp_2, mm_1, mm_2}
 # keys_case_2: { m_1,  m_2}
 # keys_case_3: {mp_1, mp_2, m0_1, m0_2}
-#      other: e.g., {mm_1, mm_2, mp_1, mp_2, m_1, m_2} or {}
+#       other: e.g., {mm_1, mm_2, mp_1, mp_2, m_1, m_2} or {}
+
+
 def get_key_case(pars):
     # 定义键集合和对应的case编号
     mass_cases = {
@@ -21,35 +23,59 @@ def get_key_case(pars):
     # pars包含的所有的key
     pars_keys = frozenset(pars.keys())
 
+    matching_mass_key = []
+    matching_mass_key_index = []
+    for key_set, case_num in mass_cases.items():
+        if key_set.issubset(pars_keys):
+            matching_mass_key.append(key_set)
+            matching_mass_key_index.append(case_num)
+
+
+    # step 1: consistency check
+    if len(matching_mass_key_index) == 0:
+        raise ValueError("Invalid parameter keys: Neither {mm_1, mm_2, mp_1, mp_2}, {m_1, m_2} or {m0_1, m0_2} are found in YAML.")
+    elif len(matching_mass_key_index) > 1: 
+        raise ValueError("Invalid parameter keys: expected either {mm_1, mm_2, mp_1, mp_2}, {m_1, m_2} or {m0_1, m0_2} exclusively.")
+
+
+    remaining_pars_keys = pars_keys - matching_mass_key[0]
+
+    for key_set, case_num in mass_cases.items():
+        if key_set.intersection(remaining_pars_keys):
+            raise ValueError("Invalid parameter keys: expected either {mm_1, mm_2, mp_1, mp_2}, {m_1, m_2} or {m0_1, m0_2} exclusively.")
+
+    # step 2: return the case number
+    return matching_mass_key_index[0]
+
     # return the case number of the mass keys if pars contain any mass key belonging to that case
     # e.g., pars = {'mm_1': 1, 'm_1': 5} -> return [1,2]
-    matching_any_mass = []
-    for key_set, case_num in mass_cases.items():
-        if key_set.intersection(pars_keys):
-            matching_any_mass.append(case_num)
+ #   matching_any_mass = []
+ #   for key_set, case_num in mass_cases.items():
+ #       if key_set.intersection(pars_keys):
+ #           matching_any_mass.append(case_num)
 
     ### step 1: consistency check
     # e.g., pars = {'a': 1} -> raise ValueError
-    if len(matching_any_mass) == 0:
-        raise ValueError("Invalid parameter keys: Neither {mm_1, mm_2, mp_1, mp_2}, {m_1, m_2} or {m0_1, m0_2} are found in YAML.")
+ #   if len(matching_any_mass) == 0:
+ #       raise ValueError("Invalid parameter keys: Neither {mm_1, mm_2, mp_1, mp_2}, {m_1, m_2} or {m0_1, m0_2} are found in YAML.")
     # e.g., pars = {'mm_1': 1, 'm_1': 5, 'm_2': 6} -> raise ValueError
-    elif len(matching_any_mass) > 1:
-        raise ValueError("Invalid parameter keys: expected either {mm_1, mm_2, mp_1, mp_2}, {m_1, m_2} or {m0_1, m0_2} exclusively.")
+ #   elif len(matching_any_mass) > 1:
+ #       raise ValueError("Invalid parameter keys: expected either {mm_1, mm_2, mp_1, mp_2}, {m_1, m_2} or {m0_1, m0_2} exclusively.")
 
     ### step 2: return the case number
-    for key_set, case_num in mass_cases.items():
-        if case_num in matching_any_mass and key_set.issubset(pars_keys):
-            return case_num
+ #   for key_set, case_num in mass_cases.items():
+ #       if case_num in matching_any_mass and key_set.issubset(pars_keys):
+ #           return case_num
 
     ### step 3: raise error if not complete mass keys
-    raise ValueError("Invalid parameter keys: expected either {mm_1, mm_2, mp_1, mp_2}, {m_1, m_2} or {m0_1, m0_2}.")
+ #   raise ValueError("Invalid parameter keys: expected either {mm_1, mm_2, mp_1, mp_2}, {m_1, m_2} or {m0_1, m0_2}.")
 
 
 ### get mm_1, mm_2, mp_1, mp_2 from pars
 # mass_name: mm_1, mm_2, mp_1, mp_2
 def get_mass(mass_name, pars):
     key_case = get_key_case(pars)
-    if key_case == 1:
+    if key_case == 1 or key_case == 3:
         return pars.get(mass_name)
     elif key_case == 2:
         # mass_name is like 'mm_1', 'mm_2', 'mp_1', 'mp_2'
