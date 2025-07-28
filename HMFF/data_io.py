@@ -3,10 +3,10 @@
 import yaml
 import importlib.resources as pkg_resources
 
-def read_yaml(file_name):
-    """读取data/*.yaml文件, file_name: 文件名(带后缀)"""
+def read_yaml(data_pkg_name):
+    """读取data/*.yaml文件, data_pkg_name: 以包名为根目录的相对路径, 如 HMFF.src.data"""
     result = {}
-    with pkg_resources.path("HMFF.src.data", '') as data_dir:
+    with pkg_resources.path(data_pkg_name, '') as data_dir:
         for file in data_dir.iterdir():
             if file.name not in ['P_P.yaml', 'P_V.yaml', 'B_B.yaml']:
                 continue
@@ -29,7 +29,7 @@ def build_formfactors(configs: dict) -> dict:
 
 # 懒加载器
 class LazyFormFactorLoader:
-    def __init__(self, package="my_project.src.data"):
+    def __init__(self, package="HMFF.src.data"):
         self.package = package
         self._cache = None
 
