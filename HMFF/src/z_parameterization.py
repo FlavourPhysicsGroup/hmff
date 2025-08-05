@@ -209,16 +209,26 @@ def f_BCL_4(q2, pars):
 # This function is used to get a0_N-1 from ap by using the relation f_p(0) = f_0(0)
 # depending on both pars_p and pars_0
 # When the keys satisfy the following conditions:
-# 1. 'by_ap' contained in f0.a, e.g., f0:a:[0.561, 0.65955, by_ap]
+# 1. a0_last = 'by_ap'
 # 2. f+.parameterization = 'BCL 1'
 # 3. f0.parameterization = 'BCL 2' or 'BCL 3'
-# the main program should call this function to update f0.a by replacing 'by-ap' with the value of this function returns.
-def get_a0_N_minus_1_from_ap(pars_p, pars_0):
+# the main program should call this function to update f0.a
+def add_a0_N_minus_1_from_ap(pars_p, pars_0):
+    """
+    add a0_N-1 from ap by using the relation f_p(0) = f_0(0)
+
+    Args:
+        pars_p: parameters of the form factor f+
+        pars_0: parameters of the form factor f0
+    """
     z0 = get_z(0.0, pars_0)
     N = len(pars_p.get('a'))     # N is the number of ap in the parameterization
     fp_0 = f_BCL_1(0.0, pars_p)  # f_p(0)
-    a0_list = pars_0.get('a')    # a0_1, a0_2, ..., a0_N-1
-    return (fp_0-sum(a * z0**n for n, a in enumerate(a0_list[:-1])))*z0**(1-N)
+    a0_list = pars_0.get('a')    # a0_1, a0_2, ..., a0_N-2
+    a0_N_minus_1 = (fp_0-sum(a * z0**n for n, a in enumerate(a0_list[:-1])))*z0**(1-N)
+    pars_0['a'].append(a0_N_minus_1)
+ 
+
 
 def f_z_expansions_1(q2, pars):
     raise NotImplementedError
