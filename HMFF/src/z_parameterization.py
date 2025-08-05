@@ -28,7 +28,7 @@ def check_key_format_BCL(pars, require_m_star=True):
 
 # function to check the key format of BCL 1, 2, 3, 4
 def check_key_format_BCL_1(pars): check_key_format_BCL(pars, True)
-def check_key_format_BCL_2(pars): check_key_format_BCL(pars, False) 
+def check_key_format_BCL_2(pars): check_key_format_BCL(pars, False)
 def check_key_format_BCL_3(pars): check_key_format_BCL(pars, False)
 def check_key_format_BCL_4(pars): check_key_format_BCL(pars, True)
 
@@ -82,13 +82,23 @@ def format_parameter_BCL(pars, bcl_type):
     check_functions[bcl_type](pars)
 
     # format the parameters
-    format_parameter(pars)
+    return format_parameter(pars)
 
 # functions to format the parameters of BCL 1, 2, 3, 4
-def format_parameter_BCL_1(pars): format_parameter_BCL(pars, 1)
-def format_parameter_BCL_2(pars): format_parameter_BCL(pars, 2)
-def format_parameter_BCL_3(pars): format_parameter_BCL(pars, 3)
-def format_parameter_BCL_4(pars): format_parameter_BCL(pars, 4)
+def format_parameter_BCL_1(pars):
+    return format_parameter_BCL(pars, 1)
+
+
+def format_parameter_BCL_2(pars):
+    return format_parameter_BCL(pars, 2)
+
+
+def format_parameter_BCL_3(pars):
+    return format_parameter_BCL(pars, 3)
+
+
+def format_parameter_BCL_4(pars):
+    return format_parameter_BCL(pars, 4)
 
 
 
@@ -184,7 +194,7 @@ def f_BCL_3(q2, pars):
     a_list = pars.get('a')
     N = len(a_list)
     return sum(
-                a * z**n 
+                a * z**n
                 for n, a in enumerate(a_list)
                 )
 
@@ -200,7 +210,7 @@ def f_BCL_4(q2, pars):
     a_list = pars.get('a')
     N = len(a_list)
     return sum(
-                1/(1-q2/m_star**2) * a * z**n 
+                1/(1-q2/m_star**2) * a * z**n
                 for n, a in enumerate(a_list)
                 )
 
@@ -227,7 +237,7 @@ def add_a0_N_minus_1_from_ap(pars_p, pars_0):
     a0_list = pars_0.get('a')    # a0_1, a0_2, ..., a0_N-2
     a0_N_minus_1 = (fp_0-sum(a * z0**n for n, a in enumerate(a0_list[:-1])))*z0**(1-N)
     pars_0['a'].append(a0_N_minus_1)
- 
+
 
 
 def f_z_expansions_1(q2, pars):

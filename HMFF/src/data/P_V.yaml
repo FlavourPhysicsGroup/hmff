@@ -68,8 +68,8 @@ B->K*:
       T23:
         parameterization: 
         parameter: {a: [0.523462757534, -0.27135970224], dm: 550}
-      comment: dm is the difference from Table 4
-     # 请直接用 arXiv网页上的Ancillary files：
+        comment: dm is the difference from Table 4
+        # 请直接用 arXiv网页上的Ancillary files：
 
   LCSR-pole:                      
     ref: arxiv:hep-ph/0412079    
@@ -163,8 +163,8 @@ Bs->K*:
       T23:
         parameterization: 
         parameter: {a: [0.47010832266, 0.137534494597], dm: 350}
-      comment: dm is the difference from Table 4
-     # 请直接用 arXiv网页上的Ancillary files：                           
+        comment: dm is the difference from Table 4
+        # 请直接用 arXiv网页上的Ancillary files：                           
   LCSR-pole:                      
     ref: arxiv:hep-ph/0412079    
     author: P. Ball and R. Zwicky 
@@ -225,9 +225,9 @@ Bs->phi:
       T23:
         parameterization: 
         parameter: {a: [0.521926043325, 0.384393588684], dm: 440}
-      comment: dm is the difference from Table 4
+        comment: dm is the difference from Table 4
 
-     # 请直接用 arXiv网页上的Ancillary files：                         
+    # 请直接用 arXiv网页上的Ancillary files：                         
   LCSR-pole:                      
     ref: arxiv:hep-ph/0412079    
     author: P. Ball and R. Zwicky 
