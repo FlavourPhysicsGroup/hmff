@@ -119,7 +119,8 @@ class Impl:
                 return lambda qsq: zp.f_z_expansions_3(qsq, ff_data)
             case _:
                 raise ValueError(
-                    f"{self.name} has no such parameterization: {self.parameterization}")
+                    f"{self.name} has no such parameterization: {self.parameterization}"
+                )
 
     def get_central_values(self, qsq):
         """返回此文章中包含的所有形状因子在特定qsq时的中心值"""
