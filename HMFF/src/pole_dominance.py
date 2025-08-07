@@ -1,9 +1,3 @@
-from inspect import _void
-from multiprocessing import Value
-import sys
-
-#!/usr/bin/env python
-
 # pole-dominance parameterization
 # see the equation in the note
 
