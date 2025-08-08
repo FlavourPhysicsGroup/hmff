@@ -1,5 +1,6 @@
 from functools import partial
 from typing import Callable
+from copy import deepcopy
 
 from .src import pole_dominance as pole
 from .src import z_parameterization as zp
@@ -49,6 +50,19 @@ class Impl:
         self.config = config  # 从YAML读入的原始字典数据
         self.kwargs = kwargs
 
+        self._ff_fit_methods = {
+            "one pole": (pole.format_parameters_one_pole, pole.f_one_pole),
+            "double pole 1": (pole.format_parameters_double_pole_1, pole.f_double_pole_1),
+            "double pole 2": (pole.format_parameters_double_pole_2, pole.f_double_pole_2),
+            "BCL 1": (zp.format_parameter_BCL_1, zp.f_BCL_1),
+            "BCL 2": (zp.format_parameter_BCL_2, zp.f_BCL_2),
+            "BCL 3": (zp.format_parameter_BCL_3, zp.f_BCL_3),
+            "BCL 4": (zp.format_parameter_BCL_4, zp.f_BCL_4),
+            "z-expansions 1": (None, zp.f_z_expansions_1),
+            "z-expansions 2": (None, zp.f_z_expansions_2),
+            "z-expansions 3": (None, zp.f_z_expansions_3),
+        }
+
         # self.ff_tex_names = kwargs.get('ff_tex_names')  # 存储形状因子的TeX名称的列表
         # self.ff_obj = kwargs.get("ff_obj")  # 形状因子对象
         # self._internal_params = {}  # 内部参数
@@ -80,55 +94,27 @@ class Impl:
 
     def form_factor_function(self, ff_name) -> Callable[[float], float]:
         """获取形状因子对应的拟合函数: f(qsq)"""
+
         if ff_name not in self.form_factor_names:
             raise KeyError(f"'{ff_name}' not found in Impl '{self.name}'")
 
         ff_config = self.config.get("form factors").get(ff_name)
-        ff_data = ff_config.get("parameter")
+        ff_data = deepcopy(ff_config.get("parameter"))
+
+        format_func, param_func = self._ff_fit_methods[ff_config.get("parameterization")]
+        ff_data = format_func(ff_data)
 
         # 如果形状因子f_0需要f_+的信息, 则需要更新f_0中的pars
         if ff_config.get("a0_last") is not None:
             ff_fp_config = self.config.get("form factors").get("f+")
-            cond2 = ff_fp_config.get("parameterization")
+            cond2 = ff_fp_config.get("parameterization") == "BCL 1"
             cond3 = ff_config.get("parameterization") in ["BCL 3", "BCL 4"]
             if cond2 and cond3:
-                ff_data = zp.add_a0_N_minus_1_from_ap(ff_fp_config.get("parameter"), ff_data)
-
-        match ff_config.get("parameterization"):
-            case "one pole":
-                ff_data = pole.format_parameters_one_pole(ff_data)
-                return partial(pole.f_one_pole, pars=ff_data)
-            case "double pole 1":
-                ff_data = pole.format_parameters_double_pole_1(ff_data)
-                return partial(pole.f_double_pole_1, pars=ff_data)
-            case "double pole 2":
-                ff_data = pole.format_parameters_double_pole_2(ff_data)
-                return partial(pole.f_double_pole_2, pars=ff_data)
-            case "BCL 1":
-                ff_data = zp.format_parameter_BCL_1(ff_data)
-                return partial(zp.f_BCL_1, pars=ff_data)
-            case "BCL 2":
-                ff_data = zp.format_parameter_BCL_2(ff_data)
-                return partial(zp.f_BCL_2, pars=ff_data)
-            case "BCL 3":
-                ff_data = zp.format_parameter_BCL_3(ff_data)
-                return partial(zp.f_BCL_3, pars=ff_data)
-            case "BCL 4":
-                ff_data = zp.format_parameter_BCL_4(ff_data)
-                return partial(zp.f_BCL_4, pars=ff_data)
-            case "z-expansions 1":
-                # TODO: 格式化参数
-                return partial(zp.f_z_expansions_1, pars=ff_data)
-            case "z-expansions 2":
-                # TODO: 格式化参数
-                return partial(zp.f_z_expansions_2, pars=ff_data)
-            case "z-expansions 3":
-                # TODO: 格式化参数
-                return partial(zp.f_z_expansions_3, pars=ff_data)
-            case _:
-                raise ValueError(
-                    f"{self.name} has no such parameterization: {self.parameterization}"
-                )
+                # 先格式化f_p参数
+                ff_fp_format_func = self._ff_fit_methods[ff_fp_config.get("parameterization")][0]
+                ff_fp_data = ff_fp_format_func(deepcopy(ff_fp_config.get("parameter")))
+                ff_data = zp.add_a0_N_minus_1_from_ap(ff_fp_data, ff_data)
+        return partial(param_func, pars=ff_data)
 
     def get_central_values(self, qsq):
         """返回此文章中包含的所有形状因子在特定qsq时的中心值"""

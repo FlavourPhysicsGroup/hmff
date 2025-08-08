@@ -164,61 +164,61 @@ def get_t0(pars):
         raise ValueError(f"Invalid t0 definition: {pars.get('t0 def')}")
 
 
-def get_z(q2, pars):
+def get_z(qsq, pars):
     """
     get the z parameter
     """
     tp = get_tp(pars)
     t0 = get_t0(pars)
-    return (sqrt(1 - q2 / tp) - sqrt(1 - t0 / tp)) / (sqrt(1 - q2 / tp) + sqrt(1 - t0 / tp))
+    return (sqrt(1 - qsq / tp) - sqrt(1 - t0 / tp)) / (sqrt(1 - qsq / tp) + sqrt(1 - t0 / tp))
 
 
 # pars: mm1_, mm_2, mp_1, mp_2 (m_1, m_2), m_star, a_0, a_1, a_2, ..., a_N-1
-def f_BCL_1(q2, pars):
+def f_BCL_1(qsq, pars):
     """
     function of the parameterization BCL 1
     """
-    z = get_z(q2, pars)  # not checked
+    z = get_z(qsq, pars)  # not checked
     m_star = pars.get("m_star")
     a_list = pars.get("a")
     N = len(a_list)
     return sum(
-        1 / (1 - q2 / m_star**2) * a * (z**n - (-1) ** (n - N) * (n / N) * z**N)
+        1 / (1 - qsq / m_star**2) * a * (z**n - (-1) ** (n - N) * (n / N) * z**N)
         for n, a in enumerate(a_list)
     )
 
 
 # pars: mm1_, mm_2, mp_1, mp_2 (m_1, m_2), a_0, a_1, a_2, ..., a_N-1
-def f_BCL_2(q2, pars):
+def f_BCL_2(qsq, pars):
     """
     function of the parameterization BCL 2
     """
-    z = get_z(q2, pars)  # not checked
+    z = get_z(qsq, pars)  # not checked
     a_list = pars.get("a")
     N = len(a_list)
     return sum(a * (z**n - (-1) ** (n - N) * (n / N) * z**N) for n, a in enumerate(a_list))
 
 
 # pars: mm1_, mm_2, mp_1, mp_2 (m_1, m_2), a_0, a_1, a_2, ..., a_N-1
-def f_BCL_3(q2, pars):
+def f_BCL_3(qsq, pars):
     """
     function of the parameterization BCL 3
     """
-    z = get_z(q2, pars)  # not checked
+    z = get_z(qsq, pars)  # not checked
     a_list = pars.get("a")
     return sum(a * z**n for n, a in enumerate(a_list))
 
 
 # parameterization: BCL_4
 # pars: mm1_, mm_2, mp_1, mp_2 (m_1, m_2), m_star, a_0, a_1, a_2, ..., a_N-1
-def f_BCL_4(q2, pars):
+def f_BCL_4(qsq, pars):
     """
     function of the parameterization BCL 4
     """
-    z = get_z(q2, pars)  # not checked
+    z = get_z(qsq, pars)  # not checked
     m_star = pars.get("m_star")
     a_list = pars.get("a")
-    return sum(1 / (1 - q2 / m_star**2) * a * z**n for n, a in enumerate(a_list))
+    return sum(1 / (1 - qsq / m_star**2) * a * z**n for n, a in enumerate(a_list))
 
 
 ### function to get a0_N-1 from ap
@@ -246,13 +246,13 @@ def add_a0_N_minus_1_from_ap(pars_p, pars_0):
     return pars_0
 
 
-def f_z_expansions_1(q2, pars):
+def f_z_expansions_1(qsq, pars):
     raise NotImplementedError
 
 
-def f_z_expansions_2(q2, pars):
+def f_z_expansions_2(qsq, pars):
     raise NotImplementedError
 
 
-def f_z_expansions_3(q2, pars):
+def f_z_expansions_3(qsq, pars):
     raise NotImplementedError
