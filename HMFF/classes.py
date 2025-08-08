@@ -58,9 +58,9 @@ class Impl:
             "BCL 2": (zp.format_parameter_BCL_2, zp.f_BCL_2),
             "BCL 3": (zp.format_parameter_BCL_3, zp.f_BCL_3),
             "BCL 4": (zp.format_parameter_BCL_4, zp.f_BCL_4),
-            "z-expansions 1": (None, zp.f_z_expansions_1),
-            "z-expansions 2": (None, zp.f_z_expansions_2),
-            "z-expansions 3": (None, zp.f_z_expansions_3),
+            "z-expansions 1": (lambda x: x, zp.f_z_expansions_1),
+            "z-expansions 2": (lambda x: x, zp.f_z_expansions_2),
+            "z-expansions 3": (lambda x: x, zp.f_z_expansions_3),
         }
 
         # self.ff_tex_names = kwargs.get('ff_tex_names')  # 存储形状因子的TeX名称的列表
