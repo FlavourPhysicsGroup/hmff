@@ -36,7 +36,7 @@ def format_parameters_double_pole_1(pars):
         return pars
     elif pars.keys() == {"a1", "a2", "m1", "m2_sq"}:
         pars["m1_sq"] = pars["m1"] ** 2
-        del pars["m2_sq"]
+        del pars["m1"]
         return pars
     elif pars.keys() == {"a1", "a2", "m1_sq", "m2"}:
         pars["m2_sq"] = pars["m2"] ** 2
