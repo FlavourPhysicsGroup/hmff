@@ -1,4 +1,6 @@
+from functools import partial
 from typing import Callable
+
 from .src import pole_dominance as pole
 from .src import z_parameterization as zp
 
@@ -29,9 +31,7 @@ class FormFactor:
 
     def add_impl(self, impl_obj):
         if impl_obj.name in self.impl_names:
-            raise KeyError(
-                f"Impl '{impl_obj.name}' already exists in FormFactor '{self.name}'"
-            )
+            raise KeyError(f"Impl '{impl_obj.name}' already exists in FormFactor '{self.name}'")
         self._impls[impl_obj.name] = impl_obj
 
     def get_impl(self, impl_name):
@@ -86,37 +86,45 @@ class Impl:
         ff_config = self.config.get("form factors").get(ff_name)
         ff_data = ff_config.get("parameter")
 
+        # 如果形状因子f_0需要f_+的信息, 则需要更新f_0中的pars
+        if ff_config.get("a0_last") is not None:
+            ff_fp_config = self.config.get("form factors").get("f+")
+            cond2 = ff_fp_config.get("parameterization")
+            cond3 = ff_config.get("parameterization") in ["BCL 3", "BCL 4"]
+            if cond2 and cond3:
+                ff_data = zp.add_a0_N_minus_1_from_ap(ff_fp_config.get("parameter"), ff_data)
+
         match ff_config.get("parameterization"):
             case "one pole":
                 ff_data = pole.format_parameters_one_pole(ff_data)
-                return lambda qsq: pole.f_one_pole(qsq, ff_data)
+                return partial(pole.f_one_pole, pars=ff_data)
             case "double pole 1":
                 ff_data = pole.format_parameters_double_pole_1(ff_data)
-                return lambda qsq: pole.f_double_pole_1(qsq, ff_data)
+                return partial(pole.f_double_pole_1, pars=ff_data)
             case "double pole 2":
                 ff_data = pole.format_parameters_double_pole_2(ff_data)
-                return lambda qsq: pole.f_double_pole_2(qsq, ff_data)
+                return partial(pole.f_double_pole_2, pars=ff_data)
             case "BCL 1":
                 ff_data = zp.format_parameter_BCL_1(ff_data)
-                return lambda qsq: zp.f_BCL_1(qsq, ff_data)
+                return partial(zp.f_BCL_1, pars=ff_data)
             case "BCL 2":
                 ff_data = zp.format_parameter_BCL_2(ff_data)
-                return lambda qsq: zp.f_BCL_2(qsq, ff_data)
+                return partial(zp.f_BCL_2, pars=ff_data)
             case "BCL 3":
                 ff_data = zp.format_parameter_BCL_3(ff_data)
-                return lambda qsq: zp.f_BCL_3(qsq, ff_data)
+                return partial(zp.f_BCL_3, pars=ff_data)
             case "BCL 4":
                 ff_data = zp.format_parameter_BCL_4(ff_data)
-                return lambda qsq: zp.f_BCL_4(qsq, ff_data)
+                return partial(zp.f_BCL_4, pars=ff_data)
             case "z-expansions 1":
                 # TODO: 格式化参数
-                return lambda qsq: zp.f_z_expansions_1(qsq, ff_data)
+                return partial(zp.f_z_expansions_1, pars=ff_data)
             case "z-expansions 2":
                 # TODO: 格式化参数
-                return lambda qsq: zp.f_z_expansions_2(qsq, ff_data)
+                return partial(zp.f_z_expansions_2, pars=ff_data)
             case "z-expansions 3":
                 # TODO: 格式化参数
-                return lambda qsq: zp.f_z_expansions_3(qsq, ff_data)
+                return partial(zp.f_z_expansions_3, pars=ff_data)
             case _:
                 raise ValueError(
                     f"{self.name} has no such parameterization: {self.parameterization}"

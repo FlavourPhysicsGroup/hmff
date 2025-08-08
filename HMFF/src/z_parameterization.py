@@ -1,4 +1,5 @@
 from math import sqrt
+
 # z parameterization
 # see the equation in the note
 
@@ -169,9 +170,7 @@ def get_z(q2, pars):
     """
     tp = get_tp(pars)
     t0 = get_t0(pars)
-    return (sqrt(1 - q2 / tp) - sqrt(1 - t0 / tp)) / (
-        sqrt(1 - q2 / tp) + sqrt(1 - t0 / tp)
-    )
+    return (sqrt(1 - q2 / tp) - sqrt(1 - t0 / tp)) / (sqrt(1 - q2 / tp) + sqrt(1 - t0 / tp))
 
 
 # pars: mm1_, mm_2, mp_1, mp_2 (m_1, m_2), m_star, a_0, a_1, a_2, ..., a_N-1
@@ -197,9 +196,7 @@ def f_BCL_2(q2, pars):
     z = get_z(q2, pars)  # not checked
     a_list = pars.get("a")
     N = len(a_list)
-    return sum(
-        a * (z**n - (-1) ** (n - N) * (n / N) * z**N) for n, a in enumerate(a_list)
-    )
+    return sum(a * (z**n - (-1) ** (n - N) * (n / N) * z**N) for n, a in enumerate(a_list))
 
 
 # pars: mm1_, mm_2, mp_1, mp_2 (m_1, m_2), a_0, a_1, a_2, ..., a_N-1
@@ -244,10 +241,9 @@ def add_a0_N_minus_1_from_ap(pars_p, pars_0):
     N = len(pars_p.get("a"))  # N is the number of ap in the parameterization
     fp_0 = f_BCL_1(0.0, pars_p)  # f_p(0)
     a0_list = pars_0.get("a")  # a0_1, a0_2, ..., a0_N-2
-    a0_N_minus_1 = (fp_0 - sum(a * z0**n for n, a in enumerate(a0_list[:-1]))) * z0 ** (
-        1 - N
-    )
+    a0_N_minus_1 = (fp_0 - sum(a * z0**n for n, a in enumerate(a0_list[:-1]))) * z0 ** (1 - N)
     pars_0["a"].append(a0_N_minus_1)
+    return pars_0
 
 
 def f_z_expansions_1(q2, pars):
