@@ -157,6 +157,7 @@ Lambda_b->Lambda:
     citation key: Detmold:2016pkz 
     method: LQCD, Nf=2+1
     comment: use the method in p.10 to evaluate the central values and uncertainties
+    status: UNFINISHED
     # 这个稍微复杂一些，需要同时调用LQCD-2016-nominal和LQCD-2016-HO的结果。暂时不用添加。
     # 后续可以增加新的条目
     # depends on:
@@ -164,6 +165,13 @@ Lambda_b->Lambda:
     #  - LQCD-2016-HO
     # central value: some function
     # uncertainty: some function
+
+  LCSR-2015:
+    ref: arXiv:1511.09036
+    author: Yu-Ming Wang, Yue-Long Shen
+    citation key: Wang:2015ndk
+    method: LCSR
+    status: UNFINISHED
   
 
 Lambda_b->Lambda_1520:
@@ -173,6 +181,7 @@ Lambda_b->Lambda_1520:
     citation key: Meinel:2021mdj
     method: LQCD
     comment: Lambda_b->Lambda_1520 form factors
+    status: UNFINISHED
     form factors:
       f0:
         parameterization: 
@@ -353,16 +362,23 @@ Lambda_b->Lambda_1520:
     author: S. Meinel, G. Rendon
     citation key: Meinel:2021mdj
     method: LQCD
-
+    status: UNFINISHED
 
     # 类似于Lambda_b->Lambda的情况，使用LQCD-2021-nominal和LQCD-2021-HO的结果来计算中心值和不确定度。
 
+  LFQM-2022:
+    ref: arXiv:2210.04640
+    author: Yu-Shuai Li, Su-Ping Jin, Jing Gao, Xiang Liu
+    citation key: Li:2022nim
+    method: LFQM
+    status: UNFINISHED
     
   LCSR-2024:
     ref: arXiv:2412.06515
     author: Ke-Sheng Huang, Hua-Yu Jiang, Fu-Sheng Yu
     citation key: Huang:2024oik
     method: LCSR
+    status: UNFINISHED
     form factors:
       fV0:
         parameterization: 
@@ -404,3 +420,12 @@ Lambda_b->Lambda_1520:
         parameterization: 
         parameter: {a0: 0.063, a1: -0.183, m_1: 5.279, m_2: 0.494, m_pole: 5.750}
         comment: a from Table IV, m_1, m_2 from Table I, m_pole from Table III
+
+
+
+Xi_c->Xi:
+  LQCD-2025:
+    ref: arXiv:2504.07302
+    author: C. Farrell, S. Meinel
+    citation key: Farrell:2025gis
+    status: UNFINISHED
