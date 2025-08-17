@@ -1,44 +1,5 @@
-# form factors for pseudoscalar meson -> pseudoscalar meson
+# 测试用的信息
 
-## example:
-# B->pi:                            # M1->M2
-# LCSR-pole:                      # mandatory 
-#    ref: arXiv:hep-ph/0406232     # optional 
-#    author: P. Ball and R. Zwicky # optional, format: A. BB, C. DD, E. FF and G. HH
-#    citation key: Ball:2004ye     # optional, obtained from InspireHep
-#    method: LCSR                  # optional, e.g. LCSR, QCDSR, Lattice, etc.
-#    comment: This is a comment    # optional, can be used to describe the method or any other information
-#    f+: 
-#      parameterization: double pole 1
-#      parameter: {a1: 0.744, a2: -0.486, m1: 5.32, m2: 6.382}
-#      or parameter: {a1: 0.744, a2: -0.486, m1_sq: 40.73, m2: 5.32} , if one prefer to use m_sq instead of m
-#      or parameter: {a1: 0.744, a2: -0.486, m1: 40.73, m2_sq: 5.32} , if one prefer to use m_sq instead of m
-#      error: {a1: 0.01, a2: 0.01, m1: 0.01, m2: 0.01} , optional, can be used to provide uncertainties
-#      covariance matrix: <covariance_matrix>          , optional, can be used to provide uncertainties
-#      comment: from table 3, not checked              , optional, can be used to describe the parameterization or any other information
-#    f0:
-#      parameterization: one pole
-#      parameter: {a: 0.258, m: 5.32}
-#      comment: from table 3, not checked
-#    fT:
-#      parameterization: double pole 1
-#      parameter: {a1: 1.387, a2: -1.134, m1: 5.32, m2: 5.676}
-#      comment: from table 3, not checked
-#    covariance matrix: <covariance_matrix>            , optional, used in the case of the parameters are correlated for different form factors
-#  LQCD-z:
-#    ref: 
-#    author: 
-#    citation key:
-#    method: 
-#    comment: 
-#    f+:
-#      parameterization:
-#      parameter:
-#    f0:
-#      parameterization:
-#      parameter:
-#    fT:
-#      parameterization: 
 
 B->pi:                            
   LCSR-2004:                      
@@ -171,16 +132,26 @@ B->eta:
   LCSR-pole 2004:                  
     form factors:   
       f+: 
-
-      f0:
-
-      fT:
-        ref_figure_path: /tests/ref_figures/LCSR-pole-2004-B-eta-fT.pdf
+        ref_figure_path: tests/ref_figures/B_eta_LCSR_pole_2004.png
         qsq_min: 0
-        qsq_max: 20
+        qsq_max: 14
         qsq_steps: 100
-        f_min: 0
-        f_max: 1
+        f_min: 0.2
+        f_max: 0.95
+      f0:
+        ref_figure_path: tests/ref_figures/B_eta_LCSR_pole_2004.png
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0.2
+        f_max: 0.95
+      fT:
+        ref_figure_path: tests/ref_figures/B_eta_LCSR_pole_2004.png
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0.2
+        f_max: 0.95
         
 
 
