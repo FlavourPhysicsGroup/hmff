@@ -1,4 +1,5 @@
 from math import sqrt
+from copy import deepcopy
 
 # z parameterization
 # see the equation in the note
@@ -21,13 +22,15 @@ KEY_FORMAT_BCL_WITHOUT_M_STAR = [
 
 
 def check_key_format_BCL(pars, require_m_star=True):
+    """
+    function to check the key format of BCL 1, 2, 3, 4
+    """
     expected_keys = KEY_FORMAT_BCL if require_m_star else KEY_FORMAT_BCL_WITHOUT_M_STAR
     key = set(pars.keys())
     if key not in expected_keys:
         raise ValueError(f"Invalid parameter keys: expected one of {expected_keys}.")
 
 
-# function to check the key format of BCL 1, 2, 3, 4
 def check_key_format_BCL_1(pars):
     check_key_format_BCL(pars, True)
 
@@ -48,9 +51,15 @@ def check_key_format_BCL_4(pars):
 # pars from YAML -> standard pars
 
 
-# format mass keys
-# {m_1, m_2} -> {mp_1, mp_2, mm_1, mm_2}
+
+
 def format_mass_key(pars):
+    """
+    format mass keys: {m_1, m_2} -> {mp_1, mp_2, mm_1, mm_2}
+
+    Return:
+        pars: formatted parameters
+    """
     if {"m_1", "m_2"}.issubset(pars.keys()):
         pars["mp_1"] = pars["mm_1"] = pars["m_1"]
         pars["mp_2"] = pars["mm_2"] = pars["m_2"]
@@ -59,8 +68,13 @@ def format_mass_key(pars):
     return pars
 
 
-# add key for the definitions of t0
 def add_t0_definition(pars):
+    """
+    add key for the definitions of t0
+
+    Return:
+        pars: parameters after adding the key "t0 def"
+    """
     mass_cases = [{"mp_1", "mp_2", "mm_1", "mm_2"}, {"mp_1", "mp_2", "m0_1", "m0_2"}]
     if mass_cases[0].issubset(pars.keys()):
         pars["t0 def"] = 1
@@ -69,8 +83,13 @@ def add_t0_definition(pars):
     return pars
 
 
-# format the parameters
 def format_parameter(pars):
+    """
+    format the parameters
+
+    Return:
+        pars: formatted parameters
+    """
     pars = format_mass_key(pars)
     # after using this function, the keys could be
     # {mp_1, mp_2, mm_1, mm_2} (t0 def: 1)
@@ -101,7 +120,6 @@ def format_parameter_BCL(pars, bcl_type):
     return format_parameter(pars)
 
 
-# functions to format the parameters of BCL 1, 2, 3, 4
 def format_parameter_BCL_1(pars):
     return format_parameter_BCL(pars, 1)
 
@@ -119,15 +137,19 @@ def format_parameter_BCL_4(pars):
 
 
 ### functions relevant for BCL paramerization
-### tp parameter
 def get_tp(pars):
+    """
+    get the tp parameter
+    """
     mp_1 = pars.get("mp_1")
     mp_2 = pars.get("mp_2")
     return (mp_1 + mp_2) ** 2
 
 
-### tm parameter
 def get_tm(pars):
+    """
+    get the tm parameter
+    """
     mm_1 = pars.get("mm_1")
     mm_2 = pars.get("mm_2")
     return (mm_1 - mm_2) ** 2
@@ -221,14 +243,47 @@ def f_BCL_4(qsq, pars):
     return sum(1 / (1 - qsq / m_star**2) * a * z**n for n, a in enumerate(a_list))
 
 
-### function to get a0_N-1 from ap
-# This function is used to get a0_N-1 from ap by using the relation f_p(0) = f_0(0)
-# depending on both pars_p and pars_0
+def add_a0_last_from_ap(f_0, pars_0, f_p, pars_p):
+    """
+    add a0_N-1 from ap by using the relation f_p(0) = f_0(0) and return the new pars_0
+
+    Args:
+        f_0: function of the form factor f0, e.g., f_BCL_3
+        pars_0: parameters of the form factor f0
+        f_p: function of the form factor f+, e.g., f_BCL_1
+        pars_p: parameters of the form factor f+
+
+    Return:
+        pars_0: parameters of the form factor f0 after adding a0_N-1
+    """
+
+    # get the a0_list of f0
+    a0_list = pars_0.get("a")
+
+    a0_list_auxiliary = [0] * (len(a0_list) + 1)
+    a0_list_auxiliary[-1] = 1
+
+    pars_0_auxiliary = deepcopy(pars_0)
+    pars_0_auxiliary["a"] = a0_list_auxiliary
+
+    last_coef_of_f_0 = f_0(0.0, pars_0_auxiliary)
+
+    f_0_0 = f_0(0.0, pars_0)
+    f_p_0 = f_p(0.0, pars_p)
+
+    a0_last = (f_p_0 - f_0_0)/last_coef_of_f_0
+
+    pars_0["a"].append(a0_last)
+
+    return pars_0
+
+# old function, not used
 # When the keys satisfy the following conditions:
 # 1. a0_last = 'by_ap'
 # 2. f+.parameterization = 'BCL 1'
 # 3. f0.parameterization = 'BCL 2' or 'BCL 3'
 # the main program should call this function to update f0.a
+'''
 def add_a0_N_minus_1_from_ap(pars_p, pars_0):
     """
     add a0_N-1 from ap by using the relation f_p(0) = f_0(0)
@@ -244,8 +299,8 @@ def add_a0_N_minus_1_from_ap(pars_p, pars_0):
     a0_N_minus_1 = (fp_0 - sum(a * z0**n for n, a in enumerate(a0_list[:-1]))) * z0 ** (1 - N)
     pars_0["a"].append(a0_N_minus_1)
     return pars_0
-
-
+'''
+    
 def f_z_expansions_1(qsq, pars):
     raise NotImplementedError
 
