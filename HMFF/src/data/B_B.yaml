@@ -152,6 +152,7 @@ Lambda_b->Lambda:
 
 
   LQCD-2016:
+    state: UNFINISHED
     ref: arXiv:1602.01399
     author: W. Detmold, S. Meinel
     citation key: Detmold:2016pkz 
@@ -168,6 +169,7 @@ Lambda_b->Lambda:
 
 Lambda_b->Lambda_1520:
   LQCD-2021-nominal:
+    state: UNFINISHED
     ref: arXiv:2107.13140
     author: S. Meinel, G. Rendon
     citation key: Meinel:2021mdj
@@ -262,6 +264,7 @@ Lambda_b->Lambda_1520:
 
     # 请直接用 arXiv网页上的Ancillary files
   LQCD-2021-HO:
+    state: UNFINISHED
     ref: arXiv:2107.13140
     author: S. Meinel, G. Rendon
     citation key: Meinel:2021mdj
@@ -349,6 +352,7 @@ Lambda_b->Lambda_1520:
 
     # 请直接用 arXiv网页上的Ancillary files
   LQCD-2021:
+    state: UNFINISHED
     ref: arXiv:2107.13140
     author: S. Meinel, G. Rendon
     citation key: Meinel:2021mdj
@@ -359,6 +363,7 @@ Lambda_b->Lambda_1520:
 
     
   LCSR-2024:
+    state: UNFINISHED
     ref: arXiv:2412.06515
     author: Ke-Sheng Huang, Hua-Yu Jiang, Fu-Sheng Yu
     citation key: Huang:2024oik
