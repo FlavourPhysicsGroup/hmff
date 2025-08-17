@@ -105,15 +105,25 @@ class Impl:
         ff_data = format_func(ff_data)
 
         # 如果形状因子f_0需要f_+的信息, 则需要更新f_0中的pars
-        if ff_config.get("a0_last") is not None:
-            ff_fp_config = self.config.get("form factors").get("f+")
-            cond2 = ff_fp_config.get("parameterization") == "BCL 1"
-            cond3 = ff_config.get("parameterization") in ["BCL 3", "BCL 4"]
-            if cond2 and cond3:
-                # 先格式化f_p参数
-                ff_fp_format_func = self._ff_fit_methods[ff_fp_config.get("parameterization")][0]
-                ff_fp_data = ff_fp_format_func(deepcopy(ff_fp_config.get("parameter")))
-                ff_data = zp.add_a0_N_minus_1_from_ap(ff_fp_data, ff_data)
+        if "a0_last" in ff_config:
+            if ff_config.get("a0_last") == "by_ap":
+                fp_config = self.config.get("form factors").get("f+")
+
+                fp_format_func, fp_func = self._ff_fit_methods[fp_config.get("parameterization")]
+
+                # format the parameter of f+
+                fp_data = fp_format_func(deepcopy(fp_config.get("parameter")))
+
+                f0_func = param_func
+
+                # add a0_N-1 from ap by using the relation f_p(0) = f_0(0)
+                ff_data = zp.add_a0_last_from_ap(f0_func, ff_data, fp_func, fp_data)
+
+                # delete the key "a0_last" and its value
+                ff_data.pop("a0_last", None)
+            else:
+                raise ValueError(f"Invalid value for a0_last: {ff_config.get('a0_last')}. Expected 'by_ap' or None.")
+
         return partial(param_func, pars=ff_data)
 
     def get_central_values(self, qsq):
