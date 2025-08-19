@@ -167,9 +167,20 @@ B->eta:
 
 Bs->K:
   LQCD-z 2015:
+    combined: True
     form factors:
       f+:
+        figure_path: tests/figures/Bs_K_LQCD_z_2015.png
+        ref_figure_path: tests/ref_figures/Bs_K_LQCD_z_2015.png
+        combined_figure_path: tests/combined_figures/Bs_K_LQCD_z_2015.png
+        tex: "$f_+$"
+        qsq_min: 0
+        qsq_max: 23
+        qsq_steps: 100
+        f_min: 0
+        f_max: 3.2
       f0:
+        tex: "$f_0$"
 
   LQCD-FLAG-2024:
     form factors:
