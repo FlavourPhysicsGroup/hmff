@@ -3,6 +3,7 @@ import numpy as np
 import yaml
 from PIL import Image
 from matplotlib import pyplot as plt
+from IPython.display import display
 
 import HMFF
 from tests import plot_options as opt
@@ -10,7 +11,7 @@ from tests import plot_options as opt
 matplotlib.rcParams.update(opt.default_rcParams)
 
 
-def plot_data(infos: dict, ffs_func: list, ffs_tex: list) -> None:
+def plot_data(infos: dict, ffs_func: list, ffs_tex: list, debug=False) -> None:
     """使用HMFF模块绘制形状因子"""
     # 得到qsq的数据列表，并计算形状因子数据
     qsq = np.linspace(infos["qsq_min"], infos["qsq_max"], infos["qsq_steps"])
@@ -23,10 +24,14 @@ def plot_data(infos: dict, ffs_func: list, ffs_tex: list) -> None:
     plt.xlabel(r"$q^2$")
     plt.legend()
     plt.tight_layout()
-    plt.savefig(infos["figure_path"])
+    if debug:
+        plt.show()
+    else:
+        plt.savefig(infos["figure_path"])
+        plt.close()
 
 
-def combine_plots(infos: dict, fig1: str, fig2: str) -> None:
+def combine_plots(infos: dict, fig1: str, fig2: str, debug=True) -> None:
     """合并HMFF的结果图与参考图"""
     # 打开两张图片
     img1 = Image.open(fig1)
@@ -49,17 +54,14 @@ def combine_plots(infos: dict, fig1: str, fig2: str) -> None:
     combined_img.paste(img2_resized, (img1.width, 0))
 
     # 保存结果
-    combined_img.save(infos["combined_figure_path"])
+    if debug:
+        display(combined_img)
+    else:
+        combined_img.save(infos["combined_figure_path"])
 
 
-if __name__ == "__main__":
-    with open("tests/test_info_P_P.yaml", "r") as f:
-        test_info = yaml.safe_load(f)
-
-    # 基础信息定义
-    process = "B->eta"
-    impl = "LCSR-pole 2004"
-
+def compare(process, impl, test_info):
+    """通过基本信息, 绘制对比图. 为了隐藏内部实现, 通用性有待进一步验证."""
     # 基础信息重新排列, 使符合函数要求
     impl_info = test_info[process][impl]
     if impl_info.get("combined"):

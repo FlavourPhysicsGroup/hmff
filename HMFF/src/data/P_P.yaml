@@ -42,7 +42,7 @@
 #      parameterization: 
 
 B->pi:                            
-  LCSR-2004:                      
+  LCSR-pole 2004:                      
     ref: arXiv:hep-ph/0406232
     author: P. Ball and R. Zwicky
     citation key: Ball:2004ye 
@@ -126,7 +126,7 @@ B->pi:
 
 
 B->K:                           
-  LCSR-2004:                      
+  LCSR-pole 2004:                      
     ref: arXiv:hep-ph/0406232    
     author: P. Ball and R. Zwicky 
     citation key: Ball:2004ye     

@@ -1,24 +1,23 @@
 # 测试用的信息
 
 B->pi:
-  LCSR-2004:
-    ref: arXiv:hep-ph/0406232
-    author: P. Ball and R. Zwicky
-    citation key: Ball:2004ye
-    method: LCSR
+  LCSR-pole 2004:
+    combined: True
     form factors:
       f+:
-        parameterization: double pole 1
-        parameter: { a1: 0.744, a2: -0.486, m1: 5.32, m2_sq: 40.73 }
-        comment: from table 3, not checked
+        figure_path: tests/figures/B_pi_LCSR_pole_2004.png
+        ref_figure_path: tests/ref_figures/B_pi_LCSR_pole_2004.png
+        combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$f_+$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0.2
+        f_max: 0.9
       f0:
-        parameterization: one pole
-        parameter: { a: 0.258, m_sq: 33.81 }
-        comment: from table 3, not checked
+        tex: "$f_0$"
       fT:
-        parameterization: double pole 1
-        parameter: { a1: 1.387, a2: -1.134, m1: 5.32, m2_sq: 32.22 }
-        comment: from table 3, not checked
+        tex: "$f_T$"
 
   LQCD-FLAG-2024:
     ref: arXiv:2411.04268
@@ -102,25 +101,23 @@ B->pi:
       comment: from Table XI
 
 B->K:
-  LCSR-2004:
-    ref: arXiv:hep-ph/0406232
-    author: P. Ball and R. Zwicky
-    citation key: Ball:2004ye
-    method: LCSR
-    comment: B->K form factors
+  LCSR-pole 2004:
+    combined: True
     form factors:
       f+:
-        parameterization: double pole 2
-        parameter: { a1: 0.162, a2: 0.173, m: 5.41 }
-        comment: from table 3, not checked
+        figure_path: tests/figures/B_K_LCSR_pole_2004.png
+        ref_figure_path: tests/ref_figures/B_K_LCSR_pole_2004.png
+        combined_figure_path: tests/combined_figures/B_K_LCSR_pole_2004.png
+        tex: "$f_+$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0.2
+        f_max: 0.95
       f0:
-        parameterization: one pole
-        parameter: { a: 0.33, m: 6.120 }
-        comment: from table 3, not checked
+        tex: "$f_0$"
       fT:
-        parameterization: double pole 2
-        parameter: { a1: 0.161, a2: 0.198, m: 5.41 }
-        comment: from table 3, not checked
+        tex: "$f_T$"
 
   LQCD-FLAG-2024:
     ref: arXiv:2411.04268
