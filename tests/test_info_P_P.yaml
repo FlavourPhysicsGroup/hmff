@@ -1,0 +1,201 @@
+# 测试用的信息
+
+B->pi:
+  LCSR-2004:
+    ref: arXiv:hep-ph/0406232
+    author: P. Ball and R. Zwicky
+    citation key: Ball:2004ye
+    method: LCSR
+    form factors:
+      f+:
+        parameterization: double pole 1
+        parameter: { a1: 0.744, a2: -0.486, m1: 5.32, m2_sq: 40.73 }
+        comment: from table 3, not checked
+      f0:
+        parameterization: one pole
+        parameter: { a: 0.258, m_sq: 33.81 }
+        comment: from table 3, not checked
+      fT:
+        parameterization: double pole 1
+        parameter: { a1: 1.387, a2: -1.134, m1: 5.32, m2_sq: 32.22 }
+        comment: from table 3, not checked
+
+  LQCD-FLAG-2024:
+    ref: arXiv:2411.04268
+    author: FLAG
+    citation key: FlavourLatticeAveragingGroupFLAG:2024oxs
+    method: LQCD, Nf=2+1
+    comment: B->pi form factors
+    form factors:
+      f+:
+        parameterization: BCL 1
+        parameter:
+          {
+            a: [0.423, -0.507, -0.75],
+            m_1: 5.27934,
+            m_2: 0.1349768,
+            m_star: 5.32471,
+          }
+        error: { a: [0.021, 0.093, 0.34] }
+        comment: a from table 38, m_1, m_2, m_star from text below eq.541
+      f0:
+        parameterization: BCL 3
+        parameter: { a: [0.561, 0.65955], m_1: 5.27934, m_2: 0.1349768 }
+        a0_last: by_ap
+        error: { a: [0.024, 0.00011] }
+        comment: a from table 38, m_1, m_2 from text below eq.541
+      fT:
+        parameterization: BCL 1
+        parameter:
+          {
+            a: [0.393, -0.65, -0.6],
+            m_1: 5.27934,
+            m_2: 0.1349768,
+            m_star: 5.32471,
+          }
+        error: { a: [0.017, 0.23, 0.015, 0.28] }
+        comment: a from table 42, m_1, m_2, m_star from text below eq.541
+    covariance_matrix:
+      value:
+        - [1, -0.00466, -0.0749, 0.402, 0.092, 0, 0, 0, 0]
+        - [-0.00466, 1, 0.498, -0.0556, 0.659, 0, 0, 0, 0]
+        - [-0.0749, 0.498, 1, -0.152, 0.677, 0, 0, 0, 0]
+        - [0.402, -0.0556, -0.152, 1, -0.548, 0, 0, 0, 0]
+        - [0.0920, 0.659, 0.677, 0.548, 1, 0, 0, 0, 0]
+        - [0, 0, 0, 0, 0, 1, 0.400, 0.204, 0.166]
+        - [0, 0, 0, 0, 0, 0.400, 1, 0.862, 0.806]
+        - [0, 0, 0, 0, 0, 0.204, 0.862, 1, 0.989]
+        - [0, 0, 0, 0, 0, 0.166, 0.806, 0.989, 1]
+      comment: from table 40 and 42
+
+  LQCD-z 2015:
+    ref: arXiv:1501.05373
+    author: J.M.Flynn, T.Izubuchi, T.Kawanai, C.Lehner, A.Soni, R. S.Van de Water and O.Witzel
+    citation key: Flynn:2015mha
+    method: LQCD
+    comment: B->pi form factors
+    form factors:
+      f+:
+        parameterization: BCL 1
+        parameter:
+          {
+            a: [0.412, -0.511, -0.524],
+            m_1: 5.27966,
+            m_2: 0.134977,
+            m_star: 5.3252,
+          }
+        error: { a: [0.038, 0.184, 0.612] }
+        comment: a, m_1, m_2, m_star from Table XI
+      f0:
+        parameterization: BCL 3
+        parameter: { a: [0.520, -1.657, 2.146], m_1: 5.27966, m_2: 0.134977 }
+        error: { a: [0.060, 0.182, 0.682] }
+        comment: a, m_1, m_2 from Table XI
+    covariance_matrix:
+      value:
+        - [1.000, 0.337, -0.076, 0.679, 0.045, 0.100]
+        - [0.337, 1.000, 0.150, 0.222, 0.698, 0.581]
+        - [-0.076, 0.150, 1.000, 0.029, 0.436, 0.659]
+        - [0.679, 0.222, 0.029, 1.000, -0.258, -0.224]
+        - [0.045, 0.698, 0.436, -0.258, 1.000, 0.564]
+        - [0.100, 0.581, 0.659, -0.224, 0.564, 1.000]
+      comment: from Table XI
+
+B->K:
+  LCSR-2004:
+    ref: arXiv:hep-ph/0406232
+    author: P. Ball and R. Zwicky
+    citation key: Ball:2004ye
+    method: LCSR
+    comment: B->K form factors
+    form factors:
+      f+:
+        parameterization: double pole 2
+        parameter: { a1: 0.162, a2: 0.173, m: 5.41 }
+        comment: from table 3, not checked
+      f0:
+        parameterization: one pole
+        parameter: { a: 0.33, m: 6.120 }
+        comment: from table 3, not checked
+      fT:
+        parameterization: double pole 2
+        parameter: { a1: 0.161, a2: 0.198, m: 5.41 }
+        comment: from table 3, not checked
+
+  LQCD-FLAG-2024:
+    ref: arXiv:2411.04268
+    author: FLAG
+    citation key: FlavourLatticeAveragingGroupFLAG:2024oxs
+    method: LQCD, Nf=2+1
+    comment: B->K form factors
+    form factors:
+      f+:
+        parameterization: BCL 1
+        parameter:
+          {
+            a: [0.471, -0.74, 0.32],
+            m_1: 5.27931,
+            m_2: 0.493677,
+            m_star: 5.4154,
+          }
+        error: { a: [0.014, 0.16, 0.71] }
+        comment: a from Table 43, m_1, m_2, m_star from text below eq.546
+      f0:
+        parameterization: BCL 4
+        parameter:
+          { a: [0.301, 0.40], m_1: 5.27931, m_2: 0.493677, m_star: 5.718 }
+        a0_last: by_ap
+        error: { a: [0.010, 0.15] }
+        comment: a from Table 43, m_1, m_2, m_star from text below eq.546
+      fT:
+
+B->eta:
+  LCSR-pole 2004:
+    combined: True
+    form factors:
+      f+:
+        figure_path: tests/figures/B_eta_LCSR_pole_2004.png
+        ref_figure_path: tests/ref_figures/B_eta_LCSR_pole_2004.png
+        combined_figure_path: tests/combined_figures/B_eta_LCSR_pole_2004.png
+        tex: "$f_+$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0.2
+        f_max: 0.95
+      f0:
+        tex: "$f_0$"
+      fT:
+        tex: "$f_T$"
+
+Bs->K:
+  LQCD-z 2015:
+    form factors:
+      f+:
+      f0:
+
+  LQCD-FLAG-2024:
+    form factors:
+      f+:
+
+      f0:
+
+B->D:
+  LQCD-FLAG-2024:
+    form factors:
+      f+:
+      f0:
+
+D->pi:
+  LQCD-z 2017:
+    form factors:
+      f+:
+        ref_figure_path:
+      f0:
+        ref_figure_path:
+
+D->K:
+  LQCD-z 2017:
+    form factors:
+      f+:
+        ref_figure_path: /tests/ref_figures/LQCD-z-2017-D-K-f+.pdf
