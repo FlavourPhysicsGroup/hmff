@@ -79,6 +79,6 @@ def compare(process, impl, test_info):
         for ff in ffs_names:
             infos = impl_info["form factors"][ff]
             ffs_tex = infos["tex"]
-            ffs_func = [].append(HMFF.formfactors[process].get_impl(impl).form_factor_function(ff))
+            ffs_func = [HMFF.formfactors[process].get_impl(impl).form_factor_function(ff),]
             plot_data(infos, ffs_func, ffs_tex)
             combine_plots(infos, infos["figure_path"], infos["ref_figure_path"])

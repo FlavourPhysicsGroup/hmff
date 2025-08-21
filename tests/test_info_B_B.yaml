@@ -3,74 +3,98 @@
 
 Lambda_b->Lambda:
   LQCD-2016-nominal:
-    ref: arXiv:1602.01399
-    author: W. Detmold, S. Meinel
-    citation key: Detmold:2016pkz 
-    method: LQCD, Nf=2+1
-    comment: nominal form factors defined in eq.38. Since this paper does not provide the masses of Lambda and Lambda_b, we use the PDG values.
+    combined: False
     form factors:
       f+:
-        parameterization: BCL 4
-        parameter: {a: [0.4220840771427, -1.1385668716529], mp_1: 5.279, mp_2: 0.494, m0_1: 5.620, m0_2: 1.116, m_star: 5.416} 
-        comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+        figure_path: tests\figures\Lambda_b-Lambda\fig3(f+).png
+        ref_figure_path: tests\ref_figures\Lambda_b-Lambda\fig3(f+).png
+        tex: "$f_+$"
+        qsq_min: 0.6
+        qsq_max: 1
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1.4
       f0:
-        parameterization: BCL 4
-        parameter: {a: [0.37254294921251, -0.93893800242326], mp_1: 5.279, mp_2: 0.494, m0_1: 5.620, m0_2: 1.116, m_star: 5.711}
-        comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+        figure_path: tests\figures\Lambda_b-Lambda\fig3(f0).png
+        ref_figure_path: tests\ref_figures\Lambda_b-Lambda\fig3(f0).png
+        tex: "$f_0$"
+        qsq_min: 0.6
+        qsq_max: 1
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1.2
       fp:
-        parameterization: BCL 4
-        parameter: {a: [0.51820088929706, -1.3495114114751], mp_1: 5.279, mp_2: 0.494, m0_1: 5.620, m0_2: 1.116, m_star: 5.416} 
-        comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+        figure_path: tests\figures\Lambda_b-Lambda\fig3(fperp).png
+        ref_figure_path: tests\ref_figures\Lambda_b-Lambda\fig3(fperp).png
+        tex: "$f_p$"
+        qsq_min: 0.6
+        qsq_max: 1
+        qsq_steps: 100
+        f_min: 0
+        f_max: 2
       g+:
-        parameterization: BCL 4
-        parameter: {a: [0.35627001295791, -1.0612467428431], mp_1: 5.279, mp_2: 0.494, m0_1: 5.620, m0_2: 1.116, m_star: 5.750} 
-        comment: a from Table IV, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+        figure_path: tests\figures\Lambda_b-Lambda\fig4(g+).png
+        ref_figure_path: tests\ref_figures\Lambda_b-Lambda\fig4(g+).png
+        tex: "$g_+$"
+        qsq_min: 0.6
+        qsq_max: 1
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       g0:
-        parameterization: BCL 4
-        parameter: {a: [0.40279563255158, -1.0290493858363], mp_1: 5.279, mp_2: 0.494, m0_1: 5.620, m0_2: 1.116, m_star: 5.367}
-        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+        figure_path: tests\figures\Lambda_b-Lambda\fig4(g0).png
+        ref_figure_path: tests\ref_figures\Lambda_b-Lambda\fig4(g0).png
+        tex: "$g_0$"
+        qsq_min: 0.6
+        qsq_max: 1
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1.4
       gp:
-        parameterization: BCL 4
-        parameter: {a: [0.35627001295791, -1.1357000804652], mp_1: 5.279, mp_2: 0.494, m0_1: 5.620, m0_2: 1.116, m_star: 5.750}
-        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+        figure_path: tests\figures\Lambda_b-Lambda\fig4(gperp).png
+        ref_figure_path: tests\ref_figures\Lambda_b-Lambda\fig4(gperp).png
+        tex: "$g_perp$"
+        qsq_min: 0.6
+        qsq_max: 1
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       h+:
-        parameterization: BCL 4 
-        parameter: {a: [0.49599719500981,  -1.1275136739815], mp_1: 5.279, mp_2: 0.494, m0_1: 5.620, m0_2: 1.116, m_star: 5.416}
-        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+        figure_path: tests\figures\Lambda_b-Lambda\fig5(h+).png
+        ref_figure_path: tests\ref_figures\Lambda_b-Lambda\fig5(h+).png
+        tex: "$h_+$"
+        qsq_min: 0.6
+        qsq_max: 1
+        qsq_steps: 100
+        f_min: 0
+        f_max: 2
       hp:
-        parameterization: BCL 4
-        parameter: {a: [0.38763266069053, -0.96229696628603], mp_1: 5.279, mp_2: 0.494, m0_1: 5.620, m0_2: 1.116, m_star: 5.416}
-        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+        figure_path: tests\figures\Lambda_b-Lambda\fig5(hperp).png
+        ref_figure_path: tests\ref_figures\Lambda_b-Lambda\fig5(hperp).png
+        tex: "$h_perp$"
+        qsq_min: 0.6
+        qsq_max: 1
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1.4
       ht+:
-        parameterization: BCL 4
-        parameter: {a: [0.34026877180649, -0.7696942981475], mp_1: 5.279, mp_2: 0.494, m0_1: 5.620, m0_2: 1.116, m_star: 5.750}
-        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
+        figure_path: tests\figures\Lambda_b-Lambda\fig5(htilde+).png
+        ref_figure_path: tests\ref_figures\Lambda_b-Lambda\fig5(htilde+).png
+        tex: "$h_tilde+$"
+        qsq_min: 0.6
+        qsq_max: 1
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       htp:
-        parameterization: BCL 4
-        parameter: {a: [0.34026877180649, -0.80082045409023], mp_1: 5.279, mp_2: 0.494, m0_1: 5.620, m0_2: 1.116, m_star: 5.750}
-        comment: a from Table V, m_1, m_2, m_star from Table III, m_3, m_4 from PDG
-    covariance_matrix: 
-      value:
-        - [  0.00035324, -0.00281445,  0.00036035, -0.00270341,  0.00022103, -0.00200686,  0.00016856, -0.00144745, -0.00147893,  0.00027018, -0.00198782,  0.00033995, -0.00234669,  0.00025715, -0.00191093,  0.00015840, -0.00114647, -0.00114633 ]
-        - [ -0.00281445,  0.02831560, -0.00284760,  0.02583466, -0.00185526,  0.01968639, -0.00135142,  0.01380355,  0.01390377, -0.00204832,  0.01841813, -0.00266859,  0.02283268, -0.00199500,  0.01750962, -0.00125219,  0.01101674,  0.01118080 ]
-        - [  0.00036035, -0.00284760,  0.00063039, -0.00516312,  0.00024367, -0.00218638,  0.00019688, -0.00169613, -0.00171495,  0.00034531, -0.00262673,  0.00045878, -0.00332273,  0.00033396, -0.00255796,  0.00018247, -0.00133444, -0.00132938 ]
-        - [ -0.00270341,  0.02583466, -0.00516312,  0.05822676, -0.00182535,  0.01837858, -0.00151060,  0.01570701,  0.01523226, -0.00247383,  0.02496527, -0.00354170,  0.03502708, -0.00251261,  0.02407808, -0.00137928,  0.01251174,  0.01291375 ]
-        - [  0.00022103, -0.00185526,  0.00024367, -0.00182535,  0.00045239, -0.00415605,  0.00018700, -0.00160538, -0.00160955,  0.00020116, -0.00151653,  0.00021689, -0.00150028,  0.00018196, -0.00139176,  0.00018501, -0.00122578, -0.00129195 ]
-        - [ -0.00200686,  0.01968639, -0.00218638,  0.01837858, -0.00415605,  0.05062509, -0.00171170,  0.01954534,  0.02063094, -0.00182249,  0.01585244, -0.00194218,  0.01497840, -0.00160789,  0.01405184, -0.00165168,  0.01626870,  0.01632616 ]
-        - [  0.00016856, -0.00135142,  0.00019688, -0.00151060,  0.00018700, -0.00171170,  0.00020173, -0.00196084, -0.00204436,  0.00016982, -0.00133421,  0.00018110, -0.00132179,  0.00014605, -0.00111676,  0.00014081, -0.00109590, -0.00112603 ]
-        - [ -0.00144745,  0.01380355, -0.00169613,  0.01570701, -0.00160538,  0.01954534, -0.00196084,  0.02814909,  0.02680518, -0.00152653,  0.01513334, -0.00156515,  0.01422614, -0.00124927,  0.01152386, -0.00127681,  0.01436700,  0.01449400 ]
-        - [ -0.00147893,  0.01390377, -0.00171495,  0.01523226, -0.00160955,  0.02063094, -0.00204436,  0.02680518,  0.03651074, -0.00157919,  0.01518415, -0.00159341,  0.01399135, -0.00127974,  0.01156887, -0.00131343,  0.01561320,  0.01567792 ]
-        - [  0.00027018, -0.00204832,  0.00034531, -0.00247383,  0.00020116, -0.00182249,  0.00016982, -0.00152653, -0.00157919,  0.00033285, -0.00255284,  0.00032915, -0.00218488,  0.00024678, -0.00178129,  0.00015514, -0.00116893, -0.00114949 ]
-        - [ -0.00198782,  0.01841813, -0.00262673,  0.02496527, -0.00151653,  0.01585244, -0.00133421,  0.01513334,  0.01518415, -0.00255284,  0.02606077, -0.00249035,  0.02253483, -0.00182007,  0.01651189, -0.00117742,  0.01103387,  0.01126751 ]
-        - [  0.00033995, -0.00266859,  0.00045878, -0.00354170,  0.00021689, -0.00194218,  0.00018110, -0.00156515, -0.00159341,  0.00032915, -0.00249035,  0.00066524, -0.00526551,  0.00032650, -0.00231072,  0.00016552, -0.00123099, -0.00122082 ]
-        - [ -0.00234669,  0.02283268, -0.00332273,  0.03502708, -0.00150028,  0.01497840, -0.00132179,  0.01422614,  0.01399135, -0.00218488,  0.02253483, -0.00526551,  0.06435243, -0.00231072,  0.02327501, -0.00120446,  0.01137267,  0.01187641 ]
-        - [  0.00025715, -0.00199499,  0.00033396, -0.00251261,  0.00018196, -0.00160789,  0.00014605, -0.00124927, -0.00127974,  0.00024678, -0.00182007,  0.00032650, -0.00231072,  0.00029558, -0.00232831,  0.00013662, -0.00101406, -0.00100171 ]
-        - [ -0.00191093,  0.01750962, -0.00255796,  0.02407808, -0.00139176,  0.01405184, -0.00111676,  0.01152386,  0.01156887, -0.00178129,  0.01651189, -0.00251254,  0.02327501, -0.00232831,  0.02401816, -0.00103614,  0.00947462,  0.00958284 ]
-        - [  0.00015840, -0.00125219,  0.00018247, -0.00137928,  0.00018501, -0.00165168,  0.00014081, -0.00127681, -0.00131343,  0.00015514, -0.00117742,  0.00016552, -0.00120446,  0.00013662, -0.00103614,  0.00017568, -0.00153468, -0.00155503 ]
-        - [ -0.00114647,  0.01101674, -0.00133444,  0.01251174, -0.00122578,  0.01626870, -0.00109590,  0.01436700,  0.01561320, -0.00116893,  0.01103387, -0.00123099,  0.01137267, -0.00101406,  0.00947462, -0.00153468,  0.02597291,  0.02340095 ]
-        - [ -0.00114633,  0.01118080, -0.00132938,  0.01291375, -0.00129195,  0.01632616, -0.00112603,  0.01449400,  0.01567792, -0.00114949,  0.01126751, -0.00122082,  0.01187641, -0.00100171,  0.00958284, -0.00155503,  0.02340095,  0.02361827 ]
-      comment: a0_f+, a1_f+, a0_fp,  a1_fp, a0_f0, a1_f0, a0_gp (a0_g+), a1_g+, a1_gp, a0_g0, a1_g0, a0_h+, a1_h+, a0_hp, a1_hp, a0_htp (a0_ht+), a1_ht+, a1_htp, 
-                from Ancillary files LambdabLambda_nominal_covariance.dat. In addition, the ordering in this file is different from that in tables IX and X.
+        figure_path: tests\figures\Lambda_b-Lambda\fig5(htildeperp).png
+        ref_figure_path: tests\ref_figures\Lambda_b-Lambda\fig5(htildeperp).png
+        tex: "$h_tildeperp$"
+        qsq_min: 0.6
+        qsq_max: 1
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
 
 
   LQCD-2016-HO:                      
