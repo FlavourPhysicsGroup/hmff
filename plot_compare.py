@@ -1,9 +1,9 @@
 import matplotlib
 import numpy as np
-import yaml
-from PIL import Image
-from matplotlib import pyplot as plt
 from IPython.display import display
+from matplotlib import pyplot as plt
+from PIL import Image
+from pdf2image import convert_from_path
 
 import HMFF
 from tests import plot_options as opt
@@ -33,9 +33,18 @@ def plot_data(infos: dict, ffs_func: list, ffs_tex: list, debug=False) -> None:
 
 def combine_plots(infos: dict, fig1: str, fig2: str, debug=True) -> None:
     """合并HMFF的结果图与参考图"""
+
     # 打开两张图片
-    img1 = Image.open(fig1)
-    img2 = Image.open(fig2)
+    def load_image(fig):
+        if "png" in fig:
+            return Image.open(fig)
+        elif "pdf" in fig:
+            return convert_from_path(fig)[0]
+        else:
+            raise ValueError("Invalid file format")
+
+    img1 = load_image(fig1)
+    img2 = load_image(fig2)
 
     # 假设你想根据第一张图片的高度调整第二张图片的高度
     new_height = img1.height  # 新高度为第一张图片的高度
@@ -78,7 +87,11 @@ def compare(process, impl, test_info):
         ffs_names = tuple(impl_info["form factors"].keys())
         for ff in ffs_names:
             infos = impl_info["form factors"][ff]
-            ffs_tex = infos["tex"]
-            ffs_func = [HMFF.formfactors[process].get_impl(impl).form_factor_function(ff),]
+            ffs_tex = [
+                infos["tex"],
+            ]
+            ffs_func = [
+                HMFF.formfactors[process].get_impl(impl).form_factor_function(ff),
+            ]
             plot_data(infos, ffs_func, ffs_tex)
             combine_plots(infos, infos["figure_path"], infos["ref_figure_path"])
