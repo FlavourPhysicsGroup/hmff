@@ -11,17 +11,24 @@ from tests import plot_options as opt
 matplotlib.rcParams.update(opt.default_rcParams)
 
 
-def plot_data(infos: dict, ffs_func: list, ffs_tex: list, debug=False) -> None:
+def plot_data(infos: dict, ffs_func: list, ffs_tex: list, normalize: bool =False , debug=False) -> None:
     """使用HMFF模块绘制形状因子"""
     # 得到qsq的数据列表，并计算形状因子数据
     qsq = np.linspace(infos["qsq_min"], infos["qsq_max"], infos["qsq_steps"])
     ffs_data = [ff_func(qsq) for ff_func in ffs_func]
 
     plt.figure(figsize=(8, 6))
-    [plt.plot(qsq, ffs_data[ii], label=ffs_tex[ii]) for ii in range(len(ffs_data))]
-    plt.xlim(infos["qsq_min"], infos["qsq_max"])
+    x_data = qsq / infos["qsq_max"] if normalize else qsq
+    [plt.plot(x_data, ffs_data[ii], label=ffs_tex[ii]) for ii in range(len(ffs_data))]
+
+    if normalize:
+        plt.xlim(infos["qsq_min"]/infos["qsq_max"], 1.0)  # 归一化后最大值为1
+        plt.xlabel(r"$q^2/q^2_{max}$")
+    else:
+        plt.xlim(infos["qsq_min"], infos["qsq_max"])
+        plt.xlabel(r"$q^2$")
+
     plt.ylim(infos["f_min"], infos["f_max"])
-    plt.xlabel(r"$q^2$")
     plt.legend()
     plt.tight_layout()
     if debug:
@@ -80,8 +87,9 @@ def compare(process, impl, test_info):
 
         ffs_impl = HMFF.formfactors[process].get_impl(impl)
         ffs_func = [ffs_impl.form_factor_function(ff) for ff in ffs_names]
+        normalize = impl_info.get("normalize_qsq", False)
 
-        plot_data(infos, ffs_func, ffs_tex)
+        plot_data(infos, ffs_func, ffs_tex, normalize)
         combine_plots(infos, infos["figure_path"], infos["ref_figure_path"])
     else:
         ffs_names = tuple(impl_info["form factors"].keys())
@@ -93,5 +101,7 @@ def compare(process, impl, test_info):
             ffs_func = [
                 HMFF.formfactors[process].get_impl(impl).form_factor_function(ff),
             ]
-            plot_data(infos, ffs_func, ffs_tex)
+            normalize = impl_info.get("normalize_qsq", False)
+
+            plot_data(infos, ffs_func, ffs_tex, normalize)
             combine_plots(infos, infos["figure_path"], infos["ref_figure_path"])
