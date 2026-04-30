@@ -112,8 +112,8 @@ B->K:
         qsq_min: 0
         qsq_max: 14
         qsq_steps: 100
-        f_min: 0.2
-        f_max: 0.95
+        f_min: 0
+        f_max: 1
       f0:
         tex: "$f_0$"
       fT:
@@ -128,20 +128,20 @@ B->K:
         # combined_figure_path: tests/combined_figures/B-K-LQCD-FLAG-2024/LQCD_FLAG_2024.png
         tex: "$f_+$"
         qsq_min: 0
-        qsq_max: 14
+        qsq_max: 23
         qsq_steps: 100
-        f_min: 0.2
-        f_max: 0.95
+        f_min: 0
+        f_max: 3.2
       f0:
         figure_path: tests/figures/B-K-LQCD-FLAG-2024/B_K_LQCD_FLAG_2024.pdf
         ref_figure_path: tests/ref_figures/B-K-LQCD-FLAG-2024/B_K_LQCD_FLAG_2024_f0.pdf
         # combined_figure_path: tests/combined_figures/B-K-LQCD-FLAG-2024/LQCD_FLAG_2024.png
         tex: "$f_0$"
         qsq_min: 0
-        qsq_max: 14
+        qsq_max: 23
         qsq_steps: 100
-        f_min: 0.2
-        f_max: 0.95
+        f_min: 0
+        f_max: 3.2
 
       fT:
         figure_path: tests/figures/B-K-LQCD-FLAG-2024/B_K_LQCD_FLAG_2024.pdf
@@ -149,10 +149,10 @@ B->K:
         # combined_figure_path: tests/combined_figures/B-K-LQCD-FLAG-2024/LQCD_FLAG_2024.png
         tex: "$f_T$"
         qsq_min: 0
-        qsq_max: 14
+        qsq_max: 23
         qsq_steps: 100
-        f_min: 0.2
-        f_max: 0.95
+        f_min: 0
+        f_max: 3.2
 
 
 B->eta:
