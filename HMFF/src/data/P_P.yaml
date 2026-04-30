@@ -155,18 +155,18 @@ B->K:
     form factors:
       f+:
         parameterization: BCL 1
-        parameter: {a: [0.471, -0.74, 0.32], m_1: 5.27931, m_2: 0.493677, m_star: 5.4154} 
+        parameter: {a: [0.471, -0.74, 0.32], m_1: 5.27931, m_2: 0.493677, m_star: 5.4154, cov_matrices: [[0.0002,  0.0011,  0.0013],[0.0011, 0.0256, 0.0759],[0.0013, 0.0759, 0.5041]]}
         error: {a: [0.014,  0.16,  0.71]}
         comment: a from Table 43, m_1, m_2, m_star from text below eq.546
       f0:
         parameterization: BCL 4
-        parameter: {a: [0.301, 0.40], m_1: 5.27931, m_2: 0.493677, m_star: 5.718}
+        parameter: {a: [0.301, 0.40], m_1: 5.27931, m_2: 0.493677, m_star: 5.718, cov_matrices: [[0.0001, 0.0013],[0.0013, 0.0225]]}
         a0_last: by_ap 
         error: {a: [0.010, 0.15]}
         comment: a from Table 43, m_1, m_2, m_star from text below eq.546
       fT:
         parameterization: BCL 4
-        parameter: {a: [0.455, -1, -0.9], m_1: 5.27931, m_2: 0.493677, m_star: 5.4154} 
+        parameter: {a: [0.455, -1, -0.9], m_1: 5.27931, m_2: 0.493677, m_star: 5.4154, cov_matrices: [[0.0004, 0.0046, 0.0017],[0.0046, 0.0961, 0.0364],[0.0017, 0.0364, 0.0169]]} 
         error: {a: [0.021,  0.31, 0.13]}
         comment: a from Table 43, m_1, m_2, m_star from text below eq.546
     covariance_matrix: 

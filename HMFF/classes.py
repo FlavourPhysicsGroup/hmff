@@ -4,6 +4,7 @@ from copy import deepcopy
 
 from .src import pole_dominance as pole
 from .src import z_parameterization as zp
+import numpy as np 
 
 
 class FormFactor:
@@ -133,3 +134,20 @@ class Impl:
             ff_func = self.form_factor_function(ff)
             infos.append(ff_func(qsq))
         return infos
+
+
+    def get_sigma_f_analytical(self, ff_name):
+
+        ff_config = self.config.get("form factors").get(ff_name)
+
+        pars = deepcopy(ff_config.get("parameter"))
+        format_func, param_func = self._ff_fit_methods[ff_config.get("parameterization")]
+        pars = format_func(pars)
+
+        cov_a = pars.get("cov_matrices")                    # 协方差矩阵必须与参数长度匹配
+        if cov_a is None:
+            # 返回一个始终返回0的函数
+            return lambda qsq: np.zeros_like(qsq) if hasattr(qsq, '__len__') else 0.0
+        
+        return partial(zp.sigma_f_analytical, pars = pars, cov_a =cov_a)
+

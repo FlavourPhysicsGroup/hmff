@@ -1,5 +1,6 @@
 from numpy import sqrt
 from copy import deepcopy
+import numpy as np
 
 # z parameterization
 # see the equation in the note
@@ -9,14 +10,21 @@ from copy import deepcopy
 # key format of BCL
 # m_star is optional
 KEY_FORMAT_BCL = [
+    {"a", "m_star", "m_1", "m_2", "cov_matrices"},
     {"a", "m_star", "m_1", "m_2"},
-    {"a", "m_star", "mp_1", "mp_2", "mm_1", "mm_2"},
+    {"a", "m_star", "mp_1", "mp_2", "mm_1", "mm_2", "cov_matrices"},
+    {"a", "m_star", "mp_1", "mp_2", "mm_1", "mm_2"}, 
+    {"a", "m_star", "mp_1", "mp_2", "m0_1", "m0_2", "cov_matrices"},
     {"a", "m_star", "mp_1", "mp_2", "m0_1", "m0_2"},
+
 ]
 
 KEY_FORMAT_BCL_WITHOUT_M_STAR = [
+    {"a", "m_1", "m_2", "cov_matrices"},
     {"a", "m_1", "m_2"},
-    {"a", "mp_1", "mp_2", "mm_1", "mm_2"},
+    {"a", "mp_1", "mp_2", "mm_1", "mm_2", "cov_matrices"},
+    {"a", "mp_1", "mp_2", "mm_1", "mm_2"},    
+    {"a", "mp_1", "mp_2", "m0_1", "m0_2", "cov_matrices"},
     {"a", "mp_1", "mp_2", "m0_1", "m0_2"},
 ]
 
@@ -311,3 +319,33 @@ def f_z_expansions_2(qsq, pars):
 
 def f_z_expansions_3(qsq, pars):
     raise NotImplementedError
+
+#求误差，先对函数求梯度
+def df_da(qsq, pars):
+    """计算形因子对参数的解析导数（返回梯度向量）"""
+    z = get_z(qsq, pars) 
+    m_star = pars.get("m_star")
+    a_list = pars.get("a")
+        # 处理复数情况
+    pole_factor = 1 / (1 - qsq / m_star**2)
+    
+    # 梯度向量：df/da0 = pole_factor * 1
+    #           df/da1 = pole_factor * z
+    #           df/da2 = pole_factor * z^2
+    #           ...
+    grad = [pole_factor * (z** i) for i in range(len(a_list))]
+    return np.array(grad)
+
+# 改进的误差传播计算（解析导数）
+def sigma_f_analytical(qsq, pars, cov_a):
+    """
+    解析计算形因子误差（基于解析导数）
+    """
+    q2_array = np.atleast_1d(qsq)
+    errors = np.zeros_like(q2_array, dtype=float)
+
+    for i, q2_val in enumerate(q2_array):
+        grad = df_da(q2_val, pars)  # 梯度向量 [df/da0, df/da1, ...]
+        errors[i] = np.sqrt(np.dot(grad, np.dot(cov_a, grad)))
+    
+    return errors if len(q2_array) > 1 else errors[0]

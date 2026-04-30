@@ -11,15 +11,32 @@ from tests import plot_options as opt
 matplotlib.rcParams.update(opt.default_rcParams)
 
 
-def plot_data(infos: dict, ffs_func: list, ffs_tex: list, normalize: bool =False , debug=False) -> None:
+def plot_data(infos: dict, ffs_func: list, f_error, ffs_tex: list, normalize: bool =False , debug=False) -> None:
     """使用HMFF模块绘制形状因子"""
     # 得到qsq的数据列表，并计算形状因子数据
     qsq = np.linspace(infos["qsq_min"], infos["qsq_max"], infos["qsq_steps"])
     ffs_data = [ff_func(qsq) for ff_func in ffs_func]
+    
+
 
     plt.figure(figsize=(8, 6))
     x_data = qsq / infos["qsq_max"] if normalize else qsq
-    [plt.plot(x_data, ffs_data[ii], label=ffs_tex[ii]) for ii in range(len(ffs_data))]
+
+    # 绘制数据线
+    for ii in range(len(ffs_data)):
+        plt.plot(x_data, ffs_data[ii], label=ffs_tex[ii])
+    
+    # 填充不确定区域 - 只给第一个填充添加标签避免重复
+    if f_error is not None:
+        f_std = [f_error(qsq)]
+        for ii in range(len(ffs_data)):
+            plt.fill_between(x_data, 
+                         ffs_data[ii] - f_std[ii], 
+                         ffs_data[ii] + f_std[ii], 
+                         color='blue', alpha=0.2, 
+                         label='Statistical Uncertainty' if ii == 0 else "")
+
+
 
     if normalize:
         plt.xlim(infos["qsq_min"]/infos["qsq_max"], 1.0)  # 归一化后最大值为1
@@ -88,8 +105,9 @@ def compare(process, impl, test_info):
         ffs_impl = HMFF.formfactors[process].get_impl(impl)
         ffs_func = [ffs_impl.form_factor_function(ff) for ff in ffs_names]
         normalize = impl_info.get("normalize_qsq", False)
+        f_error = None
 
-        plot_data(infos, ffs_func, ffs_tex, normalize)
+        plot_data(infos, ffs_func, f_error, ffs_tex, normalize)
         combine_plots(infos, infos["figure_path"], infos["ref_figure_path"])
     else:
         ffs_names = tuple(impl_info["form factors"].keys())
@@ -102,6 +120,6 @@ def compare(process, impl, test_info):
                 HMFF.formfactors[process].get_impl(impl).form_factor_function(ff),
             ]
             normalize = impl_info.get("normalize_qsq", False)
-
-            plot_data(infos, ffs_func, ffs_tex, normalize)
+            f_error = HMFF.formfactors[process].get_impl(impl).get_sigma_f_analytical(ff)
+            plot_data(infos, ffs_func, f_error, ffs_tex, normalize)
             combine_plots(infos, infos["figure_path"], infos["ref_figure_path"])

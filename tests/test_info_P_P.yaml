@@ -107,7 +107,7 @@ B->K:
       f+:
         figure_path: tests/figures/B_K_LCSR_pole_2004.png
         ref_figure_path: tests/ref_figures/B_K_LCSR_pole_2004.png
-        combined_figure_path: tests/combined_figures/B_K_LCSR_pole_2004.png
+        # combined_figure_path: tests/combined_figures/B_K_LCSR_pole_2004.png
         tex: "$f_+$"
         qsq_min: 0
         qsq_max: 14
@@ -119,32 +119,41 @@ B->K:
       fT:
         tex: "$f_T$"
 
-  LQCD-FLAG-2024:
-    ref: arXiv:2411.04268
-    author: FLAG
-    citation key: FlavourLatticeAveragingGroupFLAG:2024oxs
-    method: LQCD, Nf=2+1
-    comment: B->K form factors
+  LQCD-FLAG-2024:    
+    combined: False
     form factors:
       f+:
-        parameterization: BCL 1
-        parameter:
-          {
-            a: [0.471, -0.74, 0.32],
-            m_1: 5.27931,
-            m_2: 0.493677,
-            m_star: 5.4154,
-          }
-        error: { a: [0.014, 0.16, 0.71] }
-        comment: a from Table 43, m_1, m_2, m_star from text below eq.546
+        figure_path: tests/figures/B-K-LQCD-FLAG-2024/B_K_LQCD_FLAG_2024.pdf
+        ref_figure_path: tests/ref_figures/B-K-LQCD-FLAG-2024/B_K_LQCD_FLAG_2024_f+.pdf
+        # combined_figure_path: tests/combined_figures/B-K-LQCD-FLAG-2024/LQCD_FLAG_2024.png
+        tex: "$f_+$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0.2
+        f_max: 0.95
       f0:
-        parameterization: BCL 4
-        parameter:
-          { a: [0.301, 0.40], m_1: 5.27931, m_2: 0.493677, m_star: 5.718 }
-        a0_last: by_ap
-        error: { a: [0.010, 0.15] }
-        comment: a from Table 43, m_1, m_2, m_star from text below eq.546
+        figure_path: tests/figures/B-K-LQCD-FLAG-2024/B_K_LQCD_FLAG_2024.pdf
+        ref_figure_path: tests/ref_figures/B-K-LQCD-FLAG-2024/B_K_LQCD_FLAG_2024_f0.pdf
+        # combined_figure_path: tests/combined_figures/B-K-LQCD-FLAG-2024/LQCD_FLAG_2024.png
+        tex: "$f_0$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0.2
+        f_max: 0.95
+
       fT:
+        figure_path: tests/figures/B-K-LQCD-FLAG-2024/B_K_LQCD_FLAG_2024.pdf
+        ref_figure_path: tests/ref_figures/B-K-LQCD-FLAG-2024/B_K_LQCD_FLAG_2024_fT.pdf
+        # combined_figure_path: tests/combined_figures/B-K-LQCD-FLAG-2024/LQCD_FLAG_2024.png
+        tex: "$f_T$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0.2
+        f_max: 0.95
+
 
 B->eta:
   LCSR-pole 2004:
