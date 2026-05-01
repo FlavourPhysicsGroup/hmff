@@ -143,11 +143,11 @@ class Impl:
         pars = deepcopy(ff_config.get("parameter"))
         format_func, param_func = self._ff_fit_methods[ff_config.get("parameterization")]
         pars = format_func(pars)
-
+        class_func = ff_config.get("parameterization")
         cov_a = pars.get("cov_matrices")                    # 协方差矩阵必须与参数长度匹配
         if cov_a is None:
             # 返回一个始终返回0的函数
             return lambda qsq: np.zeros_like(qsq) if hasattr(qsq, '__len__') else 0.0
         
-        return partial(zp.sigma_f_analytical, pars = pars, cov_a =cov_a)
+        return partial(zp.sigma_f_analytical, pars = pars, cov_a =cov_a, class_func = class_func)
 

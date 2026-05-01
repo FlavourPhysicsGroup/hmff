@@ -29,12 +29,16 @@ def plot_data(infos: dict, ffs_func: list, f_error, ffs_tex: list, normalize: bo
     # 填充不确定区域 - 只给第一个填充添加标签避免重复
     if f_error is not None:
         f_std = [f_error(qsq)]
-        for ii in range(len(ffs_data)):
-            plt.fill_between(x_data, 
+    # 检查f_std是否全为0（即cov_a为None的情况），如果不是全为0则执行fill_between
+        if not np.allclose(f_std[0], 0):
+            for ii in range(len(ffs_data)):
+                plt.fill_between(x_data, 
                          ffs_data[ii] - f_std[ii], 
                          ffs_data[ii] + f_std[ii], 
                          color='blue', alpha=0.2, 
                          label='Statistical Uncertainty' if ii == 0 else "")
+
+
 
 
 
@@ -106,6 +110,7 @@ def compare(process, impl, test_info):
         ffs_func = [ffs_impl.form_factor_function(ff) for ff in ffs_names]
         normalize = impl_info.get("normalize_qsq", False)
         f_error = None
+        # f_error = [HMFF.formfactors[process].get_impl(impl).get_sigma_f_analytical(ff) for  ff in ffs_names]
 
         plot_data(infos, ffs_func, f_error, ffs_tex, normalize)
         combine_plots(infos, infos["figure_path"], infos["ref_figure_path"])

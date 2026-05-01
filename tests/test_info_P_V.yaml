@@ -8,35 +8,79 @@ B->rho:
     method: LQCD
     citation key: Flynn:2008zr
 
-  LCSR-pole:                      
-    ref: arxiv:hep-ph/0412079    
-    author: P. Ball and R. Zwicky 
-    citation key: Ball:2004rg    
-    method: LCSR                
-    comment: B->rho form factors 
-    #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
+  LCSR-pole:
+    combined: false                 
     form factors:
-      V: 
-        parameterization: double pole 1
-        parameter: {a1: 1.045, a2: -0.721, m1: 5.32, m2: 6.192} 
+      V:
+        figure_path: tests/figures/B-rho-LCSR-pole/V.pdf
+        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/V.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$V$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A0:
-        parameterization: double pole 1
-        parameter: {a1: 1.527, a2: -1.220, m1: 5.28, m2: 5.775} 
+        figure_path: tests/figures/B-rho-LCSR-pole/A0.pdf
+        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/A0.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A0$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A1:
-        parameterization: one pole 
-        parameter: {a: 0.240, m: 6.124}
+        figure_path: tests/figures/B-rho-LCSR-pole/A1.pdf
+        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/A1.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A1$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A2:
-        parameterization: double pole 2
-        parameter: {a1: 0.009, a2: 0.212, m: 6.389}
+        figure_path: tests/figures/B-rho-LCSR-pole/A2.pdf
+        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/A2.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A2$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T1:
-        parameterization: double pole 1
-        parameter: {a1: 0.897, a2: -0.629, m1: 5.32, m2: 6.167}
+        figure_path: tests/figures/B-rho-LCSR-pole/T1.pdf
+        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/T1.pdf
+        combined_figure_path: tests/combined_figures/B-rho-LCSR-pole/T1.pdf
+        tex: "$T1$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T2:
-        parameterization: one pole 
-        parameter: {a:  0.267, m: 6.212}
+        figure_path: tests/figures/B-rho-LCSR-pole/T2.pdf
+        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/T2.pdf
+        combined_figure_path: tests/combined_figures/B-rho-LCSR-pole/T2.pdf
+        tex: "$T2$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T3:
-        parameterization: double pole 2
-        parameter: {a1: 0.022, a2: 0.246, m: 6.393}
+        figure_path: tests/figures/B-rho-LCSR-pole/T3.pdf
+        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/T3.pdf
+        combined_figure_path: tests/combined_figures/B-rho-LCSR-pole/T3.pdf
+        tex: "$T3$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
 
 
 B->K*:
@@ -71,67 +115,155 @@ B->K*:
         comment: dm is the difference from Table 4
         # 请直接用 arXiv网页上的Ancillary files：
 
-  LCSR-pole:                      
-    ref: arxiv:hep-ph/0412079    
-    author: P. Ball and R. Zwicky 
-    citation key: Ball:2004rg    
-    method: LCSR                
-    comment: B->K* form factors  
-    #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
+  LCSR-pole: 
+    combined: false                 
     form factors:
-      V: 
-        parameterization: double pole 1
-        parameter: {a1: 0.923, a2: -0.511, m1: 5.32, m2: 7.028} 
+      V:
+        figure_path: tests/figures/B-Kstar-LCSR-pole/V.pdf
+        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/V.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$V$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A0:
-        parameterization: double pole 1
-        parameter: {a1: 1.364, a2: -0.990, m1: 5.28, m2: 6.064} 
+        figure_path: tests/figures/B-Kstar-LCSR-pole/A0.pdf
+        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/A0.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A0$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A1:
-        parameterization: one pole 
-        parameter: {a: 0.290, m: 6.354}
+        figure_path: tests/figures/B-Kstar-LCSR-pole/A1.pdf
+        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/A1.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A1$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A2:
-        parameterization: double pole 2
-        parameter: {a1: -0.084, a2: 0.342, m: 7.211}
+        figure_path: tests/figures/B-Kstar-LCSR-pole/A2.pdf
+        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/A2.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A2$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T1:
-        parameterization: double pole 1
-        parameter: {a1: 0.823, a2: -0.491, m1: 5.32, m2: 6.805}
+        figure_path: tests/figures/B-Kstar-LCSR-pole/T1.pdf
+        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/T1.pdf
+        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T1.pdf
+        tex: "$T1$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T2:
-        parameterization: one pole 
-        parameter: {a: 0.3330, m: 6.435}
+        figure_path: tests/figures/B-Kstar-LCSR-pole/T2.pdf
+        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/T2.pdf
+        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T2.pdf
+        tex: "$T2$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T3:
-        parameterization: double pole 2
-        parameter: {a1: -0.036, a2: 0.368, m: 6.935}
+        figure_path: tests/figures/B-Kstar-LCSR-pole/T3.pdf
+        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/T3.pdf
+        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T3.pdf
+        tex: "$T3$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
 
 
 B->omega:                           
   LCSR-pole:                      
-    ref: arxiv:hep-ph/0412079    
-    author: P. Ball and R. Zwicky 
-    citation key: Ball:2004rg    
-    method: LCSR                
-    comment: B->omega form factors 
-    #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
+    combined: false                 
     form factors:
-      V: 
-        parameterization: double pole 1
-        parameter: {a1:  1.006, a2: -0.713, m1: 5.32, m2: 6.119} 
+      V:
+        figure_path: tests/figures/B-omega-LCSR-pole/V.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/V.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$V$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A0:
-        parameterization: double pole 1
-        parameter: {a1:  1.321, a2: -1.040, m1: 5.28, m2: 5.871} 
+        figure_path: tests/figures/B-omega-LCSR-pole/A0.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A0.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A0$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A1:
-        parameterization: one pole 
-        parameter: {a: -0.217, m: 6.083}
+        figure_path: tests/figures/B-omega-LCSR-pole/A1.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A1.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A1$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A2:
-        parameterization: double pole 2
-        parameter: {a1: 0.006, a2:  0.192, m: 6.421}
+        figure_path: tests/figures/B-omega-LCSR-pole/A2.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A2.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A2$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T1:
-        parameterization: double pole 1
-        parameter: {a1:  0.865, a2: -0.622, m1: 5.32, m2: 6.098}
+        figure_path: tests/figures/B-omega-LCSR-pole/T1.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T1.pdf
+        # combined_figure_path: tests/combined_figures/B-omega-LCSR-pole/T1.pdf
+        tex: "$T1$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T2:
-        parameterization: one pole 
-        parameter: {a: 0.242, m: 6.160}
+        figure_path: tests/figures/B-omega-LCSR-pole/T2.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T2.pdf
+        # combined_figure_path: tests/combined_figures/B-rho-LCSR-pole/T2.pdf
+        tex: "$T2$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T3:
-        parameterization: double pole 2
-        parameter: {a1: 0.023, a2: 0.220, m: 6.392}
+        figure_path: tests/figures/B-omega-LCSR-pole/T3.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T3.pdf
+        # combined_figure_path: tests/combined_figures/B-rho-LCSR-pole/T3.pdf
+        tex: "$T3$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
 
 
 Bs->K*:
@@ -166,34 +298,78 @@ Bs->K*:
         comment: dm is the difference from Table 4
         # 请直接用 arXiv网页上的Ancillary files：                           
   LCSR-pole:                      
-    ref: arxiv:hep-ph/0412079    
-    author: P. Ball and R. Zwicky 
-    citation key: Ball:2004rg    
-    method: LCSR                
-    comment: Bs->K* form factors  
-    #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
+    combined: false                 
     form factors:
-      V: 
-        parameterization: double pole 1
-        parameter: {a1: 2.351, a2: -2.039, m1: 5.32, m2: 5.753} 
+      V:
+        figure_path: tests/figures/Bs-Kstar-LCSR-pole/V.pdf
+        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/V.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$V$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A0:
-        parameterization: double pole 1
-        parameter: {a1: 2.813, a2: -2.509, m1: 5.28, m2: 5.619} 
+        figure_path: tests/figures/Bs-Kstar-LCSR-pole/A0.pdf
+        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/A0.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A0$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A1:
-        parameterization: one pole 
-        parameter: {a: 0.231, m: 5.739}
+        figure_path: tests/figures/Bs-Kstar-LCSR-pole/A1.pdf
+        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/A1.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A1$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A2:
-        parameterization: double pole 2
-        parameter: {a1: -0.011, a2:  0.192, m: 6.335}
+        figure_path: tests/figures/Bs-Kstar-LCSR-pole/A2.pdf
+        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/A2.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A2$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T1:
-        parameterization: double pole 1
-        parameter: {a1:  2.047, a2: -1.787, m1: 5.32, m2: 5.729}
+        figure_path: tests/figures/Bs-Kstar-LCSR-pole/T1.pdf
+        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/T1.pdf
+        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T1.pdf
+        tex: "$T1$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T2:
-        parameterization: one pole 
-        parameter: {a:   0.260, m: 5.745}
+        figure_path: tests/figures/Bs-Kstar-LCSR-pole/T2.pdf
+        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/T2.pdf
+        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T2.pdf
+        tex: "$T2$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T3:
-        parameterization: double pole 2
-        parameter: {a1:  0.043, a2:  0.217, m: 6.275}
+        figure_path: tests/figures/Bs-Kstar-LCSR-pole/T3.pdf
+        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/T3.pdf
+        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T3.pdf
+        tex: "$T3$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
 
 
 Bs->phi:
@@ -229,31 +405,75 @@ Bs->phi:
 
     # 请直接用 arXiv网页上的Ancillary files：                         
   LCSR-pole:                      
-    ref: arxiv:hep-ph/0412079    
-    author: P. Ball and R. Zwicky 
-    citation key: Ball:2004rg    
-    method: LCSR                
-    comment: Bs->phi form factors
-    #V,A0,A1,A2,T1,T2,T3 parameter from Table 8,9
+    combined: false                 
     form factors:
-      V: 
-        parameterization: double pole 1
-        parameter: {a1:  1.484, a2: -1.049, m1: 5.32, m2: 6.286} 
+      V:
+        figure_path: tests/figures/Bs-phi-LCSR-pole/V.pdf
+        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/V.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$V$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A0:
-        parameterization: double pole 1
-        parameter: {a1:  3.310, a2: -2.835, m1: 5.28, m2: 5.618} 
+        figure_path: tests/figures/Bs-phi-LCSR-pole/A0.pdf
+        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/A0.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A0$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A1:
-        parameterization: one pole 
-        parameter: {a: 0.308, m: 6.044}
+        figure_path: tests/figures/Bs-phi-LCSR-pole/A1.pdf
+        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/A1.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A1$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       A2:
-        parameterization: double pole 2
-        parameter: {a1: -0.054, a2: 0.288, m: 6.995}
+        figure_path: tests/figures/Bs-phi-LCSR-pole/A2.pdf
+        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/A2.pdf
+        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
+        tex: "$A2$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T1:
-        parameterization: double pole 1
-        parameter: {a1:  1.303, a2: -0.954, m1: 5.32, m2: 6.187}
+        figure_path: tests/figures/Bs-phi-LCSR-pole/T1.pdf
+        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/T1.pdf
+        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T1.pdf
+        tex: "$T1$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T2:
-        parameterization: one pole 
-        parameter: {a:  0.349, m: 6.1}
+        figure_path: tests/figures/Bs-phi-LCSR-pole/T2.pdf
+        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/T2.pdf
+        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T2.pdf
+        tex: "$T2$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1
       T3:
-        parameterization: double pole 2
-        parameter: {a1:  0.027, a2:  0.321, m: 6.749}
+        figure_path: tests/figures/Bs-phi-LCSR-pole/T3.pdf
+        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/T3.pdf
+        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T3.pdf
+        tex: "$T3$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 100
+        f_min: 0
+        f_max: 1

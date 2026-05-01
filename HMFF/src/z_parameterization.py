@@ -172,6 +172,7 @@ def get_t0_1(pars):
     return tp - sqrt(tp * (tp - tm))
 
 
+
 def get_t0_2(pars):
     """
     get the t0 parameter by using definition 2
@@ -321,23 +322,31 @@ def f_z_expansions_3(qsq, pars):
     raise NotImplementedError
 
 #求误差，先对函数求梯度
-def df_da(qsq, pars):
+def df_da(qsq, pars, class_func):
     """计算形因子对参数的解析导数（返回梯度向量）"""
     z = get_z(qsq, pars) 
     m_star = pars.get("m_star")
     a_list = pars.get("a")
         # 处理复数情况
-    pole_factor = 1 / (1 - qsq / m_star**2)
+    if m_star != None:  # 考虑没有极点的公式
+        pole_factor = 1 / (1 - qsq / m_star**2)
+    else:
+        pole_factor=1
+
     
     # 梯度向量：df/da0 = pole_factor * 1
     #           df/da1 = pole_factor * z
     #           df/da2 = pole_factor * z^2
     #           ...
-    grad = [pole_factor * (z** i) for i in range(len(a_list))]
+    N = len(a_list)
+    if class_func == "BCL 1" or "BCL 2":
+        grad = [pole_factor * (z**i - (-1) ** (i - N) * (i / N) * z**N) for i in range(len(a_list))]
+    else:
+        grad = [pole_factor * (z** i) for i in range(len(a_list))]
     return np.array(grad)
 
 # 改进的误差传播计算（解析导数）
-def sigma_f_analytical(qsq, pars, cov_a):
+def sigma_f_analytical(qsq, pars, cov_a, class_func):
     """
     解析计算形因子误差（基于解析导数）
     """
@@ -345,7 +354,10 @@ def sigma_f_analytical(qsq, pars, cov_a):
     errors = np.zeros_like(q2_array, dtype=float)
 
     for i, q2_val in enumerate(q2_array):
-        grad = df_da(q2_val, pars)  # 梯度向量 [df/da0, df/da1, ...]
+        grad = df_da(q2_val, pars, class_func)  # 梯度向量 [df/da0, df/da1, ...]
         errors[i] = np.sqrt(np.dot(grad, np.dot(cov_a, grad)))
     
     return errors if len(q2_array) > 1 else errors[0]
+
+
+
