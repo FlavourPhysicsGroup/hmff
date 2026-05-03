@@ -244,7 +244,7 @@ D->pi:
       f0:
         figure_path: tests/figures/D-pi-LQCD-z-2017/f+.pdf
         ref_figure_path: tests/ref_figures/D-pi-LQCD-z-2017/f+.pdf  
-        tex: "$f_+$"
+        tex: "$f_0$"
         qsq_min: 0
         qsq_max: 12
         qsq_steps: 100
@@ -255,4 +255,20 @@ D->K:
   LQCD-z 2017:
     form factors:
       f+:
-        ref_figure_path: /tests/ref_figures/LQCD-z-2017-D-K-f+.pdf
+        figure_path: tests/figures/D-K-LQCD-z-2017/f+.pdf
+        ref_figure_path: /tests/ref_figures/D-K-LQCD-z-2017/f+.pdf
+        tex: "$f_+$"
+        qsq_min: 0
+        qsq_max: 12
+        qsq_steps: 100
+        f_min: 0.6
+        f_max: 1.3
+      f0:
+        figure_path: tests/figures/D-K-LQCD-z-2017/f0.pdf
+        ref_figure_path: tests/ref_figures/D-K-LQCD-z-2017/f0.pdf  
+        tex: "$f_0$"
+        qsq_min: 0
+        qsq_max: 12
+        qsq_steps: 100
+        f_min: 0.6
+        f_max: 1.3

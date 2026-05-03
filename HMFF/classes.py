@@ -136,7 +136,7 @@ class Impl:
         return infos
 
 
-    def get_sigma_f_analytical(self, ff_name):
+    def get_sigma_f_stat(self, ff_name):
 
         ff_config = self.config.get("form factors").get(ff_name)
 
@@ -150,4 +150,16 @@ class Impl:
             return lambda qsq: np.zeros_like(qsq) if hasattr(qsq, '__len__') else 0.0
         
         return partial(zp.sigma_f_analytical, pars = pars, cov_a =cov_a, class_func = class_func)
+
+    import numpy as np
+
+
+
+
+
+
+
+
+
+
 

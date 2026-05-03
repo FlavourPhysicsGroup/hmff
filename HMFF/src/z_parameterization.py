@@ -311,6 +311,7 @@ def add_a0_N_minus_1_from_ap(pars_p, pars_0):
 '''
     
 def f_z_expansions_1(qsq, pars):
+    
     raise NotImplementedError
 
 
@@ -359,5 +360,44 @@ def sigma_f_analytical(qsq, pars, cov_a, class_func):
     
     return errors if len(q2_array) > 1 else errors[0]
 
+
+def calculate_systematic_error_v2(O, O_HO, sigma_O, sigma_O_HO, *args, **kwargs):
+        """
+        支持传入函数表达式或具体数值
+        如果是函数，会使用 *args 和 **kwargs 作为函数的参数进行求值
+        """
+        # 辅助函数：如果是可调用的函数，则求值；否则直接返回原值
+        def evaluate(param):
+            if callable(param):
+                return param(*args, **kwargs)
+            return param
+        
+        # 统一进行求值
+        val_O = evaluate(O)
+        val_O_HO = evaluate(O_HO)
+        val_sigma_O = evaluate(sigma_O)
+        val_sigma_O_HO = evaluate(sigma_O_HO)
+        
+        # 原有的计算逻辑
+        diff = abs(val_O_HO - val_O)
+        if val_sigma_O_HO >= val_sigma_O:
+            second_term = np.sqrt(val_sigma_O_HO**2 - val_sigma_O**2)
+        else:
+            second_term = 0
+            
+        return np.maximum(diff, second_term)  
+
+def calculate_total_error(sigma_O_stat, sigma_O_syst):
+        """
+        计算总误差 σ_O,tot
+        
+        参数:
+        sigma_O_stat -- 统计误差
+        sigma_O_syst -- 系统误差
+        
+        返回:
+        总误差 σ_O,tot
+        """
+        return np.sqrt(sigma_O_stat**2 + sigma_O_syst**2)
 
 

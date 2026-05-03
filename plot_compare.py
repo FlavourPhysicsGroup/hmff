@@ -4,14 +4,15 @@ from IPython.display import display
 from matplotlib import pyplot as plt
 from PIL import Image
 from pdf2image import convert_from_path
-
+from HMFF.src import z_parameterization as zp
 import HMFF
 from tests import plot_options as opt
-
+import yaml
 matplotlib.rcParams.update(opt.default_rcParams)
 
 
-def plot_data(infos: dict, ffs_func: list, f_error, ffs_tex: list, normalize: bool =False , debug=False) -> None:
+def plot_data(infos: dict, ffs_func: list, f_error_stat, ff, ffs_tex: list, normalize: bool =False, is_HO: bool =False) -> None:
+    debug=False
     """使用HMFF模块绘制形状因子"""
     # 得到qsq的数据列表，并计算形状因子数据
     qsq = np.linspace(infos["qsq_min"], infos["qsq_max"], infos["qsq_steps"])
@@ -27,19 +28,42 @@ def plot_data(infos: dict, ffs_func: list, f_error, ffs_tex: list, normalize: bo
         plt.plot(x_data, ffs_data[ii], label=ffs_tex[ii])
     
     # 填充不确定区域 - 只给第一个填充添加标签避免重复
-    if f_error is not None:
-        f_std = [f_error(qsq)]
+    if f_error_stat is not None:
+        f_std = [f_error_stat(qsq)]
     # 检查f_std是否全为0（即cov_a为None的情况），如果不是全为0则执行fill_between
         if not np.allclose(f_std[0], 0):
             for ii in range(len(ffs_data)):
                 plt.fill_between(x_data, 
                          ffs_data[ii] - f_std[ii], 
                          ffs_data[ii] + f_std[ii], 
-                         color='blue', alpha=0.2, 
+                         color='#87CEFA', alpha=0.3, 
                          label='Statistical Uncertainty' if ii == 0 else "")
 
 
+    #添加总误差的填充区域
+    if is_HO is True:
+        with open("tests/test_info_B_B.yaml", "r", encoding="utf-8") as f:
+            test_info = yaml.safe_load(f)
+        impl_info = test_info['Lambda_b->Lambda']['LQCD-2016-nominal']
+        o_ho= HMFF.formfactors['Lambda_b->Lambda'].get_impl('LQCD-2016-HO').form_factor_function(ff)(qsq)
+        o = HMFF.formfactors['Lambda_b->Lambda'].get_impl('LQCD-2016-nominal').form_factor_function(ff)(qsq)
+        sigma_O_HO = HMFF.formfactors['Lambda_b->Lambda'].get_impl('LQCD-2016-HO').get_sigma_f_stat(ff)(qsq)
+        sigma_O = HMFF.formfactors['Lambda_b->Lambda'].get_impl('LQCD-2016-nominal').get_sigma_f_stat(ff)(qsq)
+        f_error_syst = []
+        f_error_total = []
+        for ii in range(len(o_ho)):
+            a = zp.calculate_systematic_error_v2(o[ii], o_ho[ii], sigma_O[ii], sigma_O_HO[ii])
+            b = zp.calculate_total_error(a, sigma_O_HO[ii])
+            f_error_syst.append(a)
+            f_error_total.append(b)
 
+        f_total = f_error_total
+        for ii in range(len(ffs_data)):
+            plt.fill_between(x_data, 
+                    ffs_data[ii] - f_total[ii], 
+                    ffs_data[ii] + f_total[ii], 
+                    color='#FFB6C1', alpha=0.3, 
+                    label='Total Uncertainty' if ii == 0 else "")
 
 
     if normalize:
@@ -112,7 +136,7 @@ def compare(process, impl, test_info):
         f_error = None
         # f_error = [HMFF.formfactors[process].get_impl(impl).get_sigma_f_analytical(ff) for  ff in ffs_names]
 
-        plot_data(infos, ffs_func, f_error, ffs_tex, normalize)
+        plot_data(infos, ffs_func, f_error,0 , ffs_tex, normalize, is_HO=False)
         combine_plots(infos, infos["figure_path"], infos["ref_figure_path"])
     else:
         ffs_names = tuple(impl_info["form factors"].keys())
@@ -125,6 +149,12 @@ def compare(process, impl, test_info):
                 HMFF.formfactors[process].get_impl(impl).form_factor_function(ff),
             ]
             normalize = impl_info.get("normalize_qsq", False)
-            f_error = HMFF.formfactors[process].get_impl(impl).get_sigma_f_analytical(ff)
-            plot_data(infos, ffs_func, f_error, ffs_tex, normalize)
+            f_error_stat = HMFF.formfactors[process].get_impl(impl).get_sigma_f_stat(ff)
+            # f_error_total = HMFF.formfactors[process].get_impl(impl).get_sigma_f_total(ff)
+            if impl == 'LQCD-2016-HO':
+                is_HO = True
+            else:                
+                is_HO = False
+
+            plot_data(infos, ffs_func, f_error_stat, ff, ffs_tex, normalize, is_HO)
             combine_plots(infos, infos["figure_path"], infos["ref_figure_path"])
