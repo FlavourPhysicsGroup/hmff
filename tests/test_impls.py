@@ -1,5 +1,5 @@
 import pytest
-from HMFF import formfactors
+from src.hmff import formfactors
 
 
 @pytest.mark.parametrize("ff_name, impl_name", [

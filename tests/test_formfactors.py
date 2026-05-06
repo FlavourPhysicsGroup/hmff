@@ -4,7 +4,7 @@ Test suite for HMFF form factors
 """
 
 import pytest
-from HMFF.data_io import LazyFormFactorLoader
+from src.hmff.data_io import LazyFormFactorLoader
 
 # Initialize the form factor loader
 form_factor_loader = LazyFormFactorLoader()

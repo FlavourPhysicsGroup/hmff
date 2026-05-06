@@ -4,8 +4,8 @@ from IPython.display import display
 from matplotlib import pyplot as plt
 from PIL import Image
 from pdf2image import convert_from_path
-from HMFF.src import z_parameterization as zp
-import HMFF
+from hmff import z_parameterization as zp
+import hmff
 from tests import plot_options as opt
 import yaml
 matplotlib.rcParams.update(opt.default_rcParams)
@@ -45,10 +45,10 @@ def plot_data(infos: dict, ffs_func: list, f_error_stat, ff, ffs_tex: list, norm
         with open("tests/test_info_B_B.yaml", "r", encoding="utf-8") as f:
             test_info = yaml.safe_load(f)
         impl_info = test_info['Lambda_b->Lambda']['LQCD-2016-nominal']
-        o_ho= HMFF.formfactors['Lambda_b->Lambda'].get_impl('LQCD-2016-HO').form_factor_function(ff)(qsq)
-        o = HMFF.formfactors['Lambda_b->Lambda'].get_impl('LQCD-2016-nominal').form_factor_function(ff)(qsq)
-        sigma_O_HO = HMFF.formfactors['Lambda_b->Lambda'].get_impl('LQCD-2016-HO').get_sigma_f_stat(ff)(qsq)
-        sigma_O = HMFF.formfactors['Lambda_b->Lambda'].get_impl('LQCD-2016-nominal').get_sigma_f_stat(ff)(qsq)
+        o_ho= hmff.formfactors['Lambda_b->Lambda'].get_impl('LQCD-2016-HO').form_factor_function(ff)(qsq)
+        o = hmff.formfactors['Lambda_b->Lambda'].get_impl('LQCD-2016-nominal').form_factor_function(ff)(qsq)
+        sigma_O_HO = hmff.formfactors['Lambda_b->Lambda'].get_impl('LQCD-2016-HO').get_sigma_f_stat(ff)(qsq)
+        sigma_O = hmff.formfactors['Lambda_b->Lambda'].get_impl('LQCD-2016-nominal').get_sigma_f_stat(ff)(qsq)
         f_error_syst = []
         f_error_total = []
         for ii in range(len(o_ho)):
@@ -130,7 +130,7 @@ def compare(process, impl, test_info):
         ffs_tex = [impl_info["form factors"][ff]["tex"] for ff in ffs_names]
         infos = impl_info["form factors"][ffs_names[0]]
 
-        ffs_impl = HMFF.formfactors[process].get_impl(impl)
+        ffs_impl = hmff.formfactors[process].get_impl(impl)
         ffs_func = [ffs_impl.form_factor_function(ff) for ff in ffs_names]
         normalize = impl_info.get("normalize_qsq", False)
         f_error = None
@@ -146,10 +146,10 @@ def compare(process, impl, test_info):
                 infos["tex"],
             ]
             ffs_func = [
-                HMFF.formfactors[process].get_impl(impl).form_factor_function(ff),
+                hmff.formfactors[process].get_impl(impl).form_factor_function(ff),
             ]
             normalize = impl_info.get("normalize_qsq", False)
-            f_error_stat = HMFF.formfactors[process].get_impl(impl).get_sigma_f_stat(ff)
+            f_error_stat = hmff.formfactors[process].get_impl(impl).get_sigma_f_stat(ff)
             # f_error_total = HMFF.formfactors[process].get_impl(impl).get_sigma_f_total(ff)
             if impl == 'LQCD-2016-HO':
                 is_HO = True

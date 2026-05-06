@@ -2,9 +2,9 @@ from functools import partial
 from typing import Callable
 from copy import deepcopy
 
-from .src import pole_dominance as pole
-from .src import z_parameterization as zp
-import numpy as np 
+from . import pole_dominance as pole
+from . import z_parameterization as zp
+import numpy as np
 
 
 class FormFactor:
