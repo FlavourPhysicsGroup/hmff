@@ -17,3 +17,6 @@ dev = [
     "pdf2image>=1.17.0",
     "pytest>=9.0.3",
 ]
+
+[tool.setuptools.package-data]
+hmff = ["data/*.yaml"]

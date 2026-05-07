@@ -129,11 +129,7 @@ class Impl:
 
     def get_central_values(self, qsq):
         """返回此文章中包含的所有形状因子在特定qsq时的中心值"""
-        infos = []
-        for ff in self.form_factor_names:
-            ff_func = self.form_factor_function(ff)
-            infos.append(ff_func(qsq))
-        return infos
+        return {ff: self.form_factor_function(ff)(qsq) for ff in self.form_factor_names}
 
 
     def get_sigma_f_stat(self, ff_name):
