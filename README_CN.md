@@ -81,7 +81,7 @@ uv pip install hmff
 ### 从源码安装
 
 ```bash
-git clone https://github.com/FlaourPhysicsGroup/hmff.git
+git clone https://github.com/FlavourPhysicsGroup/hmff.git
 uv add /path/to/form-factor
 ```
 
