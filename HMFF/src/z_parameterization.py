@@ -149,8 +149,10 @@ def get_tp(pars):
     """
     get the tp parameter
     """
-    mp_1 = pars.get("mp_1")
+    mp_1 = pars.get("mp_1") 
+
     mp_2 = pars.get("mp_2")
+
     return (mp_1 + mp_2) ** 2
 
 
@@ -202,6 +204,21 @@ def get_z(qsq, pars):
     tp = get_tp(pars)
     t0 = get_t0(pars)
     return (sqrt(1 - qsq / tp) - sqrt(1 - t0 / tp)) / (sqrt(1 - qsq / tp) + sqrt(1 - t0 / tp))
+
+
+def get_z1(qsq, pars):
+    """
+    get the z in z expansions
+
+    """
+    m1 = pars.get("m_1")
+    m2 = pars.get("m_2")
+    t_plus = (m1 + m2) ** 2
+    t0 = (m1 + m2) * (np.sqrt(m1) - np.sqrt(m2)) ** 2
+    sqrt_tp_q = np.sqrt(t_plus - qsq)
+    sqrt_tp_t0 = np.sqrt(t_plus - t0)
+    z = (sqrt_tp_q - sqrt_tp_t0) / (sqrt_tp_q + sqrt_tp_t0)
+    return z
 
 
 # pars: mm1_, mm_2, mp_1, mp_2 (m_1, m_2), m_star, a_0, a_1, a_2, ..., a_N-1
@@ -311,16 +328,39 @@ def add_a0_N_minus_1_from_ap(pars_p, pars_0):
 '''
     
 def f_z_expansions_1(qsq, pars):
+    z = get_z1(qsq, pars)
+    z0 = get_z1(0, pars)
+    f0 = pars.get("f(0)")
+    c = pars.get("c")
+    P = pars.get("P")
+    term = (z - z0) * (1 + (z + z0)/2);
+    f = (f0 + c * term) / (1 - P * qsq);
+
     
-    raise NotImplementedError
+    return f
 
 
 def f_z_expansions_2(qsq, pars):
-    raise NotImplementedError
+    z = get_z1(qsq, pars)
+    z0 = get_z1(0, pars)
+    f0 = pars.get("f(0)")
+    c = pars.get("c")
+    Ms = pars.get("m_star")
+    term = (z - z0) * (1 + (z + z0)/2);
+    f = (f0 + c * term) / (1 -  qsq/Ms**2);
+
+    return f
 
 
 def f_z_expansions_3(qsq, pars):
-    raise NotImplementedError
+    z = get_z1(qsq, pars)
+    z0 = get_z1(0, pars)
+    f0 = pars.get("f(0)")
+    c = pars.get("c")
+    term = (z - z0) * (1 + (z + z0)/2);
+    f = f0 + c * term;
+
+    return f
 
 #求误差，先对函数求梯度
 def df_da(qsq, pars, class_func):
