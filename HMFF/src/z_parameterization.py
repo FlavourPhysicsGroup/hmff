@@ -365,6 +365,9 @@ def f_z_expansions_3(qsq, pars):
 #求误差，先对函数求梯度
 def df_da(qsq, pars, class_func):
     """计算形因子对参数的解析导数（返回梯度向量）"""
+    if class_func.startswith("z-expansions"):
+        return df_dz_expansion(qsq, pars, class_func)
+
     z = get_z(qsq, pars) 
     m_star = pars.get("m_star")
     a_list = pars.get("a")
@@ -380,14 +383,57 @@ def df_da(qsq, pars, class_func):
     #           df/da2 = pole_factor * z^2
     #           ...
     N = len(a_list)
-    if class_func == "BCL 1" or "BCL 2":
+    if class_func in ("BCL 1", "BCL 2"):
         grad = [pole_factor * (z**i - (-1) ** (i - N) * (i / N) * z**N) for i in range(len(a_list))]
     else:
         grad = [pole_factor * (z** i) for i in range(len(a_list))]
     return np.array(grad)
 
+
+def _dz_expansion_value(qsq, pars, class_func):
+    """Evaluate a z-expansion while keeping the parameter dictionary isolated."""
+    functions = {
+        "z-expansions 1": f_z_expansions_1,
+        "z-expansions 2": f_z_expansions_2,
+        "z-expansions 3": f_z_expansions_3,
+    }
+    try:
+        return functions[class_func](qsq, pars)
+    except KeyError as exc:
+        raise ValueError(f"Invalid z-expansion parameterization: {class_func}") from exc
+
+
+def df_dz_expansion(qsq, pars, class_func):
+    """Return the gradient in the parameter order used by each z-expansion."""
+    z = get_z1(qsq, pars)
+    z0 = get_z1(0, pars)
+    term = (z - z0) * (1 + (z + z0) / 2)
+    dterm = 1 + z - z0
+    f0 = pars.get("f(0)")
+    c = pars.get("c")
+
+    if class_func == "z-expansions 1":
+        denominator = 1 - pars.get("P") * qsq
+        gradient = [1 / denominator, term / denominator, (f0 + c * term) * qsq / denominator**2]
+    elif class_func == "z-expansions 2":
+        m_star = pars.get("m_star")
+        denominator = 1 - qsq / m_star**2
+        gradient = [1 / denominator, term / denominator, (f0 + c * term) * (-2 * qsq / m_star**3) / denominator**2]
+    elif class_func == "z-expansions 3":
+        gradient = [1.0, term]
+    else:
+        raise ValueError(f"Invalid z-expansion parameterization: {class_func}")
+    return np.asarray(gradient, dtype=float)
+
 # 改进的误差传播计算（解析导数）
-def sigma_f_analytical(qsq, pars, cov_a, class_func):
+def sigma_f_analytical(
+    qsq,
+    pars,
+    cov_a,
+    class_func,
+    gradient_indices=None,
+    gradient_local_indices=None,
+):
     """
     解析计算形因子误差（基于解析导数）
     """
@@ -395,7 +441,18 @@ def sigma_f_analytical(qsq, pars, cov_a, class_func):
     errors = np.zeros_like(q2_array, dtype=float)
 
     for i, q2_val in enumerate(q2_array):
-        grad = df_da(q2_val, pars, class_func)  # 梯度向量 [df/da0, df/da1, ...]
+        grad = df_da(q2_val, pars, class_func)  # 梯度向量 [df/dp0, df/dp1, ...]
+        if gradient_indices is not None:
+            projected_grad = np.zeros(len(cov_a), dtype=float)
+            local_indices = gradient_local_indices or range(len(gradient_indices))
+            for local_index, global_index in zip(local_indices, gradient_indices):
+                projected_grad[global_index] = grad[local_index]
+            grad = projected_grad
+        if len(grad) != len(cov_a):
+            raise ValueError(
+                f"Covariance matrix dimension ({len(cov_a)}) does not match "
+                f"the {class_func} gradient dimension ({len(grad)})."
+            )
         errors[i] = np.sqrt(np.dot(grad, np.dot(cov_a, grad)))
     
     return errors if len(q2_array) > 1 else errors[0]

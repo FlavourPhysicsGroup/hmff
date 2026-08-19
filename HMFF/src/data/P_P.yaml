@@ -301,7 +301,14 @@ D->pi:
       f0:
         parameterization: z-expansions 1
         parameter: {f(0): 0.6117, c: -1.188, P: 0.0342, m_1: 1.87265, m_2: 0.134977} #Table 6
-
+    covariance_matrix: 
+        value:
+        - [ 1.25642e-3,  7.18296e-3,  6.77051e-3,  3.66997e-5,  2.87257e-5]
+        - [ 7.18296e-3,  6.56690e-2,  6.30124e-2,  1.73569e-3,  8.43689e-4]
+        - [ 6.77051e-3,  6.30124e-2,  1.20371e-1,  2.24220e-3,  3.25631e-3]
+        - [ 3.66997e-5,  1.73569e-3,  2.24220e-3,  1.48010e-4,  9.60595e-5]
+        - [ 2.87257e-5,  8.43689e-4,  3.25631e-3,  9.60595e-5,  1.60179e-4 ]  
+        comment: from Table 7
 
 D->K:
   LQCD-z 2017:
@@ -309,7 +316,7 @@ D->K:
     author: V.Lubicz, L.Riggio, G.Salerno, S.Simula and C.Tarantino
     citation key: Lubicz:2017syv
     method: LQCD 
-    comment: D->pi form factors
+    comment: D->K form factors
     form factors:
       f+:
         parameterization: z-expansions 2
@@ -317,3 +324,9 @@ D->K:
       f0:
         parameterization: z-expansions 3
         parameter: {f(0): 0.7647, c: -2.084, m_1: 1.87265, m_2: 0.495644} #Table 8
+    covariance_matrix: 
+        value:
+        - [ 9.50493e-4,  6.92027e-3,  5.66397e-3]
+        - [ 6.92027e-3,  7.99358e-2,  7.55735e-2]
+        - [ 5.66397e-3,  7.55735e-2,  1.10925e-1]
+        comment: from Table 7

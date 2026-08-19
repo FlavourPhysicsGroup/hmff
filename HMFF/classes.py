@@ -144,12 +144,45 @@ class Impl:
         format_func, param_func = self._ff_fit_methods[ff_config.get("parameterization")]
         pars = format_func(pars)
         class_func = ff_config.get("parameterization")
-        cov_a = pars.get("cov_matrices")                    # 协方差矩阵必须与参数长度匹配
+        cov_a = pars.get("cov_matrices")
+        gradient_indices = None
+        gradient_local_indices = None
+        if cov_a is None and class_func.startswith("z-expansions"):
+            covariance_config = self.config.get("covariance_matrix", {})
+            cov_a = covariance_config.get("value")
+            if cov_a is not None:
+                ff_names = self.form_factor_names
+                if class_func == "z-expansions 1":
+                    # Published order: [f(0), c_0, c_+, P_S, P_V].
+                    covariance_ff_order = sorted(
+                        ff_names,
+                        key=lambda name: {"f0": 0, "f+": 1}.get(name, ff_names.index(name)),
+                    )
+                    ff_position = covariance_ff_order.index(ff_name)
+                    gradient_indices = [
+                        0,
+                        1 + ff_position,
+                        1 + len(ff_names) + ff_position,
+                    ]
+                    gradient_local_indices = [0, 1, 2]
+                else:
+                    # z-expansions 2/3 do not include the fixed pole parameter
+                    # in the published covariance matrix.
+                    ff_position = ff_names.index(ff_name)
+                    gradient_indices = [0, 1 + ff_position]
+                    gradient_local_indices = [0, 1]
         if cov_a is None:
             # 返回一个始终返回0的函数
             return lambda qsq: np.zeros_like(qsq) if hasattr(qsq, '__len__') else 0.0
         
-        return partial(zp.sigma_f_analytical, pars = pars, cov_a =cov_a, class_func = class_func)
+        return partial(
+            zp.sigma_f_analytical,
+            pars=pars,
+            cov_a=cov_a,
+            class_func=class_func,
+            gradient_indices=gradient_indices,
+            gradient_local_indices=gradient_local_indices,
+        )
 
     import numpy as np
 
