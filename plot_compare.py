@@ -1,5 +1,6 @@
 import matplotlib
 import numpy as np
+import os
 from IPython.display import display
 from matplotlib import pyplot as plt
 from PIL import Image
@@ -23,10 +24,6 @@ def plot_data(infos: dict, ffs_func: list, f_error_stat, ff, ffs_tex: list, norm
     plt.figure(figsize=(8, 6))
     x_data = qsq / infos["qsq_max"] if normalize else qsq
 
-    # 绘制数据线
-    for ii in range(len(ffs_data)):
-        plt.plot(x_data, ffs_data[ii], label=ffs_tex[ii])
-    
     # 填充不确定区域 - 只给第一个填充添加标签避免重复
     if f_error_stat is not None:
         if callable(f_error_stat):
@@ -42,6 +39,10 @@ def plot_data(infos: dict, ffs_func: list, f_error_stat, ff, ffs_tex: list, norm
                          ffs_data[ii] + f_std[ii], 
                          color='#87CEFA', alpha=0.3, 
                          label='Statistical Uncertainty' if ii == 0 else "")
+
+    # Draw central curves after the bands so nearby curves remain visible.
+    for ii in range(len(ffs_data)):
+        plt.plot(x_data, ffs_data[ii], label=ffs_tex[ii], linewidth=1.8, zorder=3)
 
 
     #添加总误差的填充区域
@@ -78,6 +79,8 @@ def plot_data(infos: dict, ffs_func: list, f_error_stat, ff, ffs_tex: list, norm
         plt.xlabel(r"$q^2$")
 
     plt.ylim(infos["f_min"], infos["f_max"])
+    if infos.get("title"):
+        plt.title(infos["title"])
     plt.legend()
     plt.tight_layout()
     if debug:
@@ -100,6 +103,10 @@ def combine_plots(infos: dict, fig1: str, fig2: str, debug=True) -> None:
             raise ValueError("Invalid file format")
 
     img1 = load_image(fig1)
+    if not os.path.exists(fig2):
+        if debug:
+            display(img1)
+        return
     img2 = load_image(fig2)
 
     # 假设你想根据第一张图片的高度调整第二张图片的高度
@@ -129,10 +136,34 @@ def compare(process, impl, test_info):
     """通过基本信息, 绘制对比图. 为了隐藏内部实现, 通用性有待进一步验证."""
     # 基础信息重新排列, 使符合函数要求
     impl_info = test_info[process][impl]
-    if impl_info.get("combined"):
-        ffs_names = tuple(impl_info["form factors"].keys())
-        ffs_tex = [impl_info["form factors"][ff]["tex"] for ff in ffs_names]
-        infos = impl_info["form factors"][ffs_names[0]]
+    if "groups" in impl_info:
+        ffs_impl = HMFF.formfactors[process].get_impl(impl)
+        for group_info in impl_info["groups"].values():
+            ffs_names = tuple(group_info["form factors"])
+            ffs_func = [ffs_impl.form_factor_function(ff) for ff in ffs_names]
+            ffs_tex = [group_info.get("tex", {}).get(ff, ff) for ff in ffs_names]
+            f_error = [ffs_impl.get_sigma_f_stat(ff) for ff in ffs_names]
+            plot_data(group_info, ffs_func, f_error, 0, ffs_tex, False, is_HO=False)
+            combine_plots(group_info, group_info["figure_path"], group_info["ref_figure_path"])
+        return
+
+    if "plots" in impl_info:
+        ffs_impl = HMFF.formfactors[process].get_impl(impl)
+        for plot_info in impl_info["plots"].values():
+            ffs_names = tuple(plot_info["form factors"])
+            ffs_tex = [plot_info["form factors"][ff]["tex"] for ff in ffs_names]
+            infos = plot_info["form factors"][ffs_names[0]]
+            ffs_func = [ffs_impl.form_factor_function(ff) for ff in ffs_names]
+            f_error = [ffs_impl.get_sigma_f_stat(ff) for ff in ffs_names]
+            plot_data(infos, ffs_func, f_error, 0, ffs_tex, False, is_HO=False)
+            combine_plots(infos, infos["figure_path"], infos["ref_figure_path"])
+        return
+
+    plot_info = impl_info.get("plot", impl_info)
+    if plot_info.get("combined"):
+        ffs_names = tuple(plot_info["form factors"].keys())
+        ffs_tex = [plot_info["form factors"][ff]["tex"] for ff in ffs_names]
+        infos = plot_info["form factors"][ffs_names[0]]
 
         ffs_impl = HMFF.formfactors[process].get_impl(impl)
         ffs_func = [ffs_impl.form_factor_function(ff) for ff in ffs_names]
@@ -142,9 +173,9 @@ def compare(process, impl, test_info):
         plot_data(infos, ffs_func, f_error,0 , ffs_tex, normalize, is_HO=False)
         combine_plots(infos, infos["figure_path"], infos["ref_figure_path"])
     else:
-        ffs_names = tuple(impl_info["form factors"].keys())
+        ffs_names = tuple(plot_info["form factors"].keys())
         for ff in ffs_names:
-            infos = impl_info["form factors"][ff]
+            infos = plot_info["form factors"][ff]
             ffs_tex = [
                 infos["tex"],
             ]
@@ -161,3 +192,48 @@ def compare(process, impl, test_info):
 
             plot_data(infos, ffs_func, f_error_stat, ff, ffs_tex, normalize, is_HO)
             combine_plots(infos, infos["figure_path"], infos["ref_figure_path"])
+
+
+def compare_all(impl, test_info, processes=("B->K*", "Bs->phi", "Bs->K*"),
+                figure_path="tests/figures/LQCD-2015-all-processes.pdf"):
+    """Draw vector and tensor form factors for all processes in one 2x3 figure."""
+    groups = ("vector", "tensor")
+    fig, axes = plt.subplots(2, len(processes), figsize=(15, 8), squeeze=False)
+
+    for column, process in enumerate(processes):
+        impl_info = test_info[process][impl]
+        plot_info = impl_info["plots"]
+        ffs_impl = HMFF.formfactors[process].get_impl(impl)
+
+        for row, group_name in enumerate(groups):
+            group_info = plot_info[group_name]
+            ffs_names = tuple(group_info["form factors"])
+            first_info = group_info["form factors"][ffs_names[0]]
+            qsq = np.linspace(
+                first_info.get("qsq_min", group_info.get("qsq_min", 0)),
+                first_info.get("qsq_max", group_info.get("qsq_max", 20)),
+                first_info.get("qsq_steps", group_info.get("qsq_steps", 200)),
+            )
+            axis = axes[row, column]
+
+            for ff_name in ffs_names:
+                ff_func = ffs_impl.form_factor_function(ff_name)
+                ff_values = ff_func(qsq)
+                axis.plot(qsq, ff_values, label=group_info["form factors"][ff_name]["tex"])
+
+                ff_error = ffs_impl.get_sigma_f_stat(ff_name)(qsq)
+                if np.any(np.asarray(ff_error) != 0):
+                    axis.fill_between(qsq, ff_values - ff_error, ff_values + ff_error, alpha=0.25)
+
+            axis.set_xlim(qsq[0], qsq[-1])
+            axis.set_ylim(first_info.get("f_min", 0), first_info.get("f_max", 2.5))
+            axis.set_xlabel(r"$q^2$ (GeV$^2$)")
+            axis.set_ylabel("form factor")
+            title = {"B->K*": r"$B \to K^*$", "Bs->phi": r"$B_s \to \phi$", "Bs->K*": r"$B_s \to K^*$"}
+            axis.set_title(title.get(process, process))
+            axis.legend()
+
+    fig.tight_layout()
+    fig.savefig(figure_path)
+    display(fig)
+    plt.close(fig)

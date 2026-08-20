@@ -62,6 +62,7 @@ class Impl:
             "z-expansions 1": (lambda x: x, zp.f_z_expansions_1),
             "z-expansions 2": (lambda x: x, zp.f_z_expansions_2),
             "z-expansions 3": (lambda x: x, zp.f_z_expansions_3),
+            "Horgan 2015": (lambda x: x, zp.f_horgan_2015),
         }
 
         # self.ff_tex_names = kwargs.get('ff_tex_names')  # 存储形状因子的TeX名称的列表
@@ -171,6 +172,17 @@ class Impl:
                     ff_position = ff_names.index(ff_name)
                     gradient_indices = [0, 1 + ff_position]
                     gradient_local_indices = [0, 1]
+        if cov_a is None and class_func == "Horgan 2015":
+            covariance_key = "tensor_covariance_matrix" if ff_name.startswith("T") else "covariance_matrix"
+            covariance_config = self.config.get(covariance_key, {})
+            sigmas = np.asarray(covariance_config.get("sigmas", []), dtype=float)
+            correlations = np.asarray(covariance_config.get("correlations", []), dtype=float)
+            covariance_order = covariance_config.get("order", [])
+            if sigmas.size and correlations.shape == (sigmas.size, sigmas.size):
+                cov_a = correlations * np.outer(sigmas, sigmas)
+                parameter_names = [f"{ff_name}_a0", f"{ff_name}_a1"]
+                gradient_indices = [covariance_order.index(name) for name in parameter_names]
+                gradient_local_indices = [0, 1]
         if cov_a is None:
             # 返回一个始终返回0的函数
             return lambda qsq: np.zeros_like(qsq) if hasattr(qsq, '__len__') else 0.0

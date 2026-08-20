@@ -52,7 +52,8 @@ def test_yaml_top_level_keys(yaml_file):
                 f"Third-level value of '{sub_key}' in {yaml_file} is not a dictionary"
 
             allowed_keys = {
-                'ref', 'author', 'citation key', 'method', 'comment', 'form factors', 'covariance_matrix'
+                'ref', 'author', 'citation key', 'method', 'comment', 'form factors',
+                'covariance_matrix', 'combined', 'plot', 'plots', 'groups'
             }
             for k in third_level.keys():
                 assert k in allowed_keys, \

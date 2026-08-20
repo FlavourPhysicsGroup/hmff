@@ -221,6 +221,22 @@ def get_z1(qsq, pars):
     return z
 
 
+def f_horgan_2015(qsq, pars):
+    """Central-value fit used for the 2015 B -> V lattice form factors."""
+    m_initial = pars.get("m_initial")
+    m_final = pars.get("m_final")
+    t0 = pars.get("t0")
+    dm = pars.get("dm") / 1000.0
+    a0, a1 = pars.get("a")
+
+    t_plus = (m_initial + m_final) ** 2
+    sqrt_tplus_qsq = np.sqrt(t_plus - qsq)
+    sqrt_tplus_t0 = np.sqrt(t_plus - t0)
+    z = (sqrt_tplus_qsq - sqrt_tplus_t0) / (sqrt_tplus_qsq + sqrt_tplus_t0)
+    pole_mass = m_initial + dm
+    return (a0 + a1 * z) / (1 - qsq / pole_mass**2)
+
+
 # pars: mm1_, mm_2, mp_1, mp_2 (m_1, m_2), m_star, a_0, a_1, a_2, ..., a_N-1
 def f_BCL_1(qsq, pars):
     """
@@ -365,6 +381,20 @@ def f_z_expansions_3(qsq, pars):
 #求误差，先对函数求梯度
 def df_da(qsq, pars, class_func):
     """计算形因子对参数的解析导数（返回梯度向量）"""
+    if class_func == "Horgan 2015":
+        m_initial = pars.get("m_initial")
+        m_final = pars.get("m_final")
+        t0 = pars.get("t0")
+        dm = pars.get("dm") / 1000.0
+        _, a1 = pars.get("a")
+        t_plus = (m_initial + m_final) ** 2
+        sqrt_tplus_qsq = np.sqrt(t_plus - qsq)
+        sqrt_tplus_t0 = np.sqrt(t_plus - t0)
+        z = (sqrt_tplus_qsq - sqrt_tplus_t0) / (sqrt_tplus_qsq + sqrt_tplus_t0)
+        pole_mass = m_initial + dm
+        pole_factor = 1 / (1 - qsq / pole_mass**2)
+        return np.asarray([pole_factor, pole_factor * z], dtype=float)
+
     if class_func.startswith("z-expansions"):
         return df_dz_expansion(qsq, pars, class_func)
 
