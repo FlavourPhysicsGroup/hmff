@@ -141,7 +141,7 @@ B->omega:
         parameter: {a1:  1.321, a2: -1.040, m1: 5.28, m2: 5.871} 
       A1:
         parameterization: one pole 
-        parameter: {a: -0.217, m: 6.083}
+        parameter: {a: 0.217, m: 6.083}
       A2:
         parameterization: double pole 2
         parameter: {a1: 0.006, a2:  0.192, m: 6.421}
