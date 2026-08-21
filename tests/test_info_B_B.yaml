@@ -218,188 +218,329 @@ Lambda_b->Lambda:
 
 Lambda_b->Lambda_1520:
   LQCD-2021-nominal:
-    ref: arXiv:2107.13140
-    author: S. Meinel, G. Rendon
-    citation key: Meinel:2021mdj
-    method: LQCD
-    comment: Lambda_b->Lambda_1520 form factors
-    status: UNFINISHED
+    combined: False
+    normalize_qsq: False
+    xaxis: w          # 论文 Fig.8/9 横轴是 w, 范围 1.00~1.05
+    w_min: 1.0
+    w_max: 1.05
     form factors:
       f0:
-        parameterization: 
-        parameter: {a0: 1.8834605037511, a1: -7.1161442050211, m_pole: 5.711}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/f0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/f0.pdf
+        tex: "$f_0$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 6
       f+:
-        parameterization: 
-        parameter: {a1: 0.77876906144177, m_pole: 5.416}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/f+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/f+.pdf
+        tex: "$f_+$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0.027
+        f_max: 0.165
       fp:
-        parameterization: 
-        parameter: {a1: 1.2484883955446, m_pole: 5.416}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/fp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/fp.pdf
+        tex: "$f_\\perp$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: -0.079
+        f_max: 0.123
       fpp:
-        parameterization: 
-        parameter: {a0: 0.020516979544471, a1: -0.059952584699694, m_pole: 5.416}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/fpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/fpp.pdf
+        tex: "$f_{\\perp'}$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0.01
+        f_max: 0.076
       g0:
-        parameterization: 
-        parameter: {a1: 0.79319040021275 , m_pole: 5.367}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/g0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/g0.pdf
+        tex: "$g_0$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 0.14
       g+:
-        parameterization: 
-        parameter: {a1: -6.0016348667129, m_pole: 5.750}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/g+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/g+.pdf
+        tex: "$g_+$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 5
       gp:
-        parameterization: 
-        parameter: {a0: 1.577211911179, a1:  -5.9098484297958, m_pole: 5.711}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/gp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/gp.pdf
+        tex: "$g_\\perp$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 5
       gpp:
-        parameterization: 
-        parameter: {a0: -0.020391596402267, a1: 0.012069721932981, m_pole: 5.711}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/gpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/gpp.pdf
+        tex: "$g_{\\perp'}$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: -0.069
+        f_max: -0.01
       h+:
-        parameterization:
-        parameter: {a1: 1.1362078948992, m_pole: 5.416}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/h+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/h+.pdf
+        tex: "$h_+$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: -0.104
+        f_max: 0.086
       hp:
-        parameterization: 
-        parameter: {a1: 0.76743101805396 , m_pole: 5.416}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/hp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/hp.pdf
+        tex: "$h_\\perp$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: -0.007
+        f_max: 0.132
       hpp:
-        parameterization:   
-        parameter: {a0: -0.0089954317460326, a1: 0.011015756154881, m_pole: 5.416}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/hpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/hpp.pdf
+        tex: "$h_{\\perp'}$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: -0.049
+        f_max: 0.009
       ht+:
-        parameterization: 
-        parameter: {a1: -5.7445655491096, m_pole: 5.750}
-        comment: a from Table VIII, m_pole from Table VII
-      htp:   
-        parameterization: 
-        parameter: {a0: 1.6298726199579, a1: -6.234290323327, m_pole: 5.750}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/ht+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/ht+.pdf
+        tex: "$\\tilde h_+$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 5
+      htp:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/htp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/htp.pdf
+        tex: "$\\tilde h_\\perp$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 5
       htpp:
-        parameterization: 
-        parameter: {a0: 0.069809378816264, a1: -0.35715262147761, m_pole: 5.750}
-        comment: a from Table VIII, m_pole from Table VII     
-    covariance_matrix: 
-      value:
-        - [  0.00596094,  0.00583406, -0.00077658,  0.00464411,  0.00001025,  0.00034349, -0.00151680,  0.00396850,  0.00511199, -0.00782758, -0.00008833,  0.00030455,  0.00510641, -0.00127534,  0.00418854,  0.00002348,  0.00045623, -0.00000591, -0.00005089,  0.00451293, -0.00557379,  0.00583406, -0.00077658,  0.00464411,  0.00001025 ]
-        - [  0.00583406,  0.01353927, -0.11656341,  0.00672858,  0.00003474,  0.00030591, -0.07133734,  0.00451594,  0.01079165, -0.07402156, -0.00005952, -0.00041234,  0.01068906, -0.06808020,  0.00471473,  0.00004389,  0.00051353, -0.00001332, -0.00004280,  0.00583524, -0.07159180,  0.01353927, -0.11656341,  0.00672858,  0.00003474 ]
-        - [ -0.00077658, -0.11656341,  3.16978896, -0.01778262, -0.00005367,  0.00270214,  1.39476420, -0.00480655, -0.06899660,  1.41093114, -0.00064871,  0.01095178, -0.06682069,  1.37448209, -0.00267652,  0.00026735,  0.00580050,  0.00004335, -0.00083099, -0.01684997,  1.38997230, -0.11656341,  3.16978896, -0.01778262, -0.00005367 ]
-        - [  0.00464411,  0.00672858, -0.01778262,  0.02250534,  0.00002829,  0.00018425, -0.00789126,  0.00450899,  0.00567161, -0.02015903, -0.00005993, -0.00028828,  0.00559249, -0.01170326,  0.00428272, -0.00004008,  0.00208765, -0.00000870, -0.00004907,  0.01736595, -0.01586524,  0.00672858, -0.01778262,  0.02250534,  0.00002829 ]
-        - [  0.00001025,  0.00003474, -0.00005367,  0.00002829,  0.00000066, -0.00000106, -0.00001049,  0.00001471,  0.00002476, -0.00002079, -0.00000031,  0.00000301,  0.00002617, -0.00001802,  0.00001511,  0.00000106,  0.00000682, -0.00000017, -0.00000015,  0.00001936, -0.00002000,  0.00003474, -0.00005367,  0.00002829,  0.00000066 ]
-        - [  0.00034349,  0.00030591,  0.00270214,  0.00018425, -0.00000106,  0.00018361,  0.00188126,  0.00023281,  0.00029160,  0.00144503, -0.00000672,  0.00006835,  0.00027514,  0.00211961,  0.00023088, -0.00001664,  0.00041495, -0.00000002, -0.00001814,  0.00007215,  0.00152492,  0.00030591,  0.00270214,  0.00018425, -0.00000106 ]
-        - [ -0.00151680, -0.07133734,  1.39476420, -0.00789126, -0.00001049,  0.00188126,  2.13273484, -0.00139974, -0.08258842,  1.72591424,  0.00009331,  0.00313012, -0.06663330,  1.26280983, -0.00202847,  0.00031614,  0.00610772,  0.00004452, -0.00093258, -0.00739907,  1.31973238, -0.07133734,  1.39476420, -0.00789126, -0.00001049 ]
-        - [  0.00396850,  0.00451594, -0.00480655,  0.00450899,  0.00001471,  0.00023281, -0.00139974,  0.00452676,  0.00420641, -0.01496952, -0.00007119,  0.00040203,  0.00414272, -0.00558633,  0.00368850,  0.00003940,  0.00052654, -0.00000639, -0.00004460,  0.00404994, -0.00899286,  0.00451594, -0.00480655,  0.00450899,  0.00001471 ]
-        - [  0.00511199,  0.01079165, -0.06899660,  0.00567161,  0.00002476,  0.00029160, -0.08258842,  0.00420641,  0.01040767, -0.08616415, -0.00004633, -0.00037839,  0.00985220, -0.06590467,  0.00428730,  0.00005084,  0.00026688, -0.00001061, -0.00003975,  0.00493559, -0.06788484,  0.01079165, -0.06899660,  0.00567161,  0.00002476 ]
-        - [ -0.00782758, -0.07402156,  1.41093114, -0.02015903, -0.00002079,  0.00144503,  1.72591424, -0.01496952, -0.08616415,  2.10206410, -0.00089861,  0.01116103, -0.06889168,  1.30534405, -0.00908121, -0.00031050,  0.00790304,  0.00003819, -0.00047886, -0.01910813,  1.26324046, -0.07402156,  1.41093114, -0.02015903, -0.00002079 ]
-        - [ -0.00008833, -0.00005952, -0.00064871, -0.00005993, -0.00000031, -0.00000672,  0.00009331, -0.00007119, -0.00004633, -0.00089861,  0.00005004, -0.00035573, -0.00005434, -0.00071916, -0.00007961,  0.00002127, -0.00014943, -0.00000001, -0.00000345, -0.00004709, -0.00033215, -0.00005952, -0.00064871, -0.00005993, -0.00000031 ]
-        - [  0.00030455, -0.00041234,  0.01095178, -0.00028828,  0.00000301,  0.00006835,  0.00313012,  0.00040203, -0.00037839,  0.01116103, -0.00035573,  0.00700246, -0.00029185,  0.00706739,  0.00028000, -0.00020038,  0.00410560, -0.00000122,  0.00003606, -0.00015555,  0.00629992, -0.00041234,  0.01095178, -0.00028828,  0.00000301 ]
-        - [  0.00510641,  0.01068906, -0.06682069,  0.00559249,  0.00002617,  0.00027514, -0.06663330,  0.00414272,  0.00985220, -0.06889168, -0.00005434, -0.00029185,  0.01017276, -0.07920608,  0.00426753,  0.00009088, -0.00025549, -0.00001165, -0.00003734,  0.00489789, -0.07864876,  0.01068906, -0.06682069,  0.00559249,  0.00002617 ]
-        - [ -0.00127534, -0.06808020,  1.37448209, -0.01170326, -0.00001802,  0.00211961,  1.26280983, -0.00558633, -0.06590467,  1.30534405, -0.00071916,  0.00706739, -0.07920608,  2.06566478, -0.00121375, -0.00124881,  0.02024365,  0.00006130, -0.00059380, -0.01442651,  1.66402233, -0.06808020,  1.37448209, -0.01170326, -0.00001802 ]
-        - [  0.00418854,  0.00471473, -0.00267652,  0.00428272,  0.00001511,  0.00023088, -0.00202847,  0.00368850,  0.00428730, -0.00908121, -0.00007961,  0.00028000,  0.00426753, -0.00121375,  0.00430707, -0.00000606,  0.00047387, -0.00000120, -0.00004033,  0.00318621, -0.00806854,  0.00471473, -0.00267652,  0.00428272,  0.00001511 ]
-        - [  0.00002348,  0.00004389,  0.00026735, -0.00004008,  0.00000106, -0.00001664,  0.00031614,  0.00003940,  0.00005084, -0.00031050,  0.00002127, -0.00020038,  0.00009088, -0.00124881, -0.00000606,  0.00008976, -0.00112530, -0.00000171, -0.00000754,  0.00009267,  0.00112593,  0.00004389,  0.00026735, -0.00004008,  0.00000106 ]
-        - [  0.00045623,  0.00051353,  0.00580050,  0.00208765,  0.00000682,  0.00041495,  0.00610772,  0.00052654,  0.00026688,  0.00790304, -0.00014943,  0.00410560, -0.00025549,  0.02024365,  0.00047387, -0.00112530,  0.02636746,  0.00000365, -0.00007447,  0.00090640, -0.00720791,  0.00051353,  0.00580050,  0.00208765,  0.00000682 ]
-        - [ -0.00000591, -0.00001332,  0.00004335, -0.00000870, -0.00000017, -0.00000002,  0.00004452, -0.00000639, -0.00001061,  0.00003819, -0.00000001, -0.00000122, -0.00001165,  0.00006130, -0.00000120, -0.00000171,  0.00000365,  0.00000022, -0.00000011, -0.00001970,  0.00002410, -0.00001332,  0.00004335, -0.00000870, -0.00000017 ]
-        - [ -0.00005089, -0.00004280, -0.00083099, -0.00004907, -0.00000015, -0.00001814, -0.00093258, -0.00004460, -0.00003975, -0.00047886, -0.00000345,  0.00003606, -0.00003734, -0.00059380, -0.00004033, -0.00000754, -0.00007447, -0.00000011,  0.00002829, -0.00001762, -0.00094364, -0.00004280, -0.00083099, -0.00004907, -0.00000015 ]
-        - [  0.00451293,  0.00583524, -0.01684997,  0.01736595,  0.00001936,  0.00007215, -0.00739907,  0.00404994,  0.00493559, -0.01910813, -0.00004709, -0.00015555,  0.00489789, -0.01442651,  0.00318621,  0.00009267,  0.00090640, -0.00001970, -0.00001762,  0.02061492, -0.01127243,  0.00583524, -0.01684997,  0.01736595,  0.00001936 ]
-        - [ -0.00557379, -0.07159180,  1.38997230, -0.01586524, -0.00002000,  0.00152492,  1.31973238, -0.00899286, -0.06788484,  1.26324046, -0.00033215,  0.00629992, -0.07864876,  1.66402233, -0.00806854,  0.00112593, -0.00720791,  0.00002410, -0.00094364, -0.01127243,  2.01485592, -0.07159180,  1.38997230, -0.01586524, -0.00002000 ]
-        - [  0.00583406,  0.01353927, -0.11656341,  0.00672858,  0.00003474,  0.00030591, -0.07133734,  0.00451594,  0.01079165, -0.07402156, -0.00005952, -0.00041234,  0.01068906, -0.06808020,  0.00471473,  0.00004389,  0.00051353, -0.00001332, -0.00004280,  0.00583524, -0.07159180,  0.01353927, -0.11656341,  0.00672858,  0.00003474 ]
-        - [ -0.00077658, -0.11656341,  3.16978896, -0.01778262, -0.00005367,  0.00270214,  1.39476420, -0.00480655, -0.06899660,  1.41093114, -0.00064871,  0.01095178, -0.06682069,  1.37448209, -0.00267652,  0.00026735,  0.00580050,  0.00004335, -0.00083099, -0.01684997,  1.38997230, -0.11656341,  3.16978896, -0.01778262, -0.00005367 ]
-        - [  0.00464411,  0.00672858, -0.01778262,  0.02250534,  0.00002829,  0.00018425, -0.00789126,  0.00450899,  0.00567161, -0.02015903, -0.00005993, -0.00028828,  0.00559249, -0.01170326,  0.00428272, -0.00004008,  0.00208765, -0.00000870, -0.00004907,  0.01736595, -0.01586524,  0.00672858, -0.01778262,  0.02250534,  0.00002829 ]
-        - [  0.00001025,  0.00003474, -0.00005367,  0.00002829,  0.00000066, -0.00000106, -0.00001049,  0.00001471,  0.00002476, -0.00002079, -0.00000031,  0.00000301,  0.00002617, -0.00001802,  0.00001511,  0.00000106,  0.00000682, -0.00000017, -0.00000015,  0.00001936, -0.00002000,  0.00003474, -0.00005367,  0.00002829,  0.00000066 ]
-      comment: from Ancillary files Lambdab_Lambdastar_covariance.dat
+        figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/htpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/htpp.pdf
+        tex: "$\\tilde h_{\\perp'}$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 0.25
 
-
-    # 请直接用 arXiv网页上的Ancillary files
   LQCD-2021-HO:
-    state: UNFINISHED
-    ref: arXiv:2107.13140
-    author: S. Meinel, G. Rendon
-    citation key: Meinel:2021mdj
-    method: LQCD
+    combined: False
+    normalize_qsq: False
+    xaxis: w          # 论文 Fig.8/9 横轴是 w, 范围 1.00~1.05
+    w_min: 1.0
+    w_max: 1.05
     form factors:
       f0:
-        parameterization: 
-        parameter: {a0: 1.8663399071612, a1: -6.9974274101017, m_pole: 5.711}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/f0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/f0.pdf
+        tex: "$f_0$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 6
       f+:
-        parameterization: 
-        parameter: {a1: 0.79084196011209, m_pole: 5.416}
-        comment: a from Table VIII, m_pole from Table VII 
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/f+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/f+.pdf
+        tex: "$f_+$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0.027
+        f_max: 0.165
       fp:
-        parameterization: 
-        parameter: {a1: 1.2293120179091, m_pole: 5.416}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/fp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/fp.pdf
+        tex: "$f_\\perp$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: -0.079
+        f_max: 0.123
       fpp:
-        parameterization: 
-        parameter: {a0: 0.02024506120837, a1: -0.060031264509051, m_pole: 5.416}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/fpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/fpp.pdf
+        tex: "$f_{\\perp'}$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0.01
+        f_max: 0.076
       g0:
-        parameterization: 
-        parameter: {a1: 0.78993601944473, m_pole: 5.367}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/g0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/g0.pdf
+        tex: "$g_0$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 0.14
       g+:
-        parameterization: 
-        parameter: {a1: -6.0388737867752, m_pole: 5.750}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/g+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/g+.pdf
+        tex: "$g_+$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 5
       gp:
-        parameterization: 
-        parameter: {a0: 1.5701640251567, a1: -5.7609686903062, m_pole: 5.711}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/gp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/gp.pdf
+        tex: "$g_\\perp$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 5
       gpp:
-        parameterization: 
-        parameter: {a0: -0.019911955398007, a1: 0.012145215319231, m_pole: 5.711}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/gpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/gpp.pdf
+        tex: "$g_{\\perp'}$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: -0.069
+        f_max: -0.01
       h+:
-        parameterization:
-        parameter: {a1: 1.1334434152557, m_pole: 5.416}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/h+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/h+.pdf
+        tex: "$h_+$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: -0.104
+        f_max: 0.086
       hp:
-        parameterization: 
-        parameter: {a1: 0.75730799551792, m_pole: 5.416}
-        comment: a from Table VIII, m_pole from Table VII 
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/hp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/hp.pdf
+        tex: "$h_\\perp$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: -0.007
+        f_max: 0.132
       hpp:
-        parameterization:   
-        parameter: {a0: -0.0090406193882528, a1:  0.010703820323101, m_pole: 5.416}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/hpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/hpp.pdf
+        tex: "$h_{\\perp'}$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: -0.049
+        f_max: 0.009
       ht+:
-        parameterization: 
-        parameter: {a1: -5.9907782618205, m_pole: 5.750}
-        comment: a from Table VIII, m_pole from Table VII
-      htp:   
-        parameterization: 
-        parameter: {a0: 1.6371568527356, a1: -5.975781137199, m_pole: 5.750}
-        comment: a from Table VIII, m_pole from Table VII
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/ht+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/ht+.pdf
+        tex: "$\\tilde h_+$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 5
+      htp:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/htp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/htp.pdf
+        tex: "$\\tilde h_\\perp$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 5
       htpp:
-        parameterization: 
-        parameter: {a0: 0.070561012134978, a1: -0.36006639427481, m_pole: 5.750}
-        comment: a from Table VIII, m_pole from Table VII    
-    covariance_matrix:
-      value:
-        - [  0.00771172,  0.00680026, -0.00330216,  0.00541157,  0.00002101,  0.00030044, -0.00295473,  0.00413777,  0.00525308, -0.00529402, -0.00008573,  0.00027808,  0.00537795, -0.00262865,  0.00440300,  0.00003308,  0.00038467, -0.00000900, -0.00004705,  0.00483296 ]
-        - [  0.00680026,  0.02138107, -0.12220852,  0.00862930,  0.00006464,  0.00022426, -0.07073747,  0.00486223,  0.01114463, -0.07348887, -0.00006616, -0.00043700,  0.01149716, -0.06935470,  0.00520334,  0.00006545,  0.00024169, -0.00001906, -0.00003281,  0.00682499 ]
-        - [ -0.00330216, -0.12220852,  3.22791866, -0.02361487, -0.00014336,  0.00288951,  1.41150681, -0.00627444, -0.07003006,  1.38676827, -0.00059813,  0.01107479, -0.07169817,  1.37948225, -0.00237395,  0.00020467,  0.00637364,  0.00003670, -0.00082205, -0.01709183 ]
-        - [  0.00541157,  0.00862930, -0.02361487,  0.02736199,  0.00005684,  0.00010924, -0.00888928,  0.00478675,  0.00593616, -0.01859681, -0.00006143, -0.00033813,  0.00629304, -0.01344701,  0.00482518,  0.00001792,  0.00158567, -0.00001223, -0.00004078,  0.01809168 ]
-        - [  0.00002101,  0.00006464, -0.00014336,  0.00005684,  0.00000138, -0.00000214, -0.00001755,  0.00002053,  0.00003093, -0.00002104, -0.00000047,  0.00000291,  0.00003568, -0.00002927,  0.00002258,  0.00000158,  0.00000103, -0.00000028, -0.00000005,  0.00003301 ]
-        - [  0.00030044,  0.00022426,  0.00288951,  0.00010924, -0.00000214,  0.00020163,  0.00168296,  0.00022584,  0.00028441,  0.00153243, -0.00000645,  0.00006820,  0.00027445,  0.00201846,  0.00022667, -0.00001746,  0.00043109,  0.00000001, -0.00001784,  0.00006064 ]
-        - [ -0.00295473, -0.07073747,  1.41150681, -0.00888928, -0.00001755,  0.00168296,  2.65083247, -0.01039351, -0.09046500,  1.40365991, -0.00016953,  0.00686381, -0.07038858,  1.28684815, -0.00399345, -0.00005732,  0.01161394,  0.00002887, -0.00073407, -0.00751418 ]
-        - [  0.00413777,  0.00486223, -0.00627444,  0.00478675,  0.00002053,  0.00022584, -0.01039351,  0.00609936,  0.00506092, -0.01268798, -0.00007529,  0.00032339,  0.00445238, -0.00739951,  0.00398587,  0.00005303,  0.00029507, -0.00001031, -0.00004243,  0.00444395 ]
-        - [  0.00525308,  0.01114463, -0.07003006,  0.00593616,  0.00003093,  0.00028441, -0.09046500,  0.00506092,  0.01402413, -0.09097250, -0.00005948, -0.00046691,  0.01051638, -0.06755192,  0.00468641,  0.00007102, -0.00004445, -0.00001571, -0.00003353,  0.00543797 ]
-        - [ -0.00529402, -0.07348887,  1.38676827, -0.01859681, -0.00002104,  0.00153243,  1.40365991, -0.01268798, -0.09097250,  2.46727823, -0.00051000,  0.00817828, -0.07388398,  1.28402522, -0.00568126, -0.00010913,  0.00460623,  0.00004058, -0.00063831, -0.01630356 ]
-        - [ -0.00008573, -0.00006616, -0.00059813, -0.00006143, -0.00000047, -0.00000645, -0.00016953, -0.00007529, -0.00005948, -0.00051000,  0.00005028, -0.00035850, -0.00003419, -0.00054794, -0.00008776,  0.00002306, -0.00016378,  0.00000017, -0.00000364, -0.00006386 ]
-        - [  0.00027808, -0.00043700,  0.01107479, -0.00033813,  0.00000291,  0.00006820,  0.00686381,  0.00032339, -0.00046691,  0.00817828, -0.00035850,  0.00708759, -0.00038689,  0.00807988,  0.00033678, -0.00020790,  0.00418429, -0.00000284,  0.00003790,  0.00131469 ]
-        - [  0.00537795,  0.01149716, -0.07169817,  0.00629304,  0.00003568,  0.00027445, -0.07038858,  0.00445238,  0.01051638, -0.07388398, -0.00003419, -0.00038689,  0.02065758, -0.10883580,  0.00468546,  0.00047274, -0.00222140, -0.00001930, -0.00003226,  0.00591038 ]
-        - [ -0.00262865, -0.06935470,  1.37948225, -0.01344701, -0.00002927,  0.00201846,  1.28684815, -0.00739951, -0.06755192,  1.28402522, -0.00054794,  0.00807988, -0.10883580,  2.51371397, -0.00346956, -0.00163486,  0.01780415,  0.00003979, -0.00068537, -0.01212756 ]
-        - [  0.00440300,  0.00520334, -0.00237395,  0.00482518,  0.00002258,  0.00022667, -0.00399345,  0.00398587,  0.00468641, -0.00568126, -0.00008776,  0.00033678,  0.00468546, -0.00346956,  0.00740577,  0.00000849,  0.00040267, -0.00002380, -0.00000796,  0.00644808 ]
-        - [  0.00003308,  0.00006545,  0.00020467,  0.00001792,  0.00000158, -0.00001746,  0.00005732,  0.00005303,  0.00007102, -0.00010913,  0.00002306, -0.00020790,  0.00047274, -0.00163486,  0.00000849,  0.00012094, -0.00126272, -0.00000195, -0.00000748,  0.00013351 ]
-        - [  0.00038467,  0.00024169,  0.00637364,  0.00158567,  0.00000103,  0.00043109,  0.01161394,  0.00029507, -0.00004445,  0.00460623, -0.00016378,  0.00418429, -0.00222140,  0.01780415,  0.00040267, -0.00126272,  0.02761240,  0.00000471, -0.00006898,  0.00062521 ]
-        - [ -0.00000900, -0.00001906,  0.00003670, -0.00001223, -0.00000028,  0.00000001,  0.00002887, -0.00001031, -0.00001571,  0.00004058,  0.00000017, -0.00000284, -0.00001930,  0.00003979, -0.00002380, -0.00000195,  0.00000471,  0.00000058, -0.00000046, -0.00005799 ]
-        - [ -0.00004705, -0.00003281, -0.00082205, -0.00004078, -0.00000005, -0.00001784, -0.00073407, -0.00004243, -0.00003353, -0.00063831, -0.00000364,  0.00003790, -0.00003226, -0.00068537, -0.00000796, -0.00000748, -0.00006898, -0.00000046,  0.00002776,  0.00003118 ]
-        - [  0.00483296,  0.00682499, -0.01709183,  0.01809168,  0.00003301,  0.00006064, -0.00751418,  0.00444395,  0.00543797, -0.01630356, -0.00006386,  0.00131469,  0.00591038, -0.01212756,  0.00644808,  0.00013351,  0.00062521, -0.00005799,  0.02828587, -0.01462585 ]
-      comment: from Ancillary files Lambdab_Lambdastar_covariance_HO.dat
+        figure_path: tests/figures/Lambda_b-Lambda_1520/HO/htpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/htpp.pdf
+        tex: "$\\tilde h_{\\perp'}$"
+        qsq_min: 15.956922
+        qsq_max: 16.81082
+        qsq_steps: 100
+        w_min: 1.0
+        w_max: 1.05
+        f_min: 0
+        f_max: 0.25
 
-    # 请直接用 arXiv网页上的Ancillary files
   LQCD-2021:
     ref: arXiv:2107.13140
     author: S. Meinel, G. Rendon
@@ -407,64 +548,19 @@ Lambda_b->Lambda_1520:
     method: LQCD
     status: UNFINISHED
 
-    # 类似于Lambda_b->Lambda的情况，使用LQCD-2021-nominal和LQCD-2021-HO的结果来计算中心值和不确定度。
-
   LFQM-2022:
     ref: arXiv:2210.04640
     author: Yu-Shuai Li, Su-Ping Jin, Jing Gao, Xiang Liu
     citation key: Li:2022nim
     method: LFQM
     status: UNFINISHED
-    
+
   LCSR-2024:
     ref: arXiv:2412.06515
     author: Ke-Sheng Huang, Hua-Yu Jiang, Fu-Sheng Yu
     citation key: Huang:2024oik
     method: LCSR
     status: UNFINISHED
-    form factors:
-      fV0:
-        parameterization: 
-        parameter: {a0:  0.074, a1: -0.245, m_1: 5.279, m_2: 0.494, m_pole: 5.416}
-        comment: a from Table IV, m_1, m_2 from Table I, m_pole from Table III
-      fVperp:
-        parameterization: 
-        parameter: {a0: 0.093, a1: -0.309, m_1: 5.279, m_2: 0.494, m_pole: 5.416}
-        comment: a from Table IV, m_1, m_2 from Table I, m_pole from Table III
-      fVt:
-        parameterization: 
-        parameter: {a1: -0.206,  m_1: 5.279, m_2: 0.494, m_pole: 5.711}
-        comment: a from Table IV, m_1, m_2 from Table I, m_pole from Table III
-      fT0:
-        parameterization: 
-        parameter: {a0: 0.074, a1: -0.245, m_1: 5.279, m_2: 0.494, m_pole: 5.416}
-        comment: a from Table IV, m_1, m_2 from Table I, m_pole from Table III
-      fTperp:
-        parameterization: 
-        parameter: {a1: -0.240, m_1: 5.279, m_2: 0.494, m_pole: 5.416}
-        comment: a from Table IV, m_1, m_2 from Table I, m_pole from Table III
-      gA0:
-        parameterization: 
-        parameter: {a0:  0.064, a1: -0.186, m_1: 5.279, m_2: 0.494, m_pole: 5.367}
-        comment: a from Table IV, m_1, m_2 from Table I, m_pole from Table III
-      gAperp:
-        parameterization: 
-        parameter: {a1: -0.209, m_1: 5.279, m_2: 0.494, m_pole: 5.750}
-        comment: a from Table IV, m_1, m_2 from Table I, m_pole from Table III
-      gAt:
-        parameterization:
-        parameter: {a1: -0.241, m_1: 5.279, m_2: 0.494, m_pole: 5.367}
-        comment: a from Table IV, m_1, m_2 from Table I, m_pole from Table III
-      gT0:
-        parameterization: 
-        parameter: {a1: -0.207, m_1: 5.279, m_2: 0.494, m_pole: 5.750}
-        comment: a from Table IV, m_1, m_2 from Table I, m_pole from Table III
-      gTperp:
-        parameterization: 
-        parameter: {a0: 0.063, a1: -0.183, m_1: 5.279, m_2: 0.494, m_pole: 5.750}
-        comment: a from Table IV, m_1, m_2 from Table I, m_pole from Table III
-
-
 
 Xi_c->Xi:
   LQCD-2025:

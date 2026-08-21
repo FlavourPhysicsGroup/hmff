@@ -381,6 +381,9 @@ def f_z_expansions_3(qsq, pars):
 #求误差，先对函数求梯度
 def df_da(qsq, pars, class_func):
     """计算形因子对参数的解析导数（返回梯度向量）"""
+    if class_func == "pole w expansion":
+        from .pole_w_expansion import df_da as df_da_pole_w
+        return df_da_pole_w(qsq, pars)
     if class_func == "Horgan 2015":
         m_initial = pars.get("m_initial")
         m_final = pars.get("m_final")

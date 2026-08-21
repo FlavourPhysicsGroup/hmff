@@ -4,6 +4,7 @@ from copy import deepcopy
 
 from .src import pole_dominance as pole
 from .src import z_parameterization as zp
+from .src import pole_w_expansion as pwe
 import numpy as np 
 
 
@@ -63,6 +64,10 @@ class Impl:
             "z-expansions 2": (lambda x: x, zp.f_z_expansions_2),
             "z-expansions 3": (lambda x: x, zp.f_z_expansions_3),
             "Horgan 2015": (lambda x: x, zp.f_horgan_2015),
+            "pole w expansion": (
+                pwe.format_parameters_pole_w_expansion,
+                pwe.f_pole_w_expansion,
+            ),
         }
 
         # self.ff_tex_names = kwargs.get('ff_tex_names')  # 存储形状因子的TeX名称的列表
@@ -92,7 +97,8 @@ class Impl:
     @property
     def form_factor_names(self):
         """包含的形状因子名称的列表, e.g. ['f+', 'f0']"""
-        return list(self.config.get("form factors").keys())
+        ffs = self.config.get("form factors")
+        return list(ffs.keys()) if ffs else []
 
     def form_factor_function(self, ff_name) -> Callable[[float], float]:
         """获取形状因子对应的拟合函数: f(qsq)"""
@@ -103,7 +109,11 @@ class Impl:
         ff_config = self.config.get("form factors").get(ff_name)
         ff_data = deepcopy(ff_config.get("parameter"))
 
-        format_func, param_func = self._ff_fit_methods[ff_config.get("parameterization")]
+        class_func = ff_config.get("parameterization")
+        if class_func == "pole w expansion":
+            ff_data = pwe.prepare(ff_name, ff_data, self.config)
+
+        format_func, param_func = self._ff_fit_methods[class_func]
         ff_data = format_func(ff_data)
 
         # 如果形状因子f_0需要f_+的信息, 则需要更新f_0中的pars
@@ -142,12 +152,23 @@ class Impl:
         ff_config = self.config.get("form factors").get(ff_name)
 
         pars = deepcopy(ff_config.get("parameter"))
-        format_func, param_func = self._ff_fit_methods[ff_config.get("parameterization")]
-        pars = format_func(pars)
         class_func = ff_config.get("parameterization")
+        if class_func == "pole w expansion":
+            pars = pwe.prepare(ff_name, pars, self.config)
+        format_func, param_func = self._ff_fit_methods[class_func]
+        pars = format_func(pars)
         cov_a = pars.get("cov_matrices")
         gradient_indices = None
         gradient_local_indices = None
+        if cov_a is None and class_func == "pole w expansion":
+            # 全局协方差矩阵 (来自 ancillary 文件), 参数顺序见 covariance_matrix.order
+            covariance_config = self.config.get("covariance_matrix", {})
+            cov_a = covariance_config.get("value")
+            order = covariance_config.get("order")
+            if cov_a is not None and order is not None:
+                index = {tuple(k): i for i, k in enumerate(order)}
+                pars["_a0_linear"], pars["_a1_linear"] = pwe.linear_maps(ff_name, pars, index)
+                pars["_pole_w_cov_dim"] = len(order)
         if cov_a is None and class_func.startswith("z-expansions"):
             covariance_config = self.config.get("covariance_matrix", {})
             cov_a = covariance_config.get("value")

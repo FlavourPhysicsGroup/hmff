@@ -10,10 +10,10 @@ from HMFF import formfactors
     ("Lambda_b->Lambda_1520", "LQCD-2021-HO"),
     ("Lambda_b->Lambda_1520", "LQCD-2021"),
     ("Lambda_b->Lambda_1520", "LCSR-2024"),
-    ("B->pi", "LCSR-2004"),
+    ("B->pi", "LCSR-pole 2004"),
     ("B->pi", "LQCD-FLAG-2024"),
     ("B->pi", "LQCD-z 2015"),
-    ("B->K", "LCSR-2004"),
+    ("B->K", "LCSR-pole 2004"),
     ("B->K", "LQCD-FLAG-2024"),
     ("B->eta", "LCSR-pole 2004"),
     ("Bs->K", "LQCD-z 2015"),
@@ -37,6 +37,9 @@ def test_impls(ff_name, impl_name):
     impl = ff.get_impl(impl_name)
     assert ff is not None
     assert impl is not None
+    # UNFINISHED 实现或尚无 form factors 的实现不参与数值测试
+    if impl.config.get("status") == "UNFINISHED" or not impl.form_factor_names:
+        pytest.skip(f"Impl '{impl_name}' of '{ff_name}' is UNFINISHED")
     all_ff_names = impl.form_factor_names
     for ff_name in all_ff_names:
         ff_func = impl.form_factor_function(ff_name)

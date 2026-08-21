@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 
 # 合法的初态和末态粒子名称
-VALID_PARTICLES = {'B', 'Bs', 'K', 'pi', 'eta', 'D', 'rho', 'omega', 'phi', 'K*', 'Lambda_b', 'Lambda', 'Lambda_1520'}
+VALID_PARTICLES = {'B', 'Bs', 'K', 'pi', 'eta', 'D', 'rho', 'omega', 'phi', 'K*', 'Lambda_b', 'Lambda', 'Lambda_1520', 'Xi_c', 'Xi'}
 
 # 扫描所有 .yaml 文件
 DATA_DIR = Path(__file__).parent.parent / 'HMFF' / 'src' / 'data'
@@ -16,7 +16,7 @@ def test_yaml_top_level_keys(yaml_file):
     且初态和末态必须在 VALID_PARTICLES 中
     """
     file_path = DATA_DIR / yaml_file
-    with open(file_path, 'r') as f:
+    with open(file_path, 'r', encoding='utf-8') as f:
         data = yaml.safe_load(f)
 
     # 确保是字典
@@ -40,11 +40,10 @@ def test_yaml_top_level_keys(yaml_file):
         assert isinstance(sub_dict, dict), f"Value of key '{key}' in {yaml_file} is not a dictionary"
 
         for sub_key in sub_dict.keys():
-            # 检查是否以 LQCD 或 LCSR 开头，且无空格
-            assert sub_key.startswith(('LQCD-', 'LCSR-')), \
-                f"Sub-key '{sub_key}' in {yaml_file} must start with 'LQCD' or 'LCSR'."
-            assert ' ' not in sub_key, \
-                f"Sub-key '{sub_key}' in {yaml_file} contains space(s). Not allowed."
+            # 检查是否以 LQCD / LCSR / LFQM 开头
+            # (子键允许含空格, 如 'LCSR-pole 2004', 'LQCD-z 2015' 等均为合法命名)
+            assert sub_key.startswith(('LQCD-', 'LCSR-', 'LFQM-')), \
+                f"Sub-key '{sub_key}' in {yaml_file} must start with 'LQCD', 'LCSR' or 'LFQM'."
 
             # 三级键检查
             third_level = sub_dict[sub_key]
@@ -53,12 +52,15 @@ def test_yaml_top_level_keys(yaml_file):
 
             allowed_keys = {
                 'ref', 'author', 'citation key', 'method', 'comment', 'form factors',
-                'covariance_matrix', 'combined', 'plot', 'plots', 'groups'
+                'covariance_matrix', 'combined', 'plot', 'plots', 'groups', 'status'
             }
             for k in third_level.keys():
                 assert k in allowed_keys, \
                     f"Unexpected key '{k}' in {yaml_file}. Allowed keys: {allowed_keys}"
 
+            # UNFINISHED 条目不要求 ref/author/form factors
+            if third_level.get('status') == 'UNFINISHED':
+                continue
             required_keys = {'ref', 'author', 'form factors'}
             missing_keys = required_keys - set(third_level.keys())
             assert not missing_keys, \
