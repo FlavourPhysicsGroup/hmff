@@ -319,30 +319,7 @@ def add_a0_last_from_ap(f_0, pars_0, f_p, pars_p):
 
     return pars_0
 
-# old function, not used
-# When the keys satisfy the following conditions:
-# 1. a0_last = 'by_ap'
-# 2. f+.parameterization = 'BCL 1'
-# 3. f0.parameterization = 'BCL 2' or 'BCL 3'
-# the main program should call this function to update f0.a
-'''
-def add_a0_N_minus_1_from_ap(pars_p, pars_0):
-    """
-    add a0_N-1 from ap by using the relation f_p(0) = f_0(0)
 
-    Args:
-        pars_p: parameters of the form factor f+
-        pars_0: parameters of the form factor f0
-    """
-    z0 = get_z(0.0, pars_0)
-    N = len(pars_p.get("a"))  # N is the number of ap in the parameterization
-    fp_0 = f_BCL_1(0.0, pars_p)  # f_p(0)
-    a0_list = pars_0.get("a")  # a0_1, a0_2, ..., a0_N-2
-    a0_N_minus_1 = (fp_0 - sum(a * z0**n for n, a in enumerate(a0_list[:-1]))) * z0 ** (1 - N)
-    pars_0["a"].append(a0_N_minus_1)
-    return pars_0
-'''
-    
 def f_z_expansions_1(qsq, pars):
     z = get_z1(qsq, pars)
     z0 = get_z1(0, pars)
@@ -378,12 +355,302 @@ def f_z_expansions_3(qsq, pars):
 
     return f
 
+
+def format_parameter_BCL_5(pars):
+    """check the key format of the BCL 5 parameterization (LCSR-style):
+    f(q^2) = (a0 + a1 z) / (1 - q^2/m_pole^2), with z using
+    t0 = (m_initial - m_final)^2 = q^2_max (arXiv:2412.06515 LCSR
+    Lambda_b -> Lambda(1520), Eq. (30)).
+    """
+    expected_keys = {"a0", "a1", "m_pole", "m_1", "m_2", "m_initial", "m_final"}
+    if set(pars.keys()) != expected_keys:
+        raise ValueError(
+            f"Invalid parameter keys: expected {expected_keys}, got {set(pars.keys())}."
+        )
+    return pars
+
+
+def f_BCL_5(qsq, pars):
+    """BCL 5 (LCSR-style pole + z-series):
+    f(q^2) = (a0 + a1 * z(q^2)) / (1 - q^2/m_pole^2)
+    where z is evaluated with get_z using t0 definition 2,
+    i.e. t0 = (m_initial - m_final)^2 = q^2_max (so z(q^2_max) = 0).
+    """
+    a0 = pars.get("a0")
+    a1 = pars.get("a1")
+    m_pole = pars.get("m_pole")
+    # build a BCL-format parameter dict for get_z (t_+ from m_1/m_2, t0 def 2)
+    z_pars = {
+        "mp_1": pars.get("m_1"),
+        "mp_2": pars.get("m_2"),
+        "m0_1": pars.get("m_initial"),
+        "m0_2": pars.get("m_final"),
+        "t0 def": 2,
+    }
+    z = get_z(qsq, z_pars)
+    return (a0 + a1 * z) / (1 - qsq / m_pole**2)
+
+
+# ---------------------------------------------------------------------------
+# BCL 5 (LCSR-style) — a0 endpoint relations (arXiv:2412.06515)
+# ---------------------------------------------------------------------------
+# For Lambda_b -> Lambda(1520) some form factors do not have an independent a0;
+# it is fixed by the endpoint relations at q^2 = 0 or q^2 = q^2_max:
+#   a0_fVt    = a0_fV0   + z(0) (a1_fV0   - a1_fVt)
+#   a0_gAt    = a0_gA0   + z(0) (a1_gA0   - a1_gAt)
+#   a0_gAperp = a0_gA0
+#   a0_fTperp = a0_gTperp + z(0) (a1_gT0 - a1_fTperp)
+#   a0_gT0    = a0_gTperp
+# Here z(q^2_max) = 0 because t0 = q^2_max.  The order of the independent
+# parameters in the published covariance matrix is stored in the YAML
+# (covariance_matrix.order) rather than in code.
+
+BCL5_A0_ENDPOINT_FFS = ("fVt", "gAt", "gAperp", "fTperp", "gT0")
+
+
+def _z_bcl5(qsq, pars):
+    """z with t0 = (m_initial - m_final)^2 (t0 definition 2), as used by f_BCL_5."""
+    z_pars = {
+        "mp_1": pars.get("m_1"),
+        "mp_2": pars.get("m_2"),
+        "m0_1": pars.get("m_initial"),
+        "m0_2": pars.get("m_final"),
+        "t0 def": 2,
+    }
+    return get_z(qsq, z_pars)
+
+
+def bcl5_a0_endpoint_sources(ff_name, pars):
+    """
+    Return the sources of a0 for form factors whose a0 is determined by the
+    endpoint relations of arXiv:2412.06515 (see comments above).
+    Returns a list of (ff_name, param, coefficient), or None if the form
+    factor has its own a0.
+    """
+    if ff_name not in BCL5_A0_ENDPOINT_FFS:
+        return None
+    z0 = _z_bcl5(0.0, pars)
+    relations = {
+        "fVt": [("fV0", "a0", 1.0), ("fV0", "a1", z0), ("fVt", "a1", -z0)],
+        "gAt": [("gA0", "a0", 1.0), ("gA0", "a1", z0), ("gAt", "a1", -z0)],
+        "gAperp": [("gA0", "a0", 1.0)],
+        "fTperp": [("gTperp", "a0", 1.0), ("gT0", "a1", z0), ("fTperp", "a1", -z0)],
+        "gT0": [("gTperp", "a0", 1.0)],
+    }
+    return relations.get(ff_name)
+
+
+def bcl5_inject_masses(ff_data, config):
+    """Inject m_initial/m_final from the impl-level config if missing."""
+    if ff_data.get("m_initial") is None:
+        ff_data["m_initial"] = config.get("m_initial")
+    if ff_data.get("m_final") is None:
+        ff_data["m_final"] = config.get("m_final")
+    return ff_data
+
+
+def bcl5_compute_a0(ff_name, ff_data, config):
+    """Compute a0 from the endpoint relations if it is not independent."""
+    sources = bcl5_a0_endpoint_sources(ff_name, ff_data)
+    if sources is None:
+        return ff_data  # the form factor has its own a0
+    a0 = 0.0
+    for src_ff, param, coef in sources:
+        src_pars = deepcopy(config["form factors"][src_ff]["parameter"])
+        a0 += coef * src_pars[param]
+    ff_data["a0"] = a0
+    return ff_data
+
+
+def bcl5_prepare(ff_name, ff_data, config):
+    """Inject masses and compute a0 via the endpoint relations (if needed)."""
+    bcl5_inject_masses(ff_data, config)
+    return bcl5_compute_a0(ff_name, ff_data, config)
+
+
+def bcl5_linear_maps(ff_name, ff_data, index):
+    """
+    Return the linear maps of (a0, a1) onto the *global* covariance parameters.
+    `index` maps (ff_name, param) -> global index (from covariance_matrix.order).
+    Returns two lists of (global_index, coefficient).
+    """
+    z0 = _z_bcl5(0.0, ff_data)
+    sources = bcl5_a0_endpoint_sources(ff_name, ff_data)
+    if sources is None:
+        a0_linear = [(index[(ff_name, "a0")], 1.0)]
+    else:
+        a0_linear = [
+            (index[(src_ff, param)], coef) for src_ff, param, coef in sources
+        ]
+    a1_linear = [(index[(ff_name, "a1")], 1.0)]
+    return a0_linear, a1_linear
+
+
+def df_da_bcl5(qsq, pars):
+    """
+    Analytic gradient of a BCL 5 form factor w.r.t. the *global* covariance
+    parameters (via the linear maps in pars['_a0_linear']/_a1_linear').
+    """
+    m_pole = pars.get("m_pole")
+    z = _z_bcl5(qsq, pars)
+    pole = 1.0 / (1.0 - qsq / m_pole**2)
+    df_da0 = pole
+    df_da1 = pole * z
+
+    a0_linear = pars.get("_a0_linear", [])
+    a1_linear = pars.get("_a1_linear", [])
+    n = pars.get(
+        "_bcl5_cov_dim",
+        1 + max([idx for idx, _ in a0_linear + a1_linear], default=-1),
+    )
+    grad = np.zeros(n, dtype=float)
+    for idx, coef in a0_linear:
+        grad[idx] += df_da0 * coef
+    for idx, coef in a1_linear:
+        grad[idx] += df_da1 * coef
+    return grad
+
+
+# ---------------------------------------------------------------------------
+# BCL 4 endpoint relations (e.g. Xi_c -> Xi, arXiv:2504.07302)
+# ---------------------------------------------------------------------------
+# The BCL-4 z-expansion f(q^2) = 1/(1 - q^2/m_pole^2) * (a0 + a1 z + a2 z^2 + a3 z^3)
+# is sometimes used with helicity endpoint constraints that fix some of the
+# coefficients. In the YAML a form factor declares which coefficient is
+# dependent via the "endpoint" key, e.g.
+#     f0:    endpoint: {a2: f+}     # a2 from f_0(0) = f_+(0)
+#     g0:    endpoint: {a2: g+}     # a2 from g_0(0) = g_+(0)
+#     gperp: endpoint: {a0: g+}     # a0 shared with g+
+# The dependent coefficients are omitted from the "a" list in the YAML
+# (f0/g0: [a0, a1, a3]; gperp: [a1, a2, a3]) and injected by bcl4_endpoint_prepare.
+# For Xi_c -> Xi (arXiv:2504.07302) the z variable uses
+#     t0 = q^2_max = (m_Xi_c - m_Xi)^2   (t0 definition 2),
+#     t_+^{f+,fperp,f0} = (m_D + m_K)^2,  t_+^{g+,gperp,g0} = (m_D* + m_K)^2.
+
+
+def _z_xic_xi(qsq, pars):
+    """z with t_+ = (mp_1 + mp_2)^2 and t0 = (m0_1 - m0_2)^2 (t0 definition 2)."""
+    z_pars = {
+        "mp_1": pars.get("mp_1"),
+        "mp_2": pars.get("mp_2"),
+        "m0_1": pars.get("m0_1"),
+        "m0_2": pars.get("m0_2"),
+        "t0 def": 2,
+    }
+    return get_z(qsq, z_pars)
+
+
+def bcl4_endpoint_prepare(ff_name, ff_data, endpoint_cfg, config):
+    """
+    Inject the endpoint-relation coefficients for a BCL-4 form factor.
+    `endpoint_cfg` is the YAML "endpoint" dict, e.g. {"a2": "f+"} or {"a0": "g+"}.
+    - {"a2": src}: compute a2 from f_ff(0) = f_src(0);
+    - {"a0": src}: share a0 with the source form factor.
+    """
+    a = list(ff_data.get("a", []))
+    if "a2" in endpoint_cfg:
+        src_name = endpoint_cfg["a2"]
+        src_a = list(config["form factors"][src_name]["parameter"]["a"])
+        z0 = _z_xic_xi(0.0, ff_data)
+        # f_src(0) = sum_n a_n z0^n  (the pole factor is 1 at q^2 = 0)
+        f_src0 = sum(coef * z0 ** n for n, coef in enumerate(src_a))
+        a0, a1 = a[0], a[1]
+        a3 = a[2] if len(a) >= 3 else 0.0
+        # f_ff(0) = a0 + a1 z0 + a2 z0^2 + a3 z0^3 = f_src(0)  =>  a2:
+        a2 = (f_src0 - a0 - a1 * z0 - a3 * z0 ** 3) / z0 ** 2
+        ff_data["a"] = [a0, a1, a2, a3]
+    elif "a0" in endpoint_cfg:
+        src_name = endpoint_cfg["a0"]
+        src_a0 = config["form factors"][src_name]["parameter"]["a"][0]
+        ff_data["a"] = [src_a0] + a
+    return ff_data
+
+
+def bcl4_endpoint_linear_maps(ff_name, ff_data, endpoint_cfg, index):
+    """
+    Return the linear maps of a0..a3 onto the *global* covariance parameters.
+    `index` maps (ff_name, param) -> global index (from covariance_matrix.order).
+    Returns a list of 4 lists of (global_index, coefficient).
+    `endpoint_cfg` may be None/empty for independent BCL-4 coefficients.
+    """
+    endpoint_cfg = endpoint_cfg or {}
+    z0 = _z_xic_xi(0.0, ff_data)
+    z02 = z0 ** 2
+    i = index
+
+    if "a2" in endpoint_cfg:
+        src = endpoint_cfg["a2"]
+        # a2 = (f_src(0) - a0 - a1 z0 - a3 z0^3)/z0^2,  f_src(0)=sum_n src_a_n z0^n
+        a2_map = [
+            (i[(src, "a0")], 1.0 / z02),
+            (i[(src, "a1")], 1.0 / z0),
+            (i[(src, "a2")], 1.0),
+            (i[(src, "a3")], z0),
+            (i[(ff_name, "a0")], -1.0 / z02),
+            (i[(ff_name, "a1")], -1.0 / z0),
+            (i[(ff_name, "a3")], -z0),
+        ]
+        return [
+            [(i[(ff_name, "a0")], 1.0)],
+            [(i[(ff_name, "a1")], 1.0)],
+            a2_map,
+            [(i[(ff_name, "a3")], 1.0)],
+        ]
+
+    if "a0" in endpoint_cfg:
+        src = endpoint_cfg["a0"]
+        # a0 is shared with the source form factor
+        return [
+            [(i[(src, "a0")], 1.0)],
+            [(i[(ff_name, "a1")], 1.0)],
+            [(i[(ff_name, "a2")], 1.0)],
+            [(i[(ff_name, "a3")], 1.0)],
+        ]
+
+    # independent BCL-4 coefficients
+    return [
+        [(i[(ff_name, "a0")], 1.0)],
+        [(i[(ff_name, "a1")], 1.0)],
+        [(i[(ff_name, "a2")], 1.0)],
+        [(i[(ff_name, "a3")], 1.0)],
+    ]
+
+
+def df_da_bcl4_xicxi(qsq, pars):
+    """
+    Analytic gradient of a Xi_c -> Xi BCL-4 form factor w.r.t. the *global*
+    covariance parameters (via the linear maps in pars['_xicxi_a_linear']).
+    """
+    m_star = pars.get("m_star")
+    z = _z_xic_xi(qsq, pars)
+    pole = 1.0 / (1.0 - qsq / m_star ** 2)
+
+    a_linear = pars.get("_xicxi_a_linear", [])
+    all_coefs = [item for sublist in a_linear for item in sublist]
+    n = pars.get(
+        "_xicxi_cov_dim",
+        1 + max([idx for idx, _ in all_coefs], default=-1),
+    )
+    grad = np.zeros(n, dtype=float)
+    for n_a, coefs in enumerate(a_linear):
+        df_da_n = pole * z ** n_a
+        for idx, coef in coefs:
+            grad[idx] += df_da_n * coef
+    return grad
+
+
 #求误差，先对函数求梯度
 def df_da(qsq, pars, class_func):
     """计算形因子对参数的解析导数（返回梯度向量）"""
     if class_func == "pole w expansion":
         from .pole_w_expansion import df_da as df_da_pole_w
         return df_da_pole_w(qsq, pars)
+    if class_func == "BCL 5":
+        # a0 may be fixed by the endpoint relations -> gradient via linear maps
+        return df_da_bcl5(qsq, pars)
+    if class_func == "BCL 4" and pars.get("_xicxi_a_linear") is not None:
+        # a2 (f0/g0) and a0 (gperp) may be fixed by the endpoint relations
+        return df_da_bcl4_xicxi(qsq, pars)
     if class_func == "Horgan 2015":
         m_initial = pars.get("m_initial")
         m_final = pars.get("m_final")
@@ -421,19 +688,6 @@ def df_da(qsq, pars, class_func):
     else:
         grad = [pole_factor * (z** i) for i in range(len(a_list))]
     return np.array(grad)
-
-
-def _dz_expansion_value(qsq, pars, class_func):
-    """Evaluate a z-expansion while keeping the parameter dictionary isolated."""
-    functions = {
-        "z-expansions 1": f_z_expansions_1,
-        "z-expansions 2": f_z_expansions_2,
-        "z-expansions 3": f_z_expansions_3,
-    }
-    try:
-        return functions[class_func](qsq, pars)
-    except KeyError as exc:
-        raise ValueError(f"Invalid z-expansion parameterization: {class_func}") from exc
 
 
 def df_dz_expansion(qsq, pars, class_func):

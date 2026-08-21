@@ -15,7 +15,7 @@ B->rho:
         form factors: [V, A0, A1, A2]
         tex: {V: "$V$", A0: "$A_0$", A1: "$A_1$", A2: "$A_2$"}
         figure_path: tests/figures/B-rho-LCSR-pole/vector.pdf
-        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/vector.pdf
+        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/vector.png
         title: "$B \\to \\rho$"
         qsq_min: 0
         qsq_max: 14
@@ -26,7 +26,7 @@ B->rho:
         form factors: [T1, T2, T3]
         tex: {T1: "$T_1$", T2: "$T_2$", T3: "$T_3$"}
         figure_path: tests/figures/B-rho-LCSR-pole/tensor.pdf
-        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/tensor.pdf
+        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/tensor.png
         title: "$B \\to \\rho$"
         qsq_min: 0
         qsq_max: 14
@@ -40,14 +40,14 @@ B->K*:
       vector:
         combined: true
         form factors:
-          V: {tex: "$V$", figure_path: tests/figures/B-Kstar-LQCD-2015/vector.pdf, ref_figure_path: tests/ref_figures/B-Kstar-LQCD-2015/vector.pdf, qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 2.5}
+          V: {tex: "$V$", figure_path: tests/figures/B-Kstar-LQCD-2015/vector.pdf, ref_figure_path: tests/ref_figures/B-Kstar-LQCD-2015/vector.png, qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 2.5}
           A0: {tex: "$A_0$"}
           A1: {tex: "$A_1$"}
           A12: {tex: "$A_{12}$"}
       tensor:
         combined: true
         form factors:
-          T1: {tex: "$T_1$", figure_path: tests/figures/B-Kstar-LQCD-2015/tensor.pdf, ref_figure_path: tests/ref_figures/B-Kstar-LQCD-2015/tensor.pdf, qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 1.8}
+          T1: {tex: "$T_1$", figure_path: tests/figures/B-Kstar-LQCD-2015/tensor.pdf, ref_figure_path: tests/ref_figures/B-Kstar-LQCD-2015/tensor.png, qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 1.8}
           T2: {tex: "$T_2$"}
           T23: {tex: "$T_{23}$"}
     ref: arxiv:1501.00367
@@ -63,7 +63,7 @@ B->K*:
         form factors: [V, A0, A1, A2]
         tex: {V: "$V$", A0: "$A_0$", A1: "$A_1$", A2: "$A_2$"}
         figure_path: tests/figures/B-Kstar-LCSR-pole/vector.pdf
-        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/vector.pdf
+        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/vector.png
         title: "$B \\to K^*$"
         qsq_min: 0
         qsq_max: 14
@@ -74,7 +74,7 @@ B->K*:
         form factors: [T1, T2, T3]
         tex: {T1: "$T_1$", T2: "$T_2$", T3: "$T_3$"}
         figure_path: tests/figures/B-Kstar-LCSR-pole/tensor.pdf
-        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/tensor.pdf
+        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/tensor.png
         title: "$B \\to K^*$"
         qsq_min: 0
         qsq_max: 20
@@ -90,7 +90,7 @@ B->omega:
         form factors: [V, A0, A1, A2]
         tex: {V: "$V$", A0: "$A_0$", A1: "$A_1$", A2: "$A_2$"}
         figure_path: tests/figures/B-omega-LCSR-pole/vector.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/vector.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/vector.png
         title: "$B \\to \\omega$"
         qsq_min: 0
         qsq_max: 14
@@ -101,7 +101,7 @@ B->omega:
         form factors: [T1, T2, T3]
         tex: {T1: "$T_1$", T2: "$T_2$", T3: "$T_3$"}
         figure_path: tests/figures/B-omega-LCSR-pole/tensor.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/tensor.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/tensor.png
         title: "$B \\to \\omega$"
         qsq_min: 0
         qsq_max: 14
@@ -111,7 +111,7 @@ B->omega:
     form factors:
       V:
         figure_path: tests/figures/B-omega-LCSR-pole/V.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/V.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/V.png
         # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
         tex: "$V$"
         qsq_min: 0
@@ -121,7 +121,7 @@ B->omega:
         f_max: 1
       A0:
         figure_path: tests/figures/B-omega-LCSR-pole/A0.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A0.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A0.png
         # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
         tex: "$A0$"
         qsq_min: 0
@@ -131,7 +131,7 @@ B->omega:
         f_max: 1
       A1:
         figure_path: tests/figures/B-omega-LCSR-pole/A1.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A1.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A1.png
         # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
         tex: "$A1$"
         qsq_min: 0
@@ -141,7 +141,7 @@ B->omega:
         f_max: 1
       A2:
         figure_path: tests/figures/B-omega-LCSR-pole/A2.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A2.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A2.png
         # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
         tex: "$A2$"
         qsq_min: 0
@@ -151,7 +151,7 @@ B->omega:
         f_max: 1
       T1:
         figure_path: tests/figures/B-omega-LCSR-pole/T1.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T1.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T1.png
         # combined_figure_path: tests/combined_figures/B-omega-LCSR-pole/T1.pdf
         tex: "$T1$"
         qsq_min: 0
@@ -161,7 +161,7 @@ B->omega:
         f_max: 1
       T2:
         figure_path: tests/figures/B-omega-LCSR-pole/T2.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T2.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T2.png
         # combined_figure_path: tests/combined_figures/B-rho-LCSR-pole/T2.pdf
         tex: "$T2$"
         qsq_min: 0
@@ -171,7 +171,7 @@ B->omega:
         f_max: 1
       T3:
         figure_path: tests/figures/B-omega-LCSR-pole/T3.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T3.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T3.png
         # combined_figure_path: tests/combined_figures/B-rho-LCSR-pole/T3.pdf
         tex: "$T3$"
         qsq_min: 0
@@ -187,14 +187,14 @@ Bs->K*:
       vector:
         combined: true
         form factors:
-          V: {figure_path: tests/figures/Bs-Kstar-LQCD-2015/vector.pdf, ref_figure_path: tests/ref_figures/Bs-Kstar-LQCD-2015/vector.pdf, tex: "$V$", qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 2.5}
+          V: {figure_path: tests/figures/Bs-Kstar-LQCD-2015/vector.pdf, ref_figure_path: tests/ref_figures/Bs-Kstar-LQCD-2015/vector.png, tex: "$V$", qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 2.5}
           A0: {tex: "$A_0$"}
           A1: {tex: "$A_1$"}
           A12: {tex: "$A_{12}$"}
       tensor:
         combined: true
         form factors:
-          T1: {figure_path: tests/figures/Bs-Kstar-LQCD-2015/tensor.pdf, ref_figure_path: tests/ref_figures/Bs-Kstar-LQCD-2015/tensor.pdf, tex: "$T_1$", qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 1.8}
+          T1: {figure_path: tests/figures/Bs-Kstar-LQCD-2015/tensor.pdf, ref_figure_path: tests/ref_figures/Bs-Kstar-LQCD-2015/tensor.png, tex: "$T_1$", qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 1.8}
           T2: {tex: "$T_2$"}
           T23: {tex: "$T_{23}$"}
     ref: arxiv:1501.00367
@@ -233,7 +233,7 @@ Bs->K*:
         form factors: [V, A0, A1, A2]
         tex: {V: "$V$", A0: "$A_0$", A1: "$A_1$", A2: "$A_2$"}
         figure_path: tests/figures/Bs-Kstar-LCSR-pole/vector.pdf
-        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/vector.pdf
+        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/vector.png
         title: "$B_s \\to K^*$"
         qsq_min: 0
         qsq_max: 14
@@ -244,7 +244,7 @@ Bs->K*:
         form factors: [T1, T2, T3]
         tex: {T1: "$T_1$", T2: "$T_2$", T3: "$T_3$"}
         figure_path: tests/figures/Bs-Kstar-LCSR-pole/tensor.pdf
-        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/tensor.pdf
+        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/tensor.png
         title: "$B_s \\to K^*$"
         qsq_min: 0
         qsq_max: 14
@@ -257,14 +257,14 @@ Bs->phi:
       vector:
         combined: true
         form factors:
-          V: {figure_path: tests/figures/Bs-phi-LQCD-2015/vector.pdf, ref_figure_path: tests/ref_figures/Bs-phi-LQCD-2015/vector.pdf, tex: "$V$", qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 2.5}
+          V: {figure_path: tests/figures/Bs-phi-LQCD-2015/vector.pdf, ref_figure_path: tests/ref_figures/Bs-phi-LQCD-2015/vector.png, tex: "$V$", qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 2.5}
           A0: {tex: "$A_0$"}
           A1: {tex: "$A_1$"}
           A12: {tex: "$A_{12}$"}
       tensor:
         combined: true
         form factors:
-          T1: {figure_path: tests/figures/Bs-phi-LQCD-2015/tensor.pdf, ref_figure_path: tests/ref_figures/Bs-phi-LQCD-2015/tensor.pdf, tex: "$T_1$", qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 1.8}
+          T1: {figure_path: tests/figures/Bs-phi-LQCD-2015/tensor.pdf, ref_figure_path: tests/ref_figures/Bs-phi-LQCD-2015/tensor.png, tex: "$T_1$", qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 1.8}
           T2: {tex: "$T_2$"}
           T23: {tex: "$T_{23}$"}
     ref: arxiv:1501.00367
@@ -304,7 +304,7 @@ Bs->phi:
         form factors: [V, A0, A1, A2]
         tex: {V: "$V$", A0: "$A_0$", A1: "$A_1$", A2: "$A_2$"}
         figure_path: tests/figures/Bs-phi-LCSR-pole/vector.pdf
-        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/vector.pdf
+        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/vector.png
         title: "$B_s \\to \\phi$"
         qsq_min: 0
         qsq_max: 14
@@ -315,7 +315,7 @@ Bs->phi:
         form factors: [T1, T2, T3]
         tex: {T1: "$T_1$", T2: "$T_2$", T3: "$T_3$"}
         figure_path: tests/figures/Bs-phi-LCSR-pole/tensor.pdf
-        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/tensor.pdf
+        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/tensor.png
         title: "$B_s \\to \\phi$"
         qsq_min: 0
         qsq_max: 20

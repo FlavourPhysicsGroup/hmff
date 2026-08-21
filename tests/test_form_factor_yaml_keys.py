@@ -52,7 +52,7 @@ def test_yaml_top_level_keys(yaml_file):
 
             allowed_keys = {
                 'ref', 'author', 'citation key', 'method', 'comment', 'form factors',
-                'covariance_matrix', 'combined', 'plot', 'plots', 'groups', 'status'
+                'covariance_matrix', 'tensor_covariance_matrix', 'combined', 'plot', 'plots', 'groups', 'status'
             }
             for k in third_level.keys():
                 assert k in allowed_keys, \

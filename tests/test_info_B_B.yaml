@@ -8,7 +8,7 @@ Lambda_b->Lambda:
     form factors:
       f+:
         figure_path: tests/figures/Lambda_b-Lambda/fig3(f+).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig3(f+).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig3(f+).png
         tex: "$f_+$"
         qsq_min: 12.1716096
         qsq_max: 20.286016
@@ -17,7 +17,7 @@ Lambda_b->Lambda:
         f_max: 1.4
       f0:
         figure_path: tests/figures/Lambda_b-Lambda/fig3(f0).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig3(f0).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig3(f0).png
         tex: "$f_0$"
         qsq_min: 12.1716096
         qsq_max: 20.286016
@@ -26,7 +26,7 @@ Lambda_b->Lambda:
         f_max: 1.2
       fp:
         figure_path: tests/figures/Lambda_b-Lambda/fig3(fperp).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig3(fperp).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig3(fperp).png
         tex: "$f_{perp}$"
         qsq_min: 12.1716096
         qsq_max: 20.286016
@@ -35,7 +35,7 @@ Lambda_b->Lambda:
         f_max: 2
       g+:
         figure_path: tests/figures/Lambda_b-Lambda/fig4(g+).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig4(g+).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig4(g+).png
         tex: "$g_+$"
         qsq_min: 12.1716096
         qsq_max: 20.286016
@@ -44,7 +44,7 @@ Lambda_b->Lambda:
         f_max: 1
       g0:
         figure_path: tests/figures/Lambda_b-Lambda/fig4(g0).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig4(g0).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig4(g0).png
         tex: "$g_0$"
         qsq_min: 12.1716096
         qsq_max: 20.286016
@@ -53,7 +53,7 @@ Lambda_b->Lambda:
         f_max: 1.4
       gp:
         figure_path: tests/figures/Lambda_b-Lambda/fig4(gperp).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig4(gperp).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig4(gperp).png
         tex: "$g_{perp}$"
         qsq_min: 12.1716096
         qsq_max: 20.286016
@@ -62,7 +62,7 @@ Lambda_b->Lambda:
         f_max: 1
       h+:
         figure_path: tests/figures/Lambda_b-Lambda/fig5(h+).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig5(h+).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig5(h+).png
         tex: "$h_+$"
         qsq_min: 12.1716096
         qsq_max: 20.286016
@@ -71,7 +71,7 @@ Lambda_b->Lambda:
         f_max: 2
       hp:
         figure_path: tests/figures/Lambda_b-Lambda/fig5(hperp).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig5(hperp).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig5(hperp).png
         tex: "$h_{perp}$"
         qsq_min: 12.1716096
         qsq_max: 20.286016
@@ -80,7 +80,7 @@ Lambda_b->Lambda:
         f_max: 1.4
       ht+:
         figure_path: tests/figures/Lambda_b-Lambda/fig5(htilde+).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig5(htilde+).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig5(htilde+).png
         tex: "$h_tilde+$"
         qsq_min: 12.1716096
         qsq_max: 20.286016
@@ -89,7 +89,7 @@ Lambda_b->Lambda:
         f_max: 1
       htp:
         figure_path: tests/figures/Lambda_b-Lambda/fig5(htildeperp).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig5(htildeperp).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig5(htildeperp).png
         tex: "$h_{tildeperp}$"
         qsq_min: 12.1716096
         qsq_max: 20.286016
@@ -97,13 +97,12 @@ Lambda_b->Lambda:
         f_min: 0
         f_max: 1
 
-
   LQCD-2016-HO:                      
     combined: False
     form factors:
       f+:
         figure_path: tests/figures/Lambda_b-Lambda/fig6(HOf+).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOf+).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOf+).png
         tex: "$f_+$"
         qsq_min: 0
         qsq_max: 20
@@ -112,7 +111,7 @@ Lambda_b->Lambda:
         f_max: 1.8
       f0:
         figure_path: tests/figures/Lambda_b-Lambda/fig6(HOf0).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOf0).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOf0).png
         tex: "$f_0$"
         qsq_min: 0
         qsq_max: 20
@@ -121,7 +120,7 @@ Lambda_b->Lambda:
         f_max: 1.8
       fp:
         figure_path: tests/figures/Lambda_b-Lambda/fig6(HOfperp).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOfperp).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOfperp).png
         tex: "$f_{perp}$"
         qsq_min: 0
         qsq_max: 20
@@ -130,7 +129,7 @@ Lambda_b->Lambda:
         f_max: 1.8
       g+:
         figure_path: tests/figures/Lambda_b-Lambda/fig6(HOg+).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOg+).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOg+).png
         tex: "$g_+$"
         qsq_min: 0
         qsq_max: 20
@@ -139,7 +138,7 @@ Lambda_b->Lambda:
         f_max: 1.8
       g0:
         figure_path: tests/figures/Lambda_b-Lambda/fig6(HOg0).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOg0).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOg0).png
         tex: "$g_0$"
         qsq_min: 0
         qsq_max: 20
@@ -148,7 +147,7 @@ Lambda_b->Lambda:
         f_max: 1.8
       gp:
         figure_path: tests/figures/Lambda_b-Lambda/fig6(HOgperp).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOgperp).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOgperp).png
         tex: "$g_{perp}$"
         qsq_min: 0
         qsq_max: 20
@@ -157,7 +156,7 @@ Lambda_b->Lambda:
         f_max: 1.8
       h+:
         figure_path: tests/figures/Lambda_b-Lambda/fig6(HOh+).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOh+).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOh+).png
         tex: "$h_+$"
         qsq_min: 0
         qsq_max: 20
@@ -166,7 +165,7 @@ Lambda_b->Lambda:
         f_max: 1.8
       hp:
         figure_path: tests/figures/Lambda_b-Lambda/fig6(HOhperp).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOhperp).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOhperp).png
         tex: "$h_{perp}$"
         qsq_min: 0
         qsq_max: 20
@@ -175,7 +174,7 @@ Lambda_b->Lambda:
         f_max: 1.8
       ht+:
         figure_path: tests/figures/Lambda_b-Lambda/fig6(HOhtilde+).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOhtilde+).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOhtilde+).png
         tex: "$h_{tilde+}$"
         qsq_min: 0
         qsq_max: 20
@@ -184,14 +183,13 @@ Lambda_b->Lambda:
         f_max: 1.8
       htp:
         figure_path: tests/figures/Lambda_b-Lambda/fig6(HOhtildeperp).pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOhtildeperp).pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda/fig6(HOhtildeperp).png
         tex: "$h_{tildeperp}$"
         qsq_min: 0
         qsq_max: 20
         qsq_steps: 100
         f_min: 0
         f_max: 1.8
-
 
   LQCD-2016:
     ref: arXiv:1602.01399
@@ -226,7 +224,7 @@ Lambda_b->Lambda_1520:
     form factors:
       f0:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/f0.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/f0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/f0.png
         tex: "$f_0$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -237,7 +235,7 @@ Lambda_b->Lambda_1520:
         f_max: 6
       f+:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/f+.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/f+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/f+.png
         tex: "$f_+$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -248,7 +246,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.165
       fp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/fp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/fp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/fp.png
         tex: "$f_\\perp$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -259,7 +257,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.123
       fpp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/fpp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/fpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/fpp.png
         tex: "$f_{\\perp'}$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -270,7 +268,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.076
       g0:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/g0.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/g0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/g0.png
         tex: "$g_0$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -281,7 +279,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.14
       g+:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/g+.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/g+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/g+.png
         tex: "$g_+$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -292,7 +290,7 @@ Lambda_b->Lambda_1520:
         f_max: 5
       gp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/gp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/gp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/gp.png
         tex: "$g_\\perp$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -303,7 +301,7 @@ Lambda_b->Lambda_1520:
         f_max: 5
       gpp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/gpp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/gpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/gpp.png
         tex: "$g_{\\perp'}$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -314,7 +312,7 @@ Lambda_b->Lambda_1520:
         f_max: -0.01
       h+:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/h+.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/h+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/h+.png
         tex: "$h_+$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -325,7 +323,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.086
       hp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/hp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/hp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/hp.png
         tex: "$h_\\perp$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -336,7 +334,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.132
       hpp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/hpp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/hpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/hpp.png
         tex: "$h_{\\perp'}$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -347,7 +345,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.009
       ht+:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/ht+.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/ht+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/ht+.png
         tex: "$\\tilde h_+$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -358,7 +356,7 @@ Lambda_b->Lambda_1520:
         f_max: 5
       htp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/htp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/htp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/htp.png
         tex: "$\\tilde h_\\perp$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -369,7 +367,7 @@ Lambda_b->Lambda_1520:
         f_max: 5
       htpp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/nominal/htpp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/htpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/nominal/htpp.png
         tex: "$\\tilde h_{\\perp'}$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -388,7 +386,7 @@ Lambda_b->Lambda_1520:
     form factors:
       f0:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/f0.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/f0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/f0.png
         tex: "$f_0$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -399,7 +397,7 @@ Lambda_b->Lambda_1520:
         f_max: 6
       f+:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/f+.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/f+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/f+.png
         tex: "$f_+$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -410,7 +408,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.165
       fp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/fp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/fp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/fp.png
         tex: "$f_\\perp$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -421,7 +419,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.123
       fpp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/fpp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/fpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/fpp.png
         tex: "$f_{\\perp'}$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -432,7 +430,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.076
       g0:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/g0.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/g0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/g0.png
         tex: "$g_0$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -443,7 +441,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.14
       g+:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/g+.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/g+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/g+.png
         tex: "$g_+$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -454,7 +452,7 @@ Lambda_b->Lambda_1520:
         f_max: 5
       gp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/gp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/gp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/gp.png
         tex: "$g_\\perp$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -465,7 +463,7 @@ Lambda_b->Lambda_1520:
         f_max: 5
       gpp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/gpp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/gpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/gpp.png
         tex: "$g_{\\perp'}$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -476,7 +474,7 @@ Lambda_b->Lambda_1520:
         f_max: -0.01
       h+:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/h+.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/h+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/h+.png
         tex: "$h_+$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -487,7 +485,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.086
       hp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/hp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/hp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/hp.png
         tex: "$h_\\perp$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -498,7 +496,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.132
       hpp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/hpp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/hpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/hpp.png
         tex: "$h_{\\perp'}$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -509,7 +507,7 @@ Lambda_b->Lambda_1520:
         f_max: 0.009
       ht+:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/ht+.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/ht+.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/ht+.png
         tex: "$\\tilde h_+$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -520,7 +518,7 @@ Lambda_b->Lambda_1520:
         f_max: 5
       htp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/htp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/htp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/htp.png
         tex: "$\\tilde h_\\perp$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -531,7 +529,7 @@ Lambda_b->Lambda_1520:
         f_max: 5
       htpp:
         figure_path: tests/figures/Lambda_b-Lambda_1520/HO/htpp.pdf
-        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/htpp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/HO/htpp.png
         tex: "$\\tilde h_{\\perp'}$"
         qsq_min: 15.956922
         qsq_max: 16.81082
@@ -549,22 +547,290 @@ Lambda_b->Lambda_1520:
     status: UNFINISHED
 
   LFQM-2022:
-    ref: arXiv:2210.04640
-    author: Yu-Shuai Li, Su-Ping Jin, Jing Gao, Xiang Liu
-    citation key: Li:2022nim
-    method: LFQM
-    status: UNFINISHED
+    combined: False
+    normalize_qsq: False
+    # 注意: 论文 Fig.9 参考图用方案 b (全部 pole 质量表), 而数据表 (Table VIII) 用方案 a,
+    # 其中 f0^V/fperp^V/f0^T/fperp^T 以 m_- = m_Lambda_b - m_Lambda(1520) 为极点, 在 q^2_max 处发散.
+    # 因此这 4 个 form factor 的 q^2 绘图范围限制在 [0, 14] 以避免发散区; 其余到 q^2_max.
+    form factors:
+      fVt:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fVt.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fVt.png
+        tex: "$f_t^V$"
+        qsq_min: 0.0
+        qsq_max: 16.48
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fV0:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fV0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fV0.png
+        tex: "$f_0^V$"
+        qsq_min: 0.0
+        qsq_max: 14.0
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fVperp:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fVperp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fVperp.png
+        tex: "$f_\\perp^V$"
+        qsq_min: 0.0
+        qsq_max: 14.0
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fVg:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fVg.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fVg.png
+        tex: "$f_g^V$"
+        qsq_min: 0.0
+        qsq_max: 16.48
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fAt:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fAt.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fAt.png
+        tex: "$f_t^A$"
+        qsq_min: 0.0
+        qsq_max: 16.48
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fA0:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fA0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fA0.png
+        tex: "$f_0^A$"
+        qsq_min: 0.0
+        qsq_max: 16.48
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fAperp:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fAperp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fAperp.png
+        tex: "$f_\\perp^A$"
+        qsq_min: 0.0
+        qsq_max: 16.48
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fAg:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fAg.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fAg.png
+        tex: "$f_g^A$"
+        qsq_min: 0.0
+        qsq_max: 16.48
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fT0:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fT0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fT0.png
+        tex: "$f_0^T$"
+        qsq_min: 0.0
+        qsq_max: 14.0
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fTperp:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fTperp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fTperp.png
+        tex: "$f_\\perp^T$"
+        qsq_min: 0.0
+        qsq_max: 14.0
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fTg:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fTg.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fTg.png
+        tex: "$f_g^T$"
+        qsq_min: 0.0
+        qsq_max: 16.48
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fT50:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fT50.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fT50.png
+        tex: "$f_0^{T5}$"
+        qsq_min: 0.0
+        qsq_max: 16.48
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fT5perp:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fT5perp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fT5perp.png
+        tex: "$f_\\perp^{T5}$"
+        qsq_min: 0.0
+        qsq_max: 16.48
+        qsq_steps: 200
+        f_min: -1
+        f_max: 1
+      fT5g:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LFQM-2022/fT5g.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LFQM-2022/fT5g.png
+        tex: "$f_g^{T5}$"
+        qsq_min: 0.0
+        qsq_max: 16.48
+        qsq_steps: 200
+        f_min: -4
+        f_max: 10
 
   LCSR-2024:
-    ref: arXiv:2412.06515
-    author: Ke-Sheng Huang, Hua-Yu Jiang, Fu-Sheng Yu
-    citation key: Huang:2024oik
-    method: LCSR
-    status: UNFINISHED
+    combined: False
+    normalize_qsq: False
+    form factors:
+      fV0:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LCSR-2024/fV0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LCSR-2024/fV0.png
+        tex: "$f_0^V$"
+        qsq_min: 0.0
+        qsq_max: 16.8264
+        qsq_steps: 200
+        f_min: 0.003
+        f_max: 0.202
+      fVperp:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LCSR-2024/fVperp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LCSR-2024/fVperp.png
+        tex: "$f_\\perp^V$"
+        qsq_min: 0.0
+        qsq_max: 16.8264
+        qsq_steps: 200
+        f_min: 0.004
+        f_max: 0.253
+      fVt:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LCSR-2024/fVt.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LCSR-2024/fVt.png
+        tex: "$f_t^V$"
+        qsq_min: 0.0
+        qsq_max: 16.8264
+        qsq_steps: 200
+        f_min: 0.010
+        f_max: 0.160
+      fT0:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LCSR-2024/fT0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LCSR-2024/fT0.png
+        tex: "$f_0^T$"
+        qsq_min: 0.0
+        qsq_max: 16.8264
+        qsq_steps: 200
+        f_min: 0.004
+        f_max: 0.248
+      fTperp:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LCSR-2024/fTperp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LCSR-2024/fTperp.png
+        tex: "$f_\\perp^T$"
+        qsq_min: 0.0
+        qsq_max: 16.8264
+        qsq_steps: 200
+        f_min: 0.000
+        f_max: 0.188
+      gA0:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LCSR-2024/gA0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LCSR-2024/gA0.png
+        tex: "$g_0^A$"
+        qsq_min: 0.0
+        qsq_max: 16.8264
+        qsq_steps: 200
+        f_min: 0.012
+        f_max: 0.150
+      gAperp:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LCSR-2024/gAperp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LCSR-2024/gAperp.png
+        tex: "$g_\\perp^A$"
+        qsq_min: 0.0
+        qsq_max: 16.8264
+        qsq_steps: 200
+        f_min: 0.007
+        f_max: 0.151
+      gAt:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LCSR-2024/gAt.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LCSR-2024/gAt.png
+        tex: "$g_t^A$"
+        qsq_min: 0.0
+        qsq_max: 16.8264
+        qsq_steps: 200
+        f_min: 0.003
+        f_max: 0.205
+      gT0:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LCSR-2024/gT0.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LCSR-2024/gT0.png
+        tex: "$g_0^{T5}$"
+        qsq_min: 0.0
+        qsq_max: 16.8264
+        qsq_steps: 200
+        f_min: 0.007
+        f_max: 0.148
+      gTperp:
+        figure_path: tests/figures/Lambda_b-Lambda_1520/LCSR-2024/gTperp.pdf
+        ref_figure_path: tests/ref_figures/Lambda_b-Lambda_1520/LCSR-2024/gTperp.png
+        tex: "$g_\\perp^{T5}$"
+        qsq_min: 0.0
+        qsq_max: 16.8264
+        qsq_steps: 200
+        f_min: 0.012
+        f_max: 0.147
 
 Xi_c->Xi:
   LQCD-2025:
-    ref: arXiv:2504.07302
-    author: C. Farrell, S. Meinel
-    citation key: Farrell:2025gis
-    status: UNFINISHED
+    combined: False
+    normalize_qsq: False
+    form factors:
+      f+:
+        figure_path: tests/figures/Xi_c-Xi/LQCD-2025/f+.pdf
+        ref_figure_path: tests/ref_figures/Xi_c-Xi/LQCD-2025/f+.png
+        tex: "$f_+$"
+        qsq_min: 0.0
+        qsq_max: 1.3206
+        qsq_steps: 200
+        f_min: 0.4
+        f_max: 1.6
+      fperp:
+        figure_path: tests/figures/Xi_c-Xi/LQCD-2025/fperp.pdf
+        ref_figure_path: tests/ref_figures/Xi_c-Xi/LQCD-2025/fperp.png
+        tex: "$f_\\perp$"
+        qsq_min: 0.0
+        qsq_max: 1.3206
+        qsq_steps: 200
+        f_min: 1.0
+        f_max: 2.6
+      f0:
+        figure_path: tests/figures/Xi_c-Xi/LQCD-2025/f0.pdf
+        ref_figure_path: tests/ref_figures/Xi_c-Xi/LQCD-2025/f0.png
+        tex: "$f_0$"
+        qsq_min: 0.0
+        qsq_max: 1.3206
+        qsq_steps: 200
+        f_min: 0.4
+        f_max: 1.6
+      g+:
+        figure_path: tests/figures/Xi_c-Xi/LQCD-2025/g+.pdf
+        ref_figure_path: tests/ref_figures/Xi_c-Xi/LQCD-2025/g+.png
+        tex: "$g_+$"
+        qsq_min: 0.0
+        qsq_max: 1.3206
+        qsq_steps: 200
+        f_min: 0.4
+        f_max: 1.1
+      gperp:
+        figure_path: tests/figures/Xi_c-Xi/LQCD-2025/gperp.pdf
+        ref_figure_path: tests/ref_figures/Xi_c-Xi/LQCD-2025/gperp.png
+        tex: "$g_\\perp$"
+        qsq_min: 0.0
+        qsq_max: 1.3206
+        qsq_steps: 200
+        f_min: 0.4
+        f_max: 1.1
+      g0:
+        figure_path: tests/figures/Xi_c-Xi/LQCD-2025/g0.pdf
+        ref_figure_path: tests/ref_figures/Xi_c-Xi/LQCD-2025/g0.png
+        tex: "$g_0$"
+        qsq_min: 0.0
+        qsq_max: 1.3206
+        qsq_steps: 200
+        f_min: 0.4
+        f_max: 1.4

@@ -7,6 +7,8 @@ B->rho:
     author: J.M. Flynn, Y. Nakagawa, J. Nieves, H. Toki
     method: LQCD
     citation key: Flynn:2008zr
+    status: UNFINISHED
+    # form factors 数据尚未录入（arXiv:0812.2795）
 
   LCSR-pole:                      
     ref: arxiv:hep-ph/0412079    

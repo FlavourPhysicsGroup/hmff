@@ -68,6 +68,10 @@ class Impl:
                 pwe.format_parameters_pole_w_expansion,
                 pwe.f_pole_w_expansion,
             ),
+            "BCL 5": (
+                zp.format_parameter_BCL_5,
+                zp.f_BCL_5,
+            ),
         }
 
         # self.ff_tex_names = kwargs.get('ff_tex_names')  # 存储形状因子的TeX名称的列表
@@ -112,6 +116,12 @@ class Impl:
         class_func = ff_config.get("parameterization")
         if class_func == "pole w expansion":
             ff_data = pwe.prepare(ff_name, ff_data, self.config)
+        elif class_func == "BCL 5":
+            ff_data = zp.bcl5_prepare(ff_name, ff_data, self.config)
+        elif class_func == "BCL 4" and ff_config.get("endpoint"):
+            ff_data = zp.bcl4_endpoint_prepare(
+                ff_name, ff_data, ff_config["endpoint"], self.config
+            )
 
         format_func, param_func = self._ff_fit_methods[class_func]
         ff_data = format_func(ff_data)
@@ -136,7 +146,17 @@ class Impl:
             else:
                 raise ValueError(f"Invalid value for a0_last: {ff_config.get('a0_last')}. Expected 'by_ap' or None.")
 
-        return partial(param_func, pars=ff_data)
+        ff_func = partial(param_func, pars=ff_data)
+
+        # 标量输入返回原生 Python float (避免在 notebook 中显示为 numpy.float64),
+        # 数组输入 (如 np.linspace, 用于绘图) 保持 numpy 数组.
+        def scalar_float_wrapper(qsq):
+            res = ff_func(qsq)
+            if np.ndim(res) == 0:
+                return float(res)
+            return res
+
+        return scalar_float_wrapper
 
     def get_central_values(self, qsq):
         """返回此文章中包含的所有形状因子在特定qsq时的中心值"""
@@ -155,6 +175,12 @@ class Impl:
         class_func = ff_config.get("parameterization")
         if class_func == "pole w expansion":
             pars = pwe.prepare(ff_name, pars, self.config)
+        elif class_func == "BCL 5":
+            pars = zp.bcl5_prepare(ff_name, pars, self.config)
+        elif class_func == "BCL 4" and ff_config.get("endpoint"):
+            pars = zp.bcl4_endpoint_prepare(
+                ff_name, pars, ff_config["endpoint"], self.config
+            )
         format_func, param_func = self._ff_fit_methods[class_func]
         pars = format_func(pars)
         cov_a = pars.get("cov_matrices")
@@ -169,7 +195,28 @@ class Impl:
                 index = {tuple(k): i for i, k in enumerate(order)}
                 pars["_a0_linear"], pars["_a1_linear"] = pwe.linear_maps(ff_name, pars, index)
                 pars["_pole_w_cov_dim"] = len(order)
-        if cov_a is None and class_func.startswith("z-expansions"):
+        elif cov_a is None and class_func == "BCL 5":
+            # 全局协方差矩阵 (来自 ancillary 文件), 参数顺序见 covariance_matrix.order
+            covariance_config = self.config.get("covariance_matrix", {})
+            cov_a = covariance_config.get("value")
+            order = covariance_config.get("order")
+            if cov_a is not None and order is not None:
+                index = {tuple(k): i for i, k in enumerate(order)}
+                pars["_a0_linear"], pars["_a1_linear"] = zp.bcl5_linear_maps(ff_name, pars, index)
+                pars["_bcl5_cov_dim"] = len(order)
+        elif cov_a is None and class_func == "BCL 4" and self.config.get("covariance_matrix"):
+            # 全局协方差矩阵 (来自 ancillary 文件), 参数顺序见 covariance_matrix.order
+            # (Xi_c->Xi LQCD-2025: endpoint 约束经 linear maps 传播到全局参数)
+            covariance_config = self.config.get("covariance_matrix", {})
+            cov_a = covariance_config.get("value")
+            order = covariance_config.get("order")
+            if cov_a is not None and order is not None:
+                index = {tuple(k): i for i, k in enumerate(order)}
+                pars["_xicxi_a_linear"] = zp.bcl4_endpoint_linear_maps(
+                    ff_name, pars, ff_config.get("endpoint"), index
+                )
+                pars["_xicxi_cov_dim"] = len(order)
+        elif cov_a is None and class_func.startswith("z-expansions"):
             covariance_config = self.config.get("covariance_matrix", {})
             cov_a = covariance_config.get("value")
             if cov_a is not None:
