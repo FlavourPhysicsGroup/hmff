@@ -1,0 +1,22 @@
+[project]
+name = "hmff"
+version = "0.1.0"
+dependencies = [
+    "numpy>=2.4.4",
+    "pyyaml>=6.0.3",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
+
+[dependency-groups]
+dev = [
+    "ipython>=9.13.0",
+    "matplotlib>=3.10.9",
+    "pdf2image>=1.17.0",
+    "pytest>=9.0.3",
+]
+
+[tool.setuptools.package-data]
+hmff = ["data/*.yaml"]

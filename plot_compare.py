@@ -5,8 +5,8 @@ from IPython.display import display
 from matplotlib import pyplot as plt
 from PIL import Image
 from pdf2image import convert_from_path
-from HMFF.src import z_parameterization as zp
-import HMFF
+from hmff import z_parameterization as zp
+import hmff
 from tests import plot_options as opt
 import yaml
 matplotlib.rcParams.update(opt.default_rcParams)
@@ -23,7 +23,7 @@ def plot_data(infos: dict, ffs_func: list, f_error_stat, ff, ffs_tex: list, norm
     plot_w = (xaxis == "w")
     if plot_w:
         # 从形状因子参数中取初末态重子质量, 把 w 网格换算成 q^2 再求值
-        impl_obj = HMFF.formfactors[process].get_impl(ho_impl)
+        impl_obj = hmff.formfactors[process].get_impl(ho_impl)
         pars = impl_obj.config["form factors"][ff]["parameter"]
         m_initial = pars.get("m_initial")
         m_final = pars.get("m_final")
@@ -65,8 +65,8 @@ def plot_data(infos: dict, ffs_func: list, f_error_stat, ff, ffs_tex: list, norm
 
     #添加总误差的填充区域
     if is_HO is True:
-        ho_obj = HMFF.formfactors[process].get_impl(ho_impl)
-        nominal_obj = HMFF.formfactors[process].get_impl(nominal_impl)
+        ho_obj = hmff.formfactors[process].get_impl(ho_impl)
+        nominal_obj = hmff.formfactors[process].get_impl(nominal_impl)
         o_ho = ho_obj.form_factor_function(ff)(qsq)
         o = nominal_obj.form_factor_function(ff)(qsq)
         sigma_O_HO = ho_obj.get_sigma_f_stat(ff)(qsq)
@@ -157,7 +157,7 @@ def compare(process, impl, test_info):
     # 基础信息重新排列, 使符合函数要求
     impl_info = test_info[process][impl]
     if "groups" in impl_info:
-        ffs_impl = HMFF.formfactors[process].get_impl(impl)
+        ffs_impl = hmff.formfactors[process].get_impl(impl)
         for group_info in impl_info["groups"].values():
             ffs_names = tuple(group_info["form factors"])
             ffs_func = [ffs_impl.form_factor_function(ff) for ff in ffs_names]
@@ -168,7 +168,7 @@ def compare(process, impl, test_info):
         return
 
     if "plots" in impl_info:
-        ffs_impl = HMFF.formfactors[process].get_impl(impl)
+        ffs_impl = hmff.formfactors[process].get_impl(impl)
         for plot_info in impl_info["plots"].values():
             ffs_names = tuple(plot_info["form factors"])
             ffs_tex = [plot_info["form factors"][ff]["tex"] for ff in ffs_names]
@@ -185,7 +185,7 @@ def compare(process, impl, test_info):
         ffs_tex = [plot_info["form factors"][ff]["tex"] for ff in ffs_names]
         infos = plot_info["form factors"][ffs_names[0]]
 
-        ffs_impl = HMFF.formfactors[process].get_impl(impl)
+        ffs_impl = hmff.formfactors[process].get_impl(impl)
         ffs_func = [ffs_impl.form_factor_function(ff) for ff in ffs_names]
         normalize = impl_info.get("normalize_qsq", False)
         f_error = [ffs_impl.get_sigma_f_stat(ff) for ff in ffs_names]
@@ -200,7 +200,7 @@ def compare(process, impl, test_info):
         nominal_impl_name = None
         if impl.endswith("-HO"):
             candidate = impl[:-3] + "nominal"
-            if candidate in HMFF.formfactors[process].impl_names:
+            if candidate in hmff.formfactors[process].impl_names:
                 is_HO = True
                 nominal_impl_name = candidate
         for ff in ffs_names:
@@ -211,12 +211,12 @@ def compare(process, impl, test_info):
             normalize = impl_info.get("normalize_qsq", False)
             xaxis = impl_info.get("xaxis")
             if is_HO:
-                nominal_impl = HMFF.formfactors[process].get_impl(nominal_impl_name)
+                nominal_impl = hmff.formfactors[process].get_impl(nominal_impl_name)
                 ffs_func = [nominal_impl.form_factor_function(ff)]
                 f_error_stat = nominal_impl.get_sigma_f_stat(ff)
             else:
-                ffs_func = [HMFF.formfactors[process].get_impl(impl).form_factor_function(ff)]
-                f_error_stat = HMFF.formfactors[process].get_impl(impl).get_sigma_f_stat(ff)
+                ffs_func = [hmff.formfactors[process].get_impl(impl).form_factor_function(ff)]
+                f_error_stat = hmff.formfactors[process].get_impl(impl).get_sigma_f_stat(ff)
 
             plot_data(infos, ffs_func, f_error_stat, ff, ffs_tex, normalize, is_HO,
                       process=process, ho_impl=impl, nominal_impl=nominal_impl_name, xaxis=xaxis)
@@ -232,7 +232,7 @@ def compare_all(impl, test_info, processes=("B->K*", "Bs->phi", "Bs->K*"),
     for column, process in enumerate(processes):
         impl_info = test_info[process][impl]
         plot_info = impl_info["plots"]
-        ffs_impl = HMFF.formfactors[process].get_impl(impl)
+        ffs_impl = hmff.formfactors[process].get_impl(impl)
 
         for row, group_name in enumerate(groups):
             group_info = plot_info[group_name]

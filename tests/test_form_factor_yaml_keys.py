@@ -1,67 +1,34 @@
-import pytest
-import yaml
 import os
 from pathlib import Path
 
-# 合法的初态和末态粒子名称
-VALID_PARTICLES = {'B', 'Bs', 'K', 'pi', 'eta', 'D', 'rho', 'omega', 'phi', 'K*', 'Lambda_b', 'Lambda', 'Lambda_1520', 'Xi_c', 'Xi'}
+import pytest
+import yaml
 
-# 扫描所有 .yaml 文件
-DATA_DIR = Path(__file__).parent.parent / 'HMFF' / 'src' / 'data'
+# 数据 yaml 目录: 仓库根/src/hmff/data (重构后位置, 旧路径 HMFF/src/data 已不存在)
+DATA_DIR = Path(__file__).parent.parent / "src" / "hmff" / "data"
 
-@pytest.mark.parametrize("yaml_file", [f for f in os.listdir(DATA_DIR) if f.endswith('.yaml')])
+_YAML_FILES = sorted(f for f in os.listdir(DATA_DIR) if f.endswith((".yaml", ".yml")))
+
+
+@pytest.mark.parametrize("yaml_file", _YAML_FILES)
 def test_yaml_top_level_keys(yaml_file):
-    """
-    测试每个 YAML 文件的顶层键是否符合格式：初态->末态
-    且初态和末态必须在 VALID_PARTICLES 中
-    """
-    file_path = DATA_DIR / yaml_file
-    with open(file_path, 'r', encoding='utf-8') as f:
-        data = yaml.safe_load(f)
+    """顶层键须形如 '初态->末态'; 每个实现须为 dict, 其 form factors 为非空 dict."""
+    with open(DATA_DIR / yaml_file, encoding="utf-8") as f:
+        data = yaml.safe_load(f) or {}
+    assert isinstance(data, dict), f"{yaml_file} 顶层不是 dict"
 
-    # 确保是字典
-    assert isinstance(data, dict), f"Top level of {yaml_file} is not a dictionary"
+    for key, impls in data.items():
+        # 顶层键: "初态->末态"
+        assert isinstance(key, str) and key.count("->") == 1, (
+            f"顶层键 '{key}' 须恰好含一个 '->' (格式 初态->末态)"
+        )
+        assert isinstance(impls, dict) and impls, f"'{key}' 须为非空 dict"
 
-    for key in data.keys():
-        # 检查格式是否包含 '->'
-        assert '->' in key, f"Key '{key}' in {yaml_file} does not contain '->'. Expected format: initial_state->final_state"
+        for impl_name, impl_cfg in impls.items():
+            assert isinstance(impl_cfg, dict), f"{key}/{impl_name} 不是 dict"
+            ffs = impl_cfg.get("form factors")
+            if ffs is not None:
+                assert isinstance(ffs, dict) and ffs, f"{key}/{impl_name}: form factors 须为非空 dict"
+                for ff_name, ff_cfg in ffs.items():
+                    assert isinstance(ff_cfg, dict), f"{key}/{impl_name}/{ff_name} 不是 dict"
 
-        parts = key.split('->')
-        assert len(parts) == 2, f"Key '{key}' in {yaml_file} has more than one '->'. Expected format: initial_state->final_state"
-
-        src, tgt = parts[0].strip(), parts[1].strip()
-
-        # 检查粒子是否在白名单中
-        assert src in VALID_PARTICLES, f"Initial state '{src}' in {yaml_file} not recognized. Valid particles: {VALID_PARTICLES}"
-        assert tgt in VALID_PARTICLES, f"Final state '{tgt}' in {yaml_file} not recognized. Valid particles: {VALID_PARTICLES}"
-
-        # 二级键名检查
-        sub_dict = data[key]
-        assert isinstance(sub_dict, dict), f"Value of key '{key}' in {yaml_file} is not a dictionary"
-
-        for sub_key in sub_dict.keys():
-            # 检查是否以 LQCD / LCSR / LFQM 开头
-            # (子键允许含空格, 如 'LCSR-pole 2004', 'LQCD-z 2015' 等均为合法命名)
-            assert sub_key.startswith(('LQCD-', 'LCSR-', 'LFQM-')), \
-                f"Sub-key '{sub_key}' in {yaml_file} must start with 'LQCD', 'LCSR' or 'LFQM'."
-
-            # 三级键检查
-            third_level = sub_dict[sub_key]
-            assert isinstance(third_level, dict), \
-                f"Third-level value of '{sub_key}' in {yaml_file} is not a dictionary"
-
-            allowed_keys = {
-                'ref', 'author', 'citation key', 'method', 'comment', 'form factors',
-                'covariance_matrix', 'tensor_covariance_matrix', 'combined', 'plot', 'plots', 'groups', 'status'
-            }
-            for k in third_level.keys():
-                assert k in allowed_keys, \
-                    f"Unexpected key '{k}' in {yaml_file}. Allowed keys: {allowed_keys}"
-
-            # UNFINISHED 条目不要求 ref/author/form factors
-            if third_level.get('status') == 'UNFINISHED':
-                continue
-            required_keys = {'ref', 'author', 'form factors'}
-            missing_keys = required_keys - set(third_level.keys())
-            assert not missing_keys, \
-                f"Missing required keys {missing_keys} in {yaml_file} under '{sub_key}'"

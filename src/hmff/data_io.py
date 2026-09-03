@@ -34,7 +34,7 @@ class LazyFormFactorLoader:
             for name, impl_configs in configs.items()
         }
 
-    def __init__(self, package="HMFF.src.data"):
+    def __init__(self, package="hmff.data"):
         self.package = package
         self._cache = None
 
