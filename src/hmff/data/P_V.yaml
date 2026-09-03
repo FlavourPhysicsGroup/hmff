@@ -7,6 +7,8 @@ B->rho:
     author: J.M. Flynn, Y. Nakagawa, J. Nieves, H. Toki
     method: LQCD
     citation key: Flynn:2008zr
+    status: UNFINISHED
+    # form factors 数据尚未录入（arXiv:0812.2795）
 
   LCSR-pole:                      
     ref: arxiv:hep-ph/0412079    
@@ -41,6 +43,28 @@ B->rho:
 
 B->K*:
   LQCD-2015:
+    covariance_matrix:
+      order: [V_a0, V_a1, A0_a0, A0_a1, A1_a0, A1_a1, A12_a0, A12_a1]
+      sigmas: [0.0667, 0.916, 0.0370, 0.447, 0.0233, 0.280, 0.0238, 0.300]
+      correlations:
+        - [1, 0.8590, 0, 0, 0, 0, 0, 0]
+        - [0.8590, 1, 0, 0, 0, 0, 0, 0]
+        - [0, 0, 1, 0.6673, 0.0002, 0, 0.9043, 0.8878]
+        - [0, 0, 0.6673, 1, -0.0401, 0.0104, 0.9091, 0.9272]
+        - [0, 0, 0.0002, -0.0401, 1, 0.9483, 0.0073, -0.0487]
+        - [0, 0, 0, 0.0104, 0.9483, 1, -0.0019, 0.0126]
+        - [0, 0, 0.9043, 0.9091, 0.0073, -0.0019, 1, 0.9756]
+        - [0, 0, 0.8878, 0.9272, -0.0487, 0.0126, 0.9756, 1]
+    tensor_covariance_matrix:
+      order: [T1_a0, T1_a1, T2_a0, T2_a1, T23_a0, T23_a1]
+      sigmas: [0.0241, 0.259, 0.01948, 0.236, 0.0451, 0.579]
+      correlations:
+        - [1, 0.5005, 0.8503, 0.8205, 0.0064, -0.0341]
+        - [0.5005, 1, 0.8015, 0.8364, -0.0022, 0.0118]
+        - [0.8503, 0.8015, 1, 0.9324, 0.0117, -0.0628]
+        - [0.8205, 0.8364, 0.9324, 1, -0.0061, 0.0325]
+        - [0.0064, -0.0022, 0.0117, -0.0061, 1, 0.9520]
+        - [-0.0341, 0.0118, -0.0628, 0.0325, 0.9520, 1]
     ref: arxiv:1501.00367
     author: R. R. Horgan, Z. Liu, S. Meinel, M. Wingate
     citation key: Horgan:2015vla
@@ -48,26 +72,26 @@ B->K*:
     comment: B->K* form factors
     form factors:
       V: 
-        parameterization: 
-        parameter: {a: [0.497528420813, -2.0150648425], dm: 135}
+        parameterization: Horgan 2015
+        parameter: {a: [0.497528420813, -2.0150648425], dm: 135, m_initial: 5.27965, m_final: 0.89555, t0: 12.0}
       A0:
-        parameterization: 
-        parameter: {a: [0.502302643141, -1.60847600112], dm: 87} 
+        parameterization: Horgan 2015
+        parameter: {a: [0.502302643141, -1.60847600112], dm: 87, m_initial: 5.27965, m_final: 0.89555, t0: 12.0} 
       A1:
-        parameterization: 
-        parameter: {a: [0.284803612469, 0.191411584999], dm: 550}
+        parameterization: Horgan 2015
+        parameter: {a: [0.284803612469, 0.191411584999], dm: 550, m_initial: 5.27965, m_final: 0.89555, t0: 12.0}
       A12:
-        parameterization: 
-        parameter: {a: [0.219527522577, 0.332374417965], dm: 550}
+        parameterization: Horgan 2015
+        parameter: {a: [0.219527522577, 0.332374417965], dm: 550, m_initial: 5.27965, m_final: 0.89555, t0: 12.0}
       T1:
-        parameterization: 
-        parameter: {a: [0.419712711234, -1.36328797303], dm: 135}
+        parameterization: Horgan 2015
+        parameter: {a: [0.419712711234, -1.36328797303], dm: 135, m_initial: 5.27965, m_final: 0.89555, t0: 12.0}
       T2:
-        parameterization: 
-        parameter: {a: [0.279965680646,  0.11706607999], dm: 550}
+        parameterization: Horgan 2015
+        parameter: {a: [0.279965680646,  0.11706607999], dm: 550, m_initial: 5.27965, m_final: 0.89555, t0: 12.0}
       T23:
-        parameterization: 
-        parameter: {a: [0.523462757534, -0.27135970224], dm: 550}
+        parameterization: Horgan 2015
+        parameter: {a: [0.523462757534, -0.27135970224], dm: 550, m_initial: 5.27965, m_final: 0.89555, t0: 12.0}
         comment: dm is the difference from Table 4
         # 请直接用 arXiv网页上的Ancillary files：
 
@@ -119,7 +143,7 @@ B->omega:
         parameter: {a1:  1.321, a2: -1.040, m1: 5.28, m2: 5.871} 
       A1:
         parameterization: one pole 
-        parameter: {a: -0.217, m: 6.083}
+        parameter: {a: 0.217, m: 6.083}
       A2:
         parameterization: double pole 2
         parameter: {a1: 0.006, a2:  0.192, m: 6.421}
@@ -136,6 +160,28 @@ B->omega:
 
 Bs->K*:
   LQCD-2015:
+    covariance_matrix:
+      order: [V_a0, V_a1, A0_a0, A0_a1, A1_a0, A1_a1, A12_a0, A12_a1]
+      sigmas: [0.0466, 0.661, 0.01856, 0.235, 0.01151, 0.1316, 0.01233, 0.1509]
+      correlations:
+        - [1, 0.9037, 0, 0, 0, 0, 0, 0]
+        - [0.9037, 1, 0, 0, 0, 0, 0, 0]
+        - [0, 0, 1, 0.5757, -0.0173, 0.0140, 0.8777, 0.8480]
+        - [0, 0, 0.5757, 1, -0.0681, 0.0554, 0.8804, 0.9095]
+        - [0, 0, -0.0173, -0.0681, 1, 0.9119, -0.0175, -0.0785]
+        - [0, 0, 0.0140, 0.0554, 0.9119, 1, 0.0142, 0.0638]
+        - [0, 0, 0.8777, 0.8804, -0.0175, 0.0142, 1, 0.9637]
+        - [0, 0, 0.8480, 0.9095, -0.0785, 0.0638, 0.9637, 1]
+    tensor_covariance_matrix:
+      order: [T1_a0, T1_a1, T2_a0, T2_a1, T23_a0, T23_a1]
+      sigmas: [0.01423, 0.1783, 0.01063, 0.1220, 0.0237, 0.291]
+      correlations:
+        - [1, 0.1851, 0.6786, 0.6440, -0.0026, -0.0356]
+        - [0.1851, 1, 0.6929, 0.7236, 0.0018, 0.0244]
+        - [0.6786, 0.6929, 1, 0.9296, -0.0052, -0.0703]
+        - [0.6440, 0.7236, 0.9296, 1, 0.0044, 0.0595]
+        - [-0.0026, 0.0018, -0.0052, 0.0044, 1, 0.9468]
+        - [-0.0356, 0.0244, -0.0703, 0.0595, 0.9468, 1]
     ref: arxiv:1501.00367
     author: R. R. Horgan, Z. Liu, S. Meinel, M. Wingate
     citation key: Horgan:2015vla
@@ -143,26 +189,26 @@ Bs->K*:
     comment: Bs->K* form factors
     form factors:
       V: 
-        parameterization: 
-        parameter: {a: [0.336718601395, -2.87899265548], dm: -42}
+        parameterization: Horgan 2015
+        parameter: {a: [0.336718601395, -2.87899265548], dm: -42, m_initial: 5.36688, m_final: 0.89555, t0: 12.0}
       A0:
-        parameterization: 
-        parameter: {a: [0.503435988036, -1.85480254285], dm: -87} 
+        parameterization: Horgan 2015
+        parameter: {a: [0.503435988036, -1.85480254285], dm: -87, m_initial: 5.36688, m_final: 0.89555, t0: 12.0} 
       A1:
-        parameterization: 
-        parameter: {a: [0.233902117275, 0.0907091076466], dm: 350}
+        parameterization: Horgan 2015
+        parameter: {a: [0.233902117275, 0.0907091076466], dm: 350, m_initial: 5.36688, m_final: 0.89555, t0: 12.0}
       A12:
-        parameterization: 
-        parameter: {a: [0.203028994353, 0.444198177016], dm: 350}
+        parameterization: Horgan 2015
+        parameter: {a: [0.203028994353, 0.444198177016], dm: 350, m_initial: 5.36688, m_final: 0.89555, t0: 12.0}
       T1:
-        parameterization: 
-        parameter: {a: [0.348777265524, -0.98072444558], dm: -42}
+        parameterization: Horgan 2015
+        parameter: {a: [0.348777265524, -0.98072444558], dm: -42, m_initial: 5.36688, m_final: 0.89555, t0: 12.0}
       T2:
-        parameterization: 
-        parameter: {a: [0.242425375294, 0.20511509269], dm: 350}
+        parameterization: Horgan 2015
+        parameter: {a: [0.242425375294, 0.20511509269], dm: 350, m_initial: 5.36688, m_final: 0.89555, t0: 12.0}
       T23:
-        parameterization: 
-        parameter: {a: [0.47010832266, 0.137534494597], dm: 350}
+        parameterization: Horgan 2015
+        parameter: {a: [0.47010832266, 0.137534494597], dm: 350, m_initial: 5.36688, m_final: 0.89555, t0: 12.0}
         comment: dm is the difference from Table 4
         # 请直接用 arXiv网页上的Ancillary files：                           
   LCSR-pole:                      
@@ -198,6 +244,28 @@ Bs->K*:
 
 Bs->phi:
   LQCD-2015:
+    covariance_matrix:
+      order: [V_a0, V_a1, A0_a0, A0_a1, A1_a0, A1_a1, A12_a0, A12_a1]
+      sigmas: [0.0303, 0.496, 0.01633, 0.243, 0.01107, 0.1501, 0.00978, 0.1473]
+      correlations:
+        - [1, 0.8044, 0, 0, 0, 0, 0, 0]
+        - [0.8044, 1, 0, 0, 0, 0, 0, 0]
+        - [0, 0, 1, 0.7791, -0.0097, -0.0006, 0.9322, 0.9111]
+        - [0, 0, 0.7791, 1, -0.0774, -0.0047, 0.9364, 0.9598]
+        - [0, 0, -0.0097, -0.0774, 1, 0.9353, 0.0022, -0.0904]
+        - [0, 0, -0.0006, -0.0047, 0.9353, 1, 0.0001, -0.0055]
+        - [0, 0, 0.9322, 0.9364, 0.0022, 0.0001, 1, 0.9690]
+        - [0, 0, 0.9111, 0.9598, -0.0904, -0.0055, 0.9690, 1]
+    tensor_covariance_matrix:
+      order: [T1_a0, T1_a1, T2_a0, T2_a1, T23_a0, T23_a1]
+      sigmas: [0.01057, 0.1325, 0.00752, 0.0975, 0.01566, 0.236]
+      correlations:
+        - [1, 0.3041, 0.7021, 0.6767, 0.0202, -0.0689]
+        - [0.3041, 1, 0.6263, 0.6467, 0.0104, -0.0357]
+        - [0.7021, 0.6263, 1, 0.9273, 0.0351, -0.1199]
+        - [0.6767, 0.6467, 0.9273, 1, 0.0080, -0.0273]
+        - [0.0202, 0.0104, 0.0351, 0.0080, 1, 0.9455]
+        - [-0.0689, -0.0357, -0.1199, -0.0273, 0.9455, 1]
     ref: arxiv:1501.00367
     author: R. R. Horgan, Z. Liu, S. Meinel, M. Wingate
     citation key: Horgan:2015vla
@@ -205,26 +273,26 @@ Bs->phi:
     comment: Bs->phi form factors
     form factors:
       V: 
-        parameterization: 
-        parameter: {a: [0.452535336822, -2.39909309211], dm: 45}
+        parameterization: Horgan 2015
+        parameter: {a: [0.452535336822, -2.39909309211], dm: 45, m_initial: 5.36688, m_final: 1.019461, t0: 12.0}
       A0:
-        parameterization: 
-        parameter: {a: [0.529352133811, -1.59248596874], dm: 0} 
+        parameterization: Horgan 2015
+        parameter: {a: [0.529352133811, -1.59248596874], dm: 0, m_initial: 5.36688, m_final: 1.019461, t0: 12.0} 
       A1:
-        parameterization: 
-        parameter: {a: [0.282831524425, 0.123793996986], dm: 440}
+        parameterization: Horgan 2015
+        parameter: {a: [0.282831524425, 0.123793996986], dm: 440, m_initial: 5.36688, m_final: 1.019461, t0: 12.0}
       A12:
-        parameterization: 
-        parameter: {a: [0.20660689485, 0.476257121291], dm: 440}
+        parameterization: Horgan 2015
+        parameter: {a: [0.20660689485, 0.476257121291], dm: 440, m_initial: 5.36688, m_final: 1.019461, t0: 12.0}
       T1:
-        parameterization: 
-        parameter: {a: [0.401597756404, -1.13396307551], dm: 45}
+        parameterization: Horgan 2015
+        parameter: {a: [0.401597756404, -1.13396307551], dm: 45, m_initial: 5.36688, m_final: 1.019461, t0: 12.0}
       T2:
-        parameterization: 
-        parameter: {a: [0.282969214555, 0.248733391065], dm: 440}
+        parameterization: Horgan 2015
+        parameter: {a: [0.282969214555, 0.248733391065], dm: 440, m_initial: 5.36688, m_final: 1.019461, t0: 12.0}
       T23:
-        parameterization: 
-        parameter: {a: [0.521926043325, 0.384393588684], dm: 440}
+        parameterization: Horgan 2015
+        parameter: {a: [0.521926043325, 0.384393588684], dm: 440, m_initial: 5.36688, m_final: 1.019461, t0: 12.0}
         comment: dm is the difference from Table 4
 
     # 请直接用 arXiv网页上的Ancillary files：                         

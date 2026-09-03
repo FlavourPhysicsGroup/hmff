@@ -9,194 +9,109 @@ B->rho:
     citation key: Flynn:2008zr
 
   LCSR-pole:
-    combined: false                 
-    form factors:
-      V:
-        figure_path: tests/figures/B-rho-LCSR-pole/V.pdf
-        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/V.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$V$"
+    combined: false
+    groups:
+      vector:
+        form factors: [V, A0, A1, A2]
+        tex: {V: "$V$", A0: "$A_0$", A1: "$A_1$", A2: "$A_2$"}
+        figure_path: tests/figures/B-rho-LCSR-pole/vector.pdf
+        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/vector.png
+        title: "$B \\to \\rho$"
         qsq_min: 0
         qsq_max: 14
-        qsq_steps: 100
+        qsq_steps: 200
         f_min: 0
         f_max: 1
-      A0:
-        figure_path: tests/figures/B-rho-LCSR-pole/A0.pdf
-        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/A0.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$A0$"
+      tensor:
+        form factors: [T1, T2, T3]
+        tex: {T1: "$T_1$", T2: "$T_2$", T3: "$T_3$"}
+        figure_path: tests/figures/B-rho-LCSR-pole/tensor.pdf
+        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/tensor.png
+        title: "$B \\to \\rho$"
         qsq_min: 0
         qsq_max: 14
-        qsq_steps: 100
+        qsq_steps: 200
         f_min: 0
         f_max: 1
-      A1:
-        figure_path: tests/figures/B-rho-LCSR-pole/A1.pdf
-        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/A1.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$A1$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      A2:
-        figure_path: tests/figures/B-rho-LCSR-pole/A2.pdf
-        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/A2.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$A2$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      T1:
-        figure_path: tests/figures/B-rho-LCSR-pole/T1.pdf
-        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/T1.pdf
-        combined_figure_path: tests/combined_figures/B-rho-LCSR-pole/T1.pdf
-        tex: "$T1$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      T2:
-        figure_path: tests/figures/B-rho-LCSR-pole/T2.pdf
-        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/T2.pdf
-        combined_figure_path: tests/combined_figures/B-rho-LCSR-pole/T2.pdf
-        tex: "$T2$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      T3:
-        figure_path: tests/figures/B-rho-LCSR-pole/T3.pdf
-        ref_figure_path: tests/ref_figures/B-rho-LCSR-pole/T3.pdf
-        combined_figure_path: tests/combined_figures/B-rho-LCSR-pole/T3.pdf
-        tex: "$T3$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-
 
 B->K*:
   LQCD-2015:
+    plots:
+      vector:
+        combined: true
+        form factors:
+          V: {tex: "$V$", figure_path: tests/figures/B-Kstar-LQCD-2015/vector.pdf, ref_figure_path: tests/ref_figures/B-Kstar-LQCD-2015/vector.png, qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 2.5}
+          A0: {tex: "$A_0$"}
+          A1: {tex: "$A_1$"}
+          A12: {tex: "$A_{12}$"}
+      tensor:
+        combined: true
+        form factors:
+          T1: {tex: "$T_1$", figure_path: tests/figures/B-Kstar-LQCD-2015/tensor.pdf, ref_figure_path: tests/ref_figures/B-Kstar-LQCD-2015/tensor.png, qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 1.8}
+          T2: {tex: "$T_2$"}
+          T23: {tex: "$T_{23}$"}
     ref: arxiv:1501.00367
     author: R. R. Horgan, Z. Liu, S. Meinel, M. Wingate
     citation key: Horgan:2015vla
     method: LQCD
-    comment: B->K* form factors
-    form factors:
-      V: 
-        parameterization: 
-        parameter: {a: [0.497528420813, -2.0150648425], dm: 135}
-      A0:
-        parameterization: 
-        parameter: {a: [0.502302643141, -1.60847600112], dm: 87} 
-      A1:
-        parameterization: 
-        parameter: {a: [0.284803612469, 0.191411584999], dm: 550}
-      A12:
-        parameterization: 
-        parameter: {a: [0.219527522577, 0.332374417965], dm: 550}
-      T1:
-        parameterization: 
-        parameter: {a: [0.419712711234, -1.36328797303], dm: 135}
-      T2:
-        parameterization: 
-        parameter: {a: [0.279965680646,  0.11706607999], dm: 550}
-      T23:
-        parameterization: 
-        parameter: {a: [0.523462757534, -0.27135970224], dm: 550}
-        comment: dm is the difference from Table 4
-        # 请直接用 arXiv网页上的Ancillary files：
+  # LCSR-pole:
 
   LCSR-pole: 
     combined: false                 
-    form factors:
-      V:
-        figure_path: tests/figures/B-Kstar-LCSR-pole/V.pdf
-        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/V.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$V$"
+    groups:
+      vector:
+        form factors: [V, A0, A1, A2]
+        tex: {V: "$V$", A0: "$A_0$", A1: "$A_1$", A2: "$A_2$"}
+        figure_path: tests/figures/B-Kstar-LCSR-pole/vector.pdf
+        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/vector.png
+        title: "$B \\to K^*$"
         qsq_min: 0
         qsq_max: 14
-        qsq_steps: 100
+        qsq_steps: 200
         f_min: 0
         f_max: 1
-      A0:
-        figure_path: tests/figures/B-Kstar-LCSR-pole/A0.pdf
-        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/A0.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$A0$"
+      tensor:
+        form factors: [T1, T2, T3]
+        tex: {T1: "$T_1$", T2: "$T_2$", T3: "$T_3$"}
+        figure_path: tests/figures/B-Kstar-LCSR-pole/tensor.pdf
+        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/tensor.png
+        title: "$B \\to K^*$"
         qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
+        qsq_max: 20
+        qsq_steps: 200
         f_min: 0
-        f_max: 1
-      A1:
-        figure_path: tests/figures/B-Kstar-LCSR-pole/A1.pdf
-        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/A1.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$A1$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      A2:
-        figure_path: tests/figures/B-Kstar-LCSR-pole/A2.pdf
-        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/A2.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$A2$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      T1:
-        figure_path: tests/figures/B-Kstar-LCSR-pole/T1.pdf
-        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/T1.pdf
-        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T1.pdf
-        tex: "$T1$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      T2:
-        figure_path: tests/figures/B-Kstar-LCSR-pole/T2.pdf
-        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/T2.pdf
-        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T2.pdf
-        tex: "$T2$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      T3:
-        figure_path: tests/figures/B-Kstar-LCSR-pole/T3.pdf
-        ref_figure_path: tests/ref_figures/B-Kstar-LCSR-pole/T3.pdf
-        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T3.pdf
-        tex: "$T3$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-
+        f_max: 1.8
 
 B->omega:                           
   LCSR-pole:                      
     combined: false                 
+    groups:
+      vector:
+        form factors: [V, A0, A1, A2]
+        tex: {V: "$V$", A0: "$A_0$", A1: "$A_1$", A2: "$A_2$"}
+        figure_path: tests/figures/B-omega-LCSR-pole/vector.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/vector.png
+        title: "$B \\to \\omega$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 200
+        f_min: -0.4
+        f_max: 1
+      tensor:
+        form factors: [T1, T2, T3]
+        tex: {T1: "$T_1$", T2: "$T_2$", T3: "$T_3$"}
+        figure_path: tests/figures/B-omega-LCSR-pole/tensor.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/tensor.png
+        title: "$B \\to \\omega$"
+        qsq_min: 0
+        qsq_max: 14
+        qsq_steps: 200
+        f_min: 0
+        f_max: 1
     form factors:
       V:
         figure_path: tests/figures/B-omega-LCSR-pole/V.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/V.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/V.png
         # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
         tex: "$V$"
         qsq_min: 0
@@ -206,7 +121,7 @@ B->omega:
         f_max: 1
       A0:
         figure_path: tests/figures/B-omega-LCSR-pole/A0.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A0.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A0.png
         # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
         tex: "$A0$"
         qsq_min: 0
@@ -216,7 +131,7 @@ B->omega:
         f_max: 1
       A1:
         figure_path: tests/figures/B-omega-LCSR-pole/A1.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A1.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A1.png
         # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
         tex: "$A1$"
         qsq_min: 0
@@ -226,7 +141,7 @@ B->omega:
         f_max: 1
       A2:
         figure_path: tests/figures/B-omega-LCSR-pole/A2.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A2.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/A2.png
         # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
         tex: "$A2$"
         qsq_min: 0
@@ -236,7 +151,7 @@ B->omega:
         f_max: 1
       T1:
         figure_path: tests/figures/B-omega-LCSR-pole/T1.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T1.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T1.png
         # combined_figure_path: tests/combined_figures/B-omega-LCSR-pole/T1.pdf
         tex: "$T1$"
         qsq_min: 0
@@ -246,7 +161,7 @@ B->omega:
         f_max: 1
       T2:
         figure_path: tests/figures/B-omega-LCSR-pole/T2.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T2.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T2.png
         # combined_figure_path: tests/combined_figures/B-rho-LCSR-pole/T2.pdf
         tex: "$T2$"
         qsq_min: 0
@@ -256,7 +171,7 @@ B->omega:
         f_max: 1
       T3:
         figure_path: tests/figures/B-omega-LCSR-pole/T3.pdf
-        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T3.pdf
+        ref_figure_path: tests/ref_figures/B-omega-LCSR-pole/T3.png
         # combined_figure_path: tests/combined_figures/B-rho-LCSR-pole/T3.pdf
         tex: "$T3$"
         qsq_min: 0
@@ -268,6 +183,20 @@ B->omega:
 
 Bs->K*:
   LQCD-2015:
+    plots:
+      vector:
+        combined: true
+        form factors:
+          V: {figure_path: tests/figures/Bs-Kstar-LQCD-2015/vector.pdf, ref_figure_path: tests/ref_figures/Bs-Kstar-LQCD-2015/vector.png, tex: "$V$", qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 2.5}
+          A0: {tex: "$A_0$"}
+          A1: {tex: "$A_1$"}
+          A12: {tex: "$A_{12}$"}
+      tensor:
+        combined: true
+        form factors:
+          T1: {figure_path: tests/figures/Bs-Kstar-LQCD-2015/tensor.pdf, ref_figure_path: tests/ref_figures/Bs-Kstar-LQCD-2015/tensor.png, tex: "$T_1$", qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 1.8}
+          T2: {tex: "$T_2$"}
+          T23: {tex: "$T_{23}$"}
     ref: arxiv:1501.00367
     author: R. R. Horgan, Z. Liu, S. Meinel, M. Wingate
     citation key: Horgan:2015vla
@@ -297,83 +226,47 @@ Bs->K*:
         parameter: {a: [0.47010832266, 0.137534494597], dm: 350}
         comment: dm is the difference from Table 4
         # 请直接用 arXiv网页上的Ancillary files：                           
-  LCSR-pole:                      
-    combined: false                 
-    form factors:
-      V:
-        figure_path: tests/figures/Bs-Kstar-LCSR-pole/V.pdf
-        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/V.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$V$"
+  LCSR-pole:
+    combined: false
+    groups:
+      vector:
+        form factors: [V, A0, A1, A2]
+        tex: {V: "$V$", A0: "$A_0$", A1: "$A_1$", A2: "$A_2$"}
+        figure_path: tests/figures/Bs-Kstar-LCSR-pole/vector.pdf
+        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/vector.png
+        title: "$B_s \\to K^*$"
         qsq_min: 0
         qsq_max: 14
-        qsq_steps: 100
+        qsq_steps: 200
         f_min: 0
         f_max: 1
-      A0:
-        figure_path: tests/figures/Bs-Kstar-LCSR-pole/A0.pdf
-        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/A0.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$A0$"
+      tensor:
+        form factors: [T1, T2, T3]
+        tex: {T1: "$T_1$", T2: "$T_2$", T3: "$T_3$"}
+        figure_path: tests/figures/Bs-Kstar-LCSR-pole/tensor.pdf
+        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/tensor.png
+        title: "$B_s \\to K^*$"
         qsq_min: 0
         qsq_max: 14
-        qsq_steps: 100
+        qsq_steps: 200
         f_min: 0
         f_max: 1
-      A1:
-        figure_path: tests/figures/Bs-Kstar-LCSR-pole/A1.pdf
-        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/A1.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$A1$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      A2:
-        figure_path: tests/figures/Bs-Kstar-LCSR-pole/A2.pdf
-        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/A2.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$A2$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      T1:
-        figure_path: tests/figures/Bs-Kstar-LCSR-pole/T1.pdf
-        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/T1.pdf
-        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T1.pdf
-        tex: "$T1$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      T2:
-        figure_path: tests/figures/Bs-Kstar-LCSR-pole/T2.pdf
-        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/T2.pdf
-        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T2.pdf
-        tex: "$T2$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      T3:
-        figure_path: tests/figures/Bs-Kstar-LCSR-pole/T3.pdf
-        ref_figure_path: tests/ref_figures/Bs-Kstar-LCSR-pole/T3.pdf
-        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T3.pdf
-        tex: "$T3$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-
-
 Bs->phi:
   LQCD-2015:
+    plots:
+      vector:
+        combined: true
+        form factors:
+          V: {figure_path: tests/figures/Bs-phi-LQCD-2015/vector.pdf, ref_figure_path: tests/ref_figures/Bs-phi-LQCD-2015/vector.png, tex: "$V$", qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 2.5}
+          A0: {tex: "$A_0$"}
+          A1: {tex: "$A_1$"}
+          A12: {tex: "$A_{12}$"}
+      tensor:
+        combined: true
+        form factors:
+          T1: {figure_path: tests/figures/Bs-phi-LQCD-2015/tensor.pdf, ref_figure_path: tests/ref_figures/Bs-phi-LQCD-2015/tensor.png, tex: "$T_1$", qsq_min: 0, qsq_max: 20, qsq_steps: 200, f_min: 0, f_max: 1.8}
+          T2: {tex: "$T_2$"}
+          T23: {tex: "$T_{23}$"}
     ref: arxiv:1501.00367
     author: R. R. Horgan, Z. Liu, S. Meinel, M. Wingate
     citation key: Horgan:2015vla
@@ -404,76 +297,28 @@ Bs->phi:
         comment: dm is the difference from Table 4
 
     # 请直接用 arXiv网页上的Ancillary files：                         
-  LCSR-pole:                      
-    combined: false                 
-    form factors:
-      V:
-        figure_path: tests/figures/Bs-phi-LCSR-pole/V.pdf
-        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/V.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$V$"
+  LCSR-pole:
+    combined: false
+    groups:
+      vector:
+        form factors: [V, A0, A1, A2]
+        tex: {V: "$V$", A0: "$A_0$", A1: "$A_1$", A2: "$A_2$"}
+        figure_path: tests/figures/Bs-phi-LCSR-pole/vector.pdf
+        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/vector.png
+        title: "$B_s \\to \\phi$"
         qsq_min: 0
         qsq_max: 14
-        qsq_steps: 100
+        qsq_steps: 200
         f_min: 0
         f_max: 1
-      A0:
-        figure_path: tests/figures/Bs-phi-LCSR-pole/A0.pdf
-        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/A0.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$A0$"
+      tensor:
+        form factors: [T1, T2, T3]
+        tex: {T1: "$T_1$", T2: "$T_2$", T3: "$T_3$"}
+        figure_path: tests/figures/Bs-phi-LCSR-pole/tensor.pdf
+        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/tensor.png
+        title: "$B_s \\to \\phi$"
         qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
+        qsq_max: 20
+        qsq_steps: 200
         f_min: 0
-        f_max: 1
-      A1:
-        figure_path: tests/figures/Bs-phi-LCSR-pole/A1.pdf
-        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/A1.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$A1$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      A2:
-        figure_path: tests/figures/Bs-phi-LCSR-pole/A2.pdf
-        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/A2.pdf
-        # combined_figure_path: tests/combined_figures/B_pi_LCSR_pole_2004.png
-        tex: "$A2$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      T1:
-        figure_path: tests/figures/Bs-phi-LCSR-pole/T1.pdf
-        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/T1.pdf
-        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T1.pdf
-        tex: "$T1$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      T2:
-        figure_path: tests/figures/Bs-phi-LCSR-pole/T2.pdf
-        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/T2.pdf
-        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T2.pdf
-        tex: "$T2$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
-      T3:
-        figure_path: tests/figures/Bs-phi-LCSR-pole/T3.pdf
-        ref_figure_path: tests/ref_figures/Bs-phi-LCSR-pole/T3.pdf
-        # combined_figure_path: tests/combined_figures/B-Kstar-LCSR-pole/T3.pdf
-        tex: "$T3$"
-        qsq_min: 0
-        qsq_max: 14
-        qsq_steps: 100
-        f_min: 0
-        f_max: 1
+        f_max: 1.8
