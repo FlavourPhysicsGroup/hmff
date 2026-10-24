@@ -78,7 +78,7 @@ def format_parameters_double_pole_2(pars):
 
 # one pole
 # standard pars: {a, m_sq}
-def f_one_pole(qsq, pars):
+def f_one_pole(qsq: float, pars: dict) -> float:
     a = pars.get("a")
     m_sq = pars.get("m_sq")
     return a / (1 - qsq / m_sq)
@@ -86,7 +86,7 @@ def f_one_pole(qsq, pars):
 
 # double pole 1
 # standard pars: {a1, a2, m1_sq, m2_sq}
-def f_double_pole_1(qsq, pars):
+def f_double_pole_1(qsq: float, pars: dict) -> float:
     a1 = pars.get("a1")
     a2 = pars.get("a2")
     m1_sq = pars.get("m1_sq")
@@ -96,7 +96,7 @@ def f_double_pole_1(qsq, pars):
 
 # parameterization: double pole 2
 # standard pars: {a1, a2, m_sq}
-def f_double_pole_2(qsq, pars):
+def f_double_pole_2(qsq: float, pars: dict) -> float:
     a1 = pars.get("a1")
     a2 = pars.get("a2")
     m_sq = pars.get("m_sq")
