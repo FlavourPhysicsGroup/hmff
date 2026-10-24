@@ -107,7 +107,7 @@ print(impl.ref)           # arXiv:2411.04268
 print(impl.form_factor_names)  # ['f+', 'f0', 'fT']
 
 # Compute the form factor value at $q^2 = 10\,\mathrm{GeV}^2$
-func_fplus = impl.form_factor_function("f+")
+func_fplus = impl.param_func("f+")
 print(func_fplus(qsq=10))  # 1.68
 
 # Get all form factor values at a given $q^2$ simultaneously

@@ -25,7 +25,7 @@ def test_impl_values(process_name, impl_name):
     assert ff_names
 
     for ff_name in ff_names:
-        ff_func = impl.form_factor_function(ff_name)
+        ff_func = impl.param_func(ff_name)
         assert ff_func is not None
         value = ff_func(qsq)
         assert isinstance(value, float), f"{ff_name} 应返回 float, 得到 {type(value)}"

@@ -35,5 +35,5 @@ FormFactor 和 Impl 类都从 YAML 文件中读入的数据初始化.
 
 ### 方法
 
-- form_factor_function(ff_name: str) -> Callable[[float], float]
+- param_func(ff_name: str) -> Callable[[float], float]
 - get_central_values(qsq: float) -> dict

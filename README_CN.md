@@ -107,7 +107,7 @@ print(impl.ref)           # arXiv:2411.04268
 print(impl.form_factor_names)  # ['f+', 'f0', 'fT']
 
 # 计算形状因子在 $q^2 = 10\,\mathrm{GeV}^2$ 处的值
-func_fplus = impl.form_factor_function("f+")
+func_fplus = impl.param_func("f+")
 print(func_fplus(qsq=10))  # 1.68
 
 # 同时获取所有形状因子在给定 $q^2$ 的值

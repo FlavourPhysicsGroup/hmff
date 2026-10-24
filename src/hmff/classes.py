@@ -5,6 +5,7 @@ from copy import deepcopy
 from . import pole_dominance as pole
 from . import z_parameterization as zp
 from . import pole_w_expansion as pwe
+from . import z_flag_bcl
 import numpy as np 
 
 
@@ -51,26 +52,31 @@ class Impl:
         self.name = name
         self.config = config  # 从YAML读入的原始字典数据
         self.kwargs = kwargs
+        self.__prepare()
+        self.__build_covariance_matrix()
 
+        # {parameterization_name: (format_func, central_value_func, error_func)}
         self._ff_fit_methods = {
-            "one pole": (pole.format_parameters_one_pole, pole.f_one_pole),
-            "double pole 1": (pole.format_parameters_double_pole_1, pole.f_double_pole_1),
-            "double pole 2": (pole.format_parameters_double_pole_2, pole.f_double_pole_2),
-            "BCL 1": (zp.format_parameter_BCL_1, zp.f_BCL_1),
-            "BCL 2": (zp.format_parameter_BCL_2, zp.f_BCL_2),
-            "BCL 3": (zp.format_parameter_BCL_3, zp.f_BCL_3),
-            "BCL 4": (zp.format_parameter_BCL_4, zp.f_BCL_4),
-            "z-expansions 1": (lambda x: x, zp.f_z_expansions_1),
-            "z-expansions 2": (lambda x: x, zp.f_z_expansions_2),
-            "z-expansions 3": (lambda x: x, zp.f_z_expansions_3),
-            "Horgan 2015": (lambda x: x, zp.f_horgan_2015),
+            "one pole": (pole.format_parameters_one_pole, pole.f_one_pole, None),
+            "double pole 1": (pole.format_parameters_double_pole_1, pole.f_double_pole_1, None),
+            "double pole 2": (pole.format_parameters_double_pole_2, pole.f_double_pole_2, None),
+            "BCL 1": (z_flag_bcl.format_parameters_flag_bcl, z_flag_bcl.f_BCL_1, z_flag_bcl.errors),
+            "BCL 2": (z_flag_bcl.format_parameters_flag_bcl, z_flag_bcl.f_BCL_2, z_flag_bcl.errors),
+            "BCL 3": (z_flag_bcl.format_parameters_flag_bcl, z_flag_bcl.f_BCL_3, z_flag_bcl.errors),
+            "BCL 4": (z_flag_bcl.format_parameters_flag_bcl, z_flag_bcl.f_BCL_4, z_flag_bcl.errors),
+            "z-expansions 1": (lambda x: x, zp.f_z_expansions_1, None),
+            "z-expansions 2": (lambda x: x, zp.f_z_expansions_2, None),
+            "z-expansions 3": (lambda x: x, zp.f_z_expansions_3, None),
+            "Horgan 2015": (lambda x: x, zp.f_horgan_2015, None),
             "pole w expansion": (
                 pwe.format_parameters_pole_w_expansion,
                 pwe.f_pole_w_expansion,
+                None
             ),
             "BCL 5": (
                 zp.format_parameter_BCL_5,
                 zp.f_BCL_5,
+                None
             ),
         }
 
@@ -104,85 +110,112 @@ class Impl:
         ffs = self.config.get("form factors")
         return list(ffs.keys()) if ffs else []
 
-    def form_factor_function(self, ff_name) -> Callable[[float], float]:
-        """获取形状因子对应的拟合函数: f(qsq)"""
+    def __build_covariance_matrix(self):
+        """由关联矩阵和各参数误差构造协方差矩阵: Cov_ij = rho_ij * sigma_i * sigma_j
+        """
+        if "covariance_matrix" in self.config:
+            cov_cfg = self.config["covariance_matrix"]
+            if "value" in cov_cfg:
+                cov_cfg["value"] = np.asarray(cov_cfg["value"], dtype=float)
+            else:
+                # Horgan 2015 格式: {sigmas, correlations, order}
+                sigmas = np.asarray(cov_cfg["sigmas"], dtype=float)
+                rho = np.asarray(cov_cfg["correlations"], dtype=float)
+                cov_cfg["value"] = rho * np.outer(sigmas, sigmas)
+        elif "correlation_matrix" in self.config:
+            rho = np.asarray(self.config["correlation_matrix"]["value"], dtype=float)
+            sigmas = []
+            for ff_cfg in self.config["form factors"].values():
+                sigmas.extend(ff_cfg["error"]["a"])
+            sigmas = np.asarray(sigmas, dtype=float)
+            if rho.shape != (sigmas.size, sigmas.size):
+                raise ValueError(f"关联矩阵维度 {rho.shape} 与误差数组长度 {sigmas.size} 不一致。")
+            cov = rho * np.outer(sigmas, sigmas)
+            self.config["covariance_matrix"] = self.config.pop("correlation_matrix")
+            self.config["covariance_matrix"]["value"] = cov
+        else:
+            cov = 0
+            self.config["covariance_matrix"] = {"value": cov}
 
+    def __prepare(self):
+        """用于准备格式化后的参数, 不依赖 qsq. 比如计算 BCL 参数化中的 a0_last"""
+        for ff_name in self.form_factor_names:
+            ff_config = self.config["form factors"][ff_name]
+            if "a0_last" in ff_config:
+                fp_config = self.config["form factors"]["f+"]
+                ff_data = z_flag_bcl.a0_last_prepare(ff_config, fp_config)
+                ff_config["parameter"] = ff_data
+                ff_config.pop("a0_last")
+
+    def param_func(self, ff_name) -> Callable[[float], float]:
+        """获取形状因子对应的拟合函数: f(qsq)"""
         if ff_name not in self.form_factor_names:
             raise KeyError(f"'{ff_name}' not found in Impl '{self.name}'")
 
-        ff_config = self.config.get("form factors").get(ff_name)
+        ff_config = self.config["form factors"][ff_name]
         ff_data = deepcopy(ff_config.get("parameter"))
 
-        class_func = ff_config.get("parameterization")
-        if class_func == "pole w expansion":
+        param_func_name = ff_config.get("parameterization")
+
+        if param_func_name == "pole w expansion":
             ff_data = pwe.prepare(ff_name, ff_data, self.config)
-        elif class_func == "BCL 5":
+        elif param_func_name == "BCL 5":
             ff_data = zp.bcl5_prepare(ff_name, ff_data, self.config)
-        elif class_func == "BCL 4" and ff_config.get("endpoint"):
+        elif param_func_name == "BCL 4" and ff_config.get("endpoint"):
             ff_data = zp.bcl4_endpoint_prepare(
                 ff_name, ff_data, ff_config["endpoint"], self.config
             )
 
-        format_func, param_func = self._ff_fit_methods[class_func]
+        format_func, param_func, _ = self._ff_fit_methods[param_func_name]
         ff_data = format_func(ff_data)
-
-        # 如果形状因子f_0需要f_+的信息, 则需要更新f_0中的pars
-        if "a0_last" in ff_config:
-            if ff_config.get("a0_last") == "by_ap":
-                fp_config = self.config.get("form factors").get("f+")
-
-                fp_format_func, fp_func = self._ff_fit_methods[fp_config.get("parameterization")]
-
-                # format the parameter of f+
-                fp_data = fp_format_func(deepcopy(fp_config.get("parameter")))
-
-                f0_func = param_func
-
-                # add a0_N-1 from ap by using the relation f_p(0) = f_0(0)
-                ff_data = zp.add_a0_last_from_ap(f0_func, ff_data, fp_func, fp_data)
-
-                # delete the key "a0_last" and its value
-                ff_data.pop("a0_last", None)
-            else:
-                raise ValueError(f"Invalid value for a0_last: {ff_config.get('a0_last')}. Expected 'by_ap' or None.")
-
         ff_func = partial(param_func, pars=ff_data)
 
-        # 标量输入返回原生 Python float (避免在 notebook 中显示为 numpy.float64),
-        # 数组输入 (如 np.linspace, 用于绘图) 保持 numpy 数组.
-        def scalar_float_wrapper(qsq):
-            res = ff_func(qsq)
-            if np.ndim(res) == 0:
-                return float(res)
-            return res
+        # # 标量输入返回原生 Python float (避免在 notebook 中显示为 numpy.float64),
+        # # 数组输入 (如 np.linspace, 用于绘图) 保持 numpy 数组.
+        # def scalar_float_wrapper(qsq):
+        #     res = ff_func(qsq)
+        #     if np.ndim(res) == 0:
+        #         return float(res)
+        #     return res
 
-        return scalar_float_wrapper
+        return ff_func
 
-    def get_central_values(self, qsq):
+    def get_central_values(self, qsq: float) -> dict:
         """返回此文章中包含的所有形状因子在特定qsq时的中心值"""
-        return {ff: self.form_factor_function(ff)(qsq) for ff in self.form_factor_names}
+        return {ff: self.param_func(ff)(qsq) for ff in self.form_factor_names}
 
+    # def error_func(self, ff_name):
+    #     """返回此文章中包含的特定形状因子的误差函数: error(qsq)"""
+    #     param_func_name = self.config["form factors"][ff_name]["parameterization"]
+    #     ff_error_func = self._ff_fit_methods[param_func_name][2]
+    #     return lambda qsq: ff_error_func(qsq, self.config)
+
+    def get_errors(self, qsq: float) -> dict:
+        """返回此文章中包含的所有形状因子在特定qsq时的误差"""
+        param_func_name = self.config["form factors"][self.form_factor_names[0]]["parameterization"]
+        error_func = self._ff_fit_methods[param_func_name][2]
+        return error_func(qsq, self.config)
 
     def get_sigma_f_stat(self, ff_name):
 
         ff_config = self.config.get("form factors").get(ff_name)
 
         pars = deepcopy(ff_config.get("parameter"))
-        class_func = ff_config.get("parameterization")
-        if class_func == "pole w expansion":
+        param_func_name = ff_config.get("parameterization")
+        if param_func_name == "pole w expansion":
             pars = pwe.prepare(ff_name, pars, self.config)
-        elif class_func == "BCL 5":
+        elif param_func_name == "BCL 5":
             pars = zp.bcl5_prepare(ff_name, pars, self.config)
-        elif class_func == "BCL 4" and ff_config.get("endpoint"):
+        elif param_func_name == "BCL 4" and ff_config.get("endpoint"):
             pars = zp.bcl4_endpoint_prepare(
                 ff_name, pars, ff_config["endpoint"], self.config
             )
-        format_func, param_func = self._ff_fit_methods[class_func]
+        format_func, param_func = self._ff_fit_methods[param_func_name]
         pars = format_func(pars)
         cov_a = pars.get("cov_matrices")
         gradient_indices = None
         gradient_local_indices = None
-        if cov_a is None and class_func == "pole w expansion":
+        if cov_a is None and param_func_name == "pole w expansion":
             # 全局协方差矩阵 (来自 ancillary 文件), 参数顺序见 covariance_matrix.order
             covariance_config = self.config.get("covariance_matrix", {})
             cov_a = covariance_config.get("value")
@@ -191,7 +224,7 @@ class Impl:
                 index = {tuple(k): i for i, k in enumerate(order)}
                 pars["_a0_linear"], pars["_a1_linear"] = pwe.linear_maps(ff_name, pars, index)
                 pars["_pole_w_cov_dim"] = len(order)
-        elif cov_a is None and class_func == "BCL 5":
+        elif cov_a is None and param_func_name == "BCL 5":
             # 全局协方差矩阵 (来自 ancillary 文件), 参数顺序见 covariance_matrix.order
             covariance_config = self.config.get("covariance_matrix", {})
             cov_a = covariance_config.get("value")
@@ -200,7 +233,7 @@ class Impl:
                 index = {tuple(k): i for i, k in enumerate(order)}
                 pars["_a0_linear"], pars["_a1_linear"] = zp.bcl5_linear_maps(ff_name, pars, index)
                 pars["_bcl5_cov_dim"] = len(order)
-        elif cov_a is None and class_func == "BCL 4" and self.config.get("covariance_matrix"):
+        elif cov_a is None and param_func_name == "BCL 4" and self.config.get("covariance_matrix"):
             # 全局协方差矩阵 (来自 ancillary 文件), 参数顺序见 covariance_matrix.order
             # (Xi_c->Xi LQCD-2025: endpoint 约束经 linear maps 传播到全局参数)
             covariance_config = self.config.get("covariance_matrix", {})
@@ -212,12 +245,12 @@ class Impl:
                     ff_name, pars, ff_config.get("endpoint"), index
                 )
                 pars["_xicxi_cov_dim"] = len(order)
-        elif cov_a is None and class_func.startswith("z-expansions"):
+        elif cov_a is None and param_func_name.startswith("z-expansions"):
             covariance_config = self.config.get("covariance_matrix", {})
             cov_a = covariance_config.get("value")
             if cov_a is not None:
                 ff_names = self.form_factor_names
-                if class_func == "z-expansions 1":
+                if param_func_name == "z-expansions 1":
                     # Published order: [f(0), c_0, c_+, P_S, P_V].
                     covariance_ff_order = sorted(
                         ff_names,
@@ -236,7 +269,7 @@ class Impl:
                     ff_position = ff_names.index(ff_name)
                     gradient_indices = [0, 1 + ff_position]
                     gradient_local_indices = [0, 1]
-        if cov_a is None and class_func == "Horgan 2015":
+        if cov_a is None and param_func_name == "Horgan 2015":
             covariance_key = "tensor_covariance_matrix" if ff_name.startswith("T") else "covariance_matrix"
             covariance_config = self.config.get(covariance_key, {})
             sigmas = np.asarray(covariance_config.get("sigmas", []), dtype=float)
@@ -255,20 +288,7 @@ class Impl:
             zp.sigma_f_analytical,
             pars=pars,
             cov_a=cov_a,
-            class_func=class_func,
+            param_func_name=param_func_name,
             gradient_indices=gradient_indices,
             gradient_local_indices=gradient_local_indices,
         )
-
-    import numpy as np
-
-
-
-
-
-
-
-
-
-
-

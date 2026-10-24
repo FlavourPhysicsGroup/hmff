@@ -79,7 +79,7 @@ def test_error_handling():
         proc.get_impl("NonExistentImpl")
     impl = proc.get_impl(proc.impl_names[0])
     with pytest.raises(KeyError):
-        impl.form_factor_function("NonExistentFF")
+        impl.param_func("NonExistentFF")
 
 
 if __name__ == "__main__":
