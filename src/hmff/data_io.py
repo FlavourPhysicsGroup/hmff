@@ -54,6 +54,12 @@ class LazyFormFactorLoader:
     def __getitem__(self, item):
         return self.get_formfactor(item)
 
+    def __iter__(self):
+        # 必须显式实现 __iter__: 否则会触发回退迭代协议
+        # (__getitem__(0), __getitem__(1), ...), 而不存在的键返回 None
+        # 不抛 IndexError, 导致 for 循环永不终止
+        return iter(self._load())
+
     def keys(self):
         return self._load().keys()
 

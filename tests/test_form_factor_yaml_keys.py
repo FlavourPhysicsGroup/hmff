@@ -28,7 +28,8 @@ def test_yaml_top_level_keys(yaml_file):
             assert isinstance(impl_cfg, dict), f"{key}/{impl_name} 不是 dict"
             ffs = impl_cfg.get("form factors")
             if ffs is not None:
-                assert isinstance(ffs, dict) and ffs, f"{key}/{impl_name}: form factors 须为非空 dict"
+                assert isinstance(ffs, dict) and ffs, (
+                    f"{key}/{impl_name}: form factors 须为非空 dict"
+                )
                 for ff_name, ff_cfg in ffs.items():
                     assert isinstance(ff_cfg, dict), f"{key}/{impl_name}/{ff_name} 不是 dict"
-

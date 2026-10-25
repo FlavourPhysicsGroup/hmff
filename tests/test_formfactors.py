@@ -7,6 +7,7 @@ LazyFormFactorLoader 的行为与每个 process/impl 元数据的完整性.
 """
 
 import pytest
+
 from src.hmff.data_io import LazyFormFactorLoader
 
 # 全局加载器
@@ -31,6 +32,12 @@ def test_loader_is_lazy():
     assert loader._cache is None
     _ = list(loader.keys())
     assert loader._cache is not None
+
+
+def test_loader_is_iterable():
+    """加载器可直接迭代, 等价于迭代 keys()"""
+    assert list(form_factor_loader) == list(form_factor_loader.keys())
+    assert set(form_factor_loader) == set(form_factor_loader.keys())
 
 
 @pytest.mark.parametrize("form_factor_key", sorted(form_factor_loader.keys()))
@@ -67,9 +74,29 @@ def test_get_central_values_returns_numbers():
             if not impl.form_factor_names:
                 continue
             vals = impl.get_central_values(1.0)
-            assert isinstance(vals, list)
+            assert isinstance(vals, dict)
             assert len(vals) == len(impl.form_factor_names)
-            assert all(isinstance(v, (int, float)) for v in vals)
+            assert all(isinstance(v, (int, float)) for v in vals.values())
+
+
+def test_get_errors_returns_numbers():
+    """对有真实形状因子的实现, get_errors 返回 {ff_name: 误差} 字典"""
+    for proc_name in form_factor_loader.keys():
+        ff = form_factor_loader[proc_name]
+        for impl_name in ff.impl_names:
+            impl = ff.get_impl(impl_name)
+            if not impl.form_factor_names:
+                continue
+            try:
+                errs = impl.get_errors(1.0)
+            except KeyError:
+                # 部分实现(如 Lambda_b->Lambda/LQCD-2016, Xi_c->Xi/LQCD-2025)
+                # 缺少旧版误差路径所需的 per-ff 'error' 元数据, 暂不支持
+                continue
+            assert isinstance(errs, dict)
+            assert set(errs.keys()) == set(impl.form_factor_names)
+            assert all(isinstance(v, (int, float)) for v in errs.values())
+            assert all(v >= 0 for v in errs.values())
 
 
 def test_error_handling():

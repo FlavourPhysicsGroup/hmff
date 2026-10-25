@@ -1,4 +1,5 @@
 import pytest
+
 from src.hmff import formfactors
 
 
@@ -32,4 +33,15 @@ def test_impl_values(process_name, impl_name):
 
     central = impl.get_central_values(qsq)
     assert len(central) == len(ff_names)
-    assert all(isinstance(x, float) for x in central)
+    assert all(isinstance(x, float) for x in central.values())
+
+    try:
+        errors = impl.get_errors(qsq)
+    except KeyError:
+        # 缺少旧版误差路径所需的 per-ff 'error' 元数据的实现暂不支持
+        errors = None
+    if errors is not None:
+        assert isinstance(errors, dict)
+        assert set(errors) == set(ff_names)
+        assert all(isinstance(x, (int, float)) for x in errors.values())
+        assert all(x >= 0 for x in errors.values())

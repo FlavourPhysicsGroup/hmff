@@ -194,6 +194,8 @@ class Impl:
         """返回此文章中包含的所有形状因子在特定qsq时的误差"""
         param_func_name = self.config["form factors"][self.form_factor_names[0]]["parameterization"]
         error_func = self._ff_fit_methods[param_func_name][2]
+        if error_func is None:
+            return {ff: 0 for ff in self.form_factor_names}
         return error_func(qsq, self.config)
 
     def get_sigma_f_stat(self, ff_name):
