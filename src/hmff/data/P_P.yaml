@@ -302,13 +302,13 @@ D->pi:
     comment: D->pi form factors
     form factors:
       f+:
-        parameterization: z-expansions 1
-        parameter: {f(0): 0.6117, c: -1.985, P: 0.1314, m_1: 1.87265, m_2: 0.134977}
-        comment: Table 6
+        parameterization: ETMC 1
+        parameter: {f(0): 0.6117, c: -1.985, P: 0.1314, m_1: 1.86955, m_2: 0.1349768}
+        comment: Table 6, and m_1=m(D^+), m_2=m(pi^0) from PDG 2026, checked by hou
       f0:
-        parameterization: z-expansions 1
-        parameter: {f(0): 0.6117, c: -1.188, P: 0.0342, m_1: 1.87265, m_2: 0.134977}
-        comment: Table 6
+        parameterization: ETMC 1
+        parameter: {f(0): 0.6117, c: -1.188, P: 0.0342, m_1: 1.86955, m_2: 0.1349768}
+        comment: Table 6, and m_1=m(D^+), m_2=m(pi^0) from PDG 2026, checked by hou
     covariance_matrix:
         order: [f(0), c_f0, c_f+, P_f0, P_f+]
         value:
@@ -317,7 +317,7 @@ D->pi:
         - [ 6.77051e-3,  6.30124e-2,  1.20371e-1,  2.24220e-3,  3.25631e-3]
         - [ 3.66997e-5,  1.73569e-3,  2.24220e-3,  1.48010e-4,  9.60595e-5]
         - [ 2.87257e-5,  8.43689e-4,  3.25631e-3,  9.60595e-5,  1.60179e-4 ]  
-        comment: from Table 7
+        comment: from Table 7, checked by hou
 
 D->K:
   LQCD-ETMC 2017:
@@ -328,17 +328,17 @@ D->K:
     comment: D->K form factors
     form factors:
       f+:
-        parameterization: z-expansions 2
-        parameter: {f(0): 0.7647, c: -0.066, m_1: 1.87265, m_2: 0.495644, m_star: 2.1122}
-        comment: Table 8
+        parameterization: ETMC 2
+        parameter: {f(0): 0.7647, c: -0.066, m_1: 1.86955, m_2: 0.497611, m_star: 2.1066}
+        comment: Table 8, and m_1=m(D^+), m_2=m(K^0), m_star=m(D_s^*+) from PDG 2026, checked by hou
       f0:
-        parameterization: z-expansions 3
-        parameter: {f(0): 0.7647, c: -2.084, m_1: 1.87265, m_2: 0.495644}
-        comment: Table 8
+        parameterization: ETMC 3
+        parameter: {f(0): 0.7647, c: -2.084, m_1: 1.86955, m_2: 0.497611}
+        comment: Table 8, and m_1=m(D^+), m_2=m(K^0) from PDG 2026, checked by hou
     covariance_matrix: 
         order: [f(0), c_f0, c_f+]
         value:
         - [ 9.50493e-4,  6.92027e-3,  5.66397e-3]
         - [ 6.92027e-3,  7.99358e-2,  7.55735e-2]
         - [ 5.66397e-3,  7.55735e-2,  1.10925e-1]
-        comment: from Table 7
+        comment: from Table 7, checked by hou

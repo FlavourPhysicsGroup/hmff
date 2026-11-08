@@ -2,10 +2,11 @@ from functools import partial
 from typing import Callable
 from copy import deepcopy
 
-from . import pole_dominance as pole
+from . import p_p_pole_dominance as pole
 from . import z_parameterization as zp
 from . import pole_w_expansion as pwe
-from . import z_flag_bcl
+from . import p_p_z_flag_bcl as z_flag_bcl
+from . import p_p_z_etmc as z_etmc
 import numpy as np 
 
 
@@ -60,13 +61,13 @@ class Impl:
             "one pole": (pole.format_parameters_one_pole, pole.f_one_pole, None),
             "double pole 1": (pole.format_parameters_double_pole_1, pole.f_double_pole_1, None),
             "double pole 2": (pole.format_parameters_double_pole_2, pole.f_double_pole_2, None),
-            "BCL 1": (z_flag_bcl.format_parameters_flag_bcl, z_flag_bcl.f_BCL_1, z_flag_bcl.errors),
-            "BCL 2": (z_flag_bcl.format_parameters_flag_bcl, z_flag_bcl.f_BCL_2, z_flag_bcl.errors),
-            "BCL 3": (z_flag_bcl.format_parameters_flag_bcl, z_flag_bcl.f_BCL_3, z_flag_bcl.errors),
-            "BCL 4": (z_flag_bcl.format_parameters_flag_bcl, z_flag_bcl.f_BCL_4, z_flag_bcl.errors),
-            "z-expansions 1": (lambda x: x, zp.f_z_expansions_1, None),
-            "z-expansions 2": (lambda x: x, zp.f_z_expansions_2, None),
-            "z-expansions 3": (lambda x: x, zp.f_z_expansions_3, None),
+            "BCL 1": (z_flag_bcl.format_parameters, z_flag_bcl.f_BCL_1, z_flag_bcl.errors),
+            "BCL 2": (z_flag_bcl.format_parameters, z_flag_bcl.f_BCL_2, z_flag_bcl.errors),
+            "BCL 3": (z_flag_bcl.format_parameters, z_flag_bcl.f_BCL_3, z_flag_bcl.errors),
+            "BCL 4": (z_flag_bcl.format_parameters, z_flag_bcl.f_BCL_4, z_flag_bcl.errors),
+            "ETMC 1": (z_etmc.format_parameters, z_etmc.f_etmc_1, None),
+            "ETMC 2": (z_etmc.format_parameters, z_etmc.f_etmc_2, None),
+            "ETMC 3": (z_etmc.format_parameters, z_etmc.f_etmc_3, None),
             "Horgan 2015": (lambda x: x, zp.f_horgan_2015, None),
             "pole w expansion": (
                 pwe.format_parameters_pole_w_expansion,

@@ -3,7 +3,7 @@ from copy import deepcopy
 import numpy as np
 
 
-def format_parameters_flag_bcl(pars):
+def format_parameters(pars):
     """根据质量信息, 得到 t_+, t_0 两个中间参数, 将其写入 pars.
 
     Args:
@@ -178,8 +178,8 @@ def a0_last_prepare(f0_info: dict, fp_info: dict) -> dict:
     if f0_config.get("a0_last") == "by_ap":
         f0_func = _METCH_METHOD[f0_config["parameterization"]]
         fp_func = _METCH_METHOD[fp_config["parameterization"]]
-        f0_pars = format_parameters_flag_bcl(f0_config["parameter"])
-        fp_pars = format_parameters_flag_bcl(fp_config["parameter"])
+        f0_pars = format_parameters(f0_config["parameter"])
+        fp_pars = format_parameters(fp_config["parameter"])
 
         a0_list = f0_pars["a"]
         a0_list_auxiliary = [0] * (len(a0_list) + 1)
@@ -237,7 +237,7 @@ def errors(qsq: float, config: dict) -> dict:
 
         Args:
             qsq: 转移动量平方（标量）
-            pars: 经 format_parameters_flag_bcl 格式化后的参数
+            pars: 经 format_parameters 格式化后的参数
             class_func: 参数化名称，"BCL 1" / "BCL 2" / "BCL 3" / "BCL 4" 之一
 
         Returns:
@@ -317,7 +317,7 @@ def errors(qsq: float, config: dict) -> dict:
 
     result = {}
     for name, ff_cfg in ff_configs.items():
-        pars = format_parameters_flag_bcl(ff_cfg["parameter"])
+        pars = format_parameters(ff_cfg["parameter"])
         n_indep = len(ff_cfg["error"]["a"])
         g = np.zeros(dim)
         if len(pars["a"]) == n_indep:
@@ -328,7 +328,7 @@ def errors(qsq: float, config: dict) -> dict:
         else:
             # a0_last 约束：独立参数为 a[:-1]，梯度横跨 f+ 与 f0 两块
             fp_cfg = ff_configs["f+"]
-            pars_fp = format_parameters_flag_bcl(fp_cfg["parameter"])
+            pars_fp = format_parameters(fp_cfg["parameter"])
             pars_trim = {**pars, "a": pars["a"][:-1]}
             pair = gradient_a0_last(
                 qsq, pars_trim, ff_cfg["parameterization"], pars_fp, fp_cfg["parameterization"]

@@ -60,23 +60,25 @@ def _p_p_processes():
 
 
 @pytest.mark.parametrize(
-    "process_name, ff_name, expected",
+    "impl_name, process_name, ff_name, expected",
     [
-        ("B->pi", "f+", 0.258),
-        ("B->pi", "fT", 0.253),
-        ("B->K", "f+", 0.331),
-        ("B->K", "fT", 0.358),
-        ("B->eta", "f+", 0.275),
-        ("B->eta", "fT", 0.285),
+        ("LCSR-pole 2004", "B->pi", "f+", 0.258),
+        ("LCSR-pole 2004", "B->pi", "fT", 0.253),
+        ("LCSR-pole 2004", "B->K", "f+", 0.331),
+        ("LCSR-pole 2004", "B->K", "fT", 0.358),
+        ("LCSR-pole 2004", "B->eta", "f+", 0.275),
+        ("LCSR-pole 2004", "B->eta", "fT", 0.285),
+        ("LQCD-ETMC 2017", "D->pi", "f+", 0.612),
+        ("LQCD-ETMC 2017", "D->K", "f+", 0.765),
     ],
 )
-def test_lcsr_pole_2004_qsq_zero(process_name, ff_name, expected):
-    """校验 arXiv:hep-ph/0406232v1 (Ball & Zwicky) Eq.(27) 的 q^2=0 形状因子数值.
+def test_ff_at_qsq_zero(impl_name, process_name, ff_name, expected):
+    """校验 q^2=0 时形状因子数值.
 
     YAML 参数逐位符合论文 Table 3; 拟合参数化本身对中心值的复现精度约 1-2%,
     故采用 1.5% 相对容差.
     """
-    impl = formfactors[process_name].get_impl("LCSR-pole 2004")
+    impl = formfactors[process_name].get_impl(impl_name)
     value = impl.param_func(ff_name)(0.0)
     assert value == pytest.approx(expected, rel=0.015)
 
