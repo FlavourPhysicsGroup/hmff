@@ -83,6 +83,24 @@ def test_ff_at_qsq_zero(impl_name, process_name, ff_name, expected):
     assert value == pytest.approx(expected, rel=0.015)
 
 
+@pytest.mark.parametrize(
+    "impl_name, process_name, ff_name, expected",
+    [
+        ("LQCD-ETMC 2017", "D->pi", "f+", 0.035),
+        ("LQCD-ETMC 2017", "D->K", "f+", 0.031),
+    ],
+)
+def test_ff_error_at_qsq_zero(impl_name, process_name, ff_name, expected):
+    """校验 q^2=0 时形状因子的 1 sigma 误差.
+
+    q^2=0 处 z 展开项为 0, f = f(0), 故误差应等于协方差矩阵中 f(0) 的
+    标准差 (arXiv:1706.03017v4 Table 7), 采用 1.5% 相对容差.
+    """
+    impl = formfactors[process_name].get_impl(impl_name)
+    error = impl.get_errors(0.0)[ff_name]
+    assert error == pytest.approx(expected, rel=0.015)
+
+
 def _p_p_fplus_f0_cases():
     """收集 P_P 过程中同时含 f+ 和 f0 的 (process, impl) 组合."""
     cases = []

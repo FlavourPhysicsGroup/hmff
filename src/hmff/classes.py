@@ -65,9 +65,9 @@ class Impl:
             "BCL 2": (z_flag_bcl.format_parameters, z_flag_bcl.f_BCL_2, z_flag_bcl.errors),
             "BCL 3": (z_flag_bcl.format_parameters, z_flag_bcl.f_BCL_3, z_flag_bcl.errors),
             "BCL 4": (z_flag_bcl.format_parameters, z_flag_bcl.f_BCL_4, z_flag_bcl.errors),
-            "ETMC 1": (z_etmc.format_parameters, z_etmc.f_etmc_1, None),
-            "ETMC 2": (z_etmc.format_parameters, z_etmc.f_etmc_2, None),
-            "ETMC 3": (z_etmc.format_parameters, z_etmc.f_etmc_3, None),
+            "ETMC 1": (z_etmc.format_parameters, z_etmc.f_etmc_1, z_etmc.errors),
+            "ETMC 2": (z_etmc.format_parameters, z_etmc.f_etmc_2, z_etmc.errors),
+            "ETMC 3": (z_etmc.format_parameters, z_etmc.f_etmc_3, z_etmc.errors),
             "Horgan 2015": (lambda x: x, zp.f_horgan_2015, None),
             "pole w expansion": (
                 pwe.format_parameters_pole_w_expansion,
